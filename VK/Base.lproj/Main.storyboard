@@ -11,6 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -35,13 +36,13 @@
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyk-zg-coe">
-                                                <rect key="frame" x="75" y="203.00000000000006" width="80" height="142"/>
+                                                <rect key="frame" x="75" y="203.00000000000006" width="80" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="Weo-g3-kky"/>
                                                 </constraints>
                                                 <color key="tintColor" red="0.20000001789999999" green="0.4588235021" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" image="eye" title="Next"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Next"/>
                                                 <connections>
                                                     <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Ag-Bf-QXi"/>
                                                 </connections>
@@ -96,14 +97,12 @@
                         <outlet property="scrollView" destination="BZu-Ib-nQ1" id="xda-zX-hnc"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-433.33333333333337" y="40.178571428571423"/>
         </scene>
     </scenes>
     <resources>
         <image name="VK_Full_Logo" width="5520" height="960"/>
-        <image name="eye" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
