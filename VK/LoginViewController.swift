@@ -60,12 +60,15 @@ class LoginViewController: UIViewController {
             print("успешная авторизация")
         } else {
             let alert = UIAlertController(title: "Wrong password", message: "Check your password", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "Ok", style: .default) { _ in
-                // временная помощь при входе
+            
+            // временная помощь при входе
+            let insertDefaultLoginAndPassword = UIAlertAction(title: "Insert admin password", style: .destructive) { _ in
                 self.loginTextField.text = "admin"
                 self.passwordTextField.text = "123456"
             }
+            let okButton = UIAlertAction(title: "Ok", style: .default)
             alert.addAction(okButton)
+            alert.addAction(insertDefaultLoginAndPassword)
             present(alert, animated: true)
         }
     }
