@@ -7,7 +7,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "FriendProfileCellID"
+//private let reuseIdentifier = ""
 
 class FriendProfileCollectionViewController: UICollectionViewController {
     
@@ -20,7 +20,7 @@ class FriendProfileCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -49,7 +49,7 @@ class FriendProfileCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FriendProfileCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendProfileCellID", for: indexPath) as! FriendProfileCollectionViewCell
         cell.userImage.image = UIImage(named: userProfileInfo[indexPath.row].image)
 
         // Configure the cell
@@ -87,6 +87,8 @@ class FriendProfileCollectionViewController: UICollectionViewController {
     
     }
     */
+    
+    // Передача данных из FriendstableView
     func updateData(user: User) {
         userProfileInfo.append(user)
         print(userProfileInfo)

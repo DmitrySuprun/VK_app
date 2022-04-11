@@ -133,14 +133,10 @@ class FriendsTableViewController: UITableViewController {
     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FriendProfileSegueID" {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let nextScreen = storyboard.instantiateViewController(withIdentifier: "FriendProfileCollectionViewID") as! FriendProfileCollectionViewController
+            let destination = segue.destination as! FriendProfileCollectionViewController
             let index = tableView.indexPathForSelectedRow
-            nextScreen.updateData(user: friends[index!.row])
-            
+            destination.updateData(user: friends[index!.row])
         }
-        
-        
     }
 
 }
