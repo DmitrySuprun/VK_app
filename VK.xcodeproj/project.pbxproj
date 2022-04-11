@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D50C01842801E044006D8583 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01832801E044006D8583 /* UserModel.swift */; };
+		D50C01872801E2BE006D8583 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */; };
+		D50C01892801E2D7006D8583 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */; };
+		D50C018C2803AA73006D8583 /* FriendProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C018B2803AA73006D8583 /* FriendProfileCollectionViewController.swift */; };
+		D50C018E2803AA8D006D8583 /* FriendProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C018D2803AA8D006D8583 /* FriendProfileCollectionViewCell.swift */; };
+		D50C01912803CC12006D8583 /* CommunitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01902803CC12006D8583 /* CommunitiesTableViewCell.swift */; };
+		D50C01932803CC25006D8583 /* CommunitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01922803CC25006D8583 /* CommunitiesTableViewController.swift */; };
+		D50C01962803CC80006D8583 /* CommunitySearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01952803CC80006D8583 /* CommunitySearchTableViewController.swift */; };
+		D50C01982803CC92006D8583 /* CommunitySearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01972803CC92006D8583 /* CommunitySearchTableViewCell.swift */; };
+		D50C019A2803CE58006D8583 /* Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01992803CE58006D8583 /* Community.swift */; };
 		D5B2B3E427FA7F7F00FA1E17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3E327FA7F7F00FA1E17 /* AppDelegate.swift */; };
 		D5B2B3E627FA7F7F00FA1E17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3E527FA7F7F00FA1E17 /* SceneDelegate.swift */; };
 		D5B2B3EB27FA7F7F00FA1E17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B2B3E927FA7F7F00FA1E17 /* Main.storyboard */; };
@@ -18,6 +28,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D50C01832801E044006D8583 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
+		D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
+		D50C018B2803AA73006D8583 /* FriendProfileCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileCollectionViewController.swift; sourceTree = "<group>"; };
+		D50C018D2803AA8D006D8583 /* FriendProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		D50C01902803CC12006D8583 /* CommunitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesTableViewCell.swift; sourceTree = "<group>"; };
+		D50C01922803CC25006D8583 /* CommunitiesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesTableViewController.swift; sourceTree = "<group>"; };
+		D50C01952803CC80006D8583 /* CommunitySearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchTableViewController.swift; sourceTree = "<group>"; };
+		D50C01972803CC92006D8583 /* CommunitySearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchTableViewCell.swift; sourceTree = "<group>"; };
+		D50C01992803CE58006D8583 /* Community.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Community.swift; sourceTree = "<group>"; };
 		D5B2B3E027FA7F7F00FA1E17 /* VK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B2B3E327FA7F7F00FA1E17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5B2B3E527FA7F7F00FA1E17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +61,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D50C01822801DF16006D8583 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D50C01832801E044006D8583 /* UserModel.swift */,
+				D50C01992803CE58006D8583 /* Community.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D50C01852801E29D006D8583 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */,
+				D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		D50C018A2803AA17006D8583 /* FriendProfile */ = {
+			isa = PBXGroup;
+			children = (
+				D50C018B2803AA73006D8583 /* FriendProfileCollectionViewController.swift */,
+				D50C018D2803AA8D006D8583 /* FriendProfileCollectionViewCell.swift */,
+			);
+			path = FriendProfile;
+			sourceTree = "<group>";
+		};
+		D50C018F2803CBE0006D8583 /* Communities */ = {
+			isa = PBXGroup;
+			children = (
+				D50C01902803CC12006D8583 /* CommunitiesTableViewCell.swift */,
+				D50C01922803CC25006D8583 /* CommunitiesTableViewController.swift */,
+			);
+			path = Communities;
+			sourceTree = "<group>";
+		};
+		D50C01942803CC5D006D8583 /* CommunitySearch */ = {
+			isa = PBXGroup;
+			children = (
+				D50C01952803CC80006D8583 /* CommunitySearchTableViewController.swift */,
+				D50C01972803CC92006D8583 /* CommunitySearchTableViewCell.swift */,
+			);
+			path = CommunitySearch;
+			sourceTree = "<group>";
+		};
 		D5B2B3D727FA7F7F00FA1E17 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +126,11 @@
 		D5B2B3E227FA7F7F00FA1E17 /* VK */ = {
 			isa = PBXGroup;
 			children = (
+				D50C01942803CC5D006D8583 /* CommunitySearch */,
+				D50C018F2803CBE0006D8583 /* Communities */,
+				D50C018A2803AA17006D8583 /* FriendProfile */,
+				D50C01852801E29D006D8583 /* Friends */,
+				D50C01822801DF16006D8583 /* Model */,
 				D5B2B3E327FA7F7F00FA1E17 /* AppDelegate.swift */,
 				D5B2B3E527FA7F7F00FA1E17 /* SceneDelegate.swift */,
 				D5B2B3E927FA7F7F00FA1E17 /* Main.storyboard */,
@@ -144,11 +214,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D50C019A2803CE58006D8583 /* Community.swift in Sources */,
 				D5B2B3FB27FAE9DC00FA1E17 /* LoginViewController.swift in Sources */,
+				D50C018C2803AA73006D8583 /* FriendProfileCollectionViewController.swift in Sources */,
+				D50C01962803CC80006D8583 /* CommunitySearchTableViewController.swift in Sources */,
+				D50C01982803CC92006D8583 /* CommunitySearchTableViewCell.swift in Sources */,
 				D5B2B3EE27FA7F7F00FA1E17 /* VK.xcdatamodeld in Sources */,
 				D5B2B3E427FA7F7F00FA1E17 /* AppDelegate.swift in Sources */,
+				D50C01912803CC12006D8583 /* CommunitiesTableViewCell.swift in Sources */,
+				D50C018E2803AA8D006D8583 /* FriendProfileCollectionViewCell.swift in Sources */,
+				D50C01892801E2D7006D8583 /* FriendsTableViewCell.swift in Sources */,
 				D5B2B3E627FA7F7F00FA1E17 /* SceneDelegate.swift in Sources */,
+				D50C01842801E044006D8583 /* UserModel.swift in Sources */,
+				D50C01872801E2BE006D8583 /* FriendsTableViewController.swift in Sources */,
 				D5B2B3FD27FE03CF00FA1E17 /* ExampleClass.swift in Sources */,
+				D50C01932803CC25006D8583 /* CommunitiesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
