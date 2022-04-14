@@ -76,12 +76,18 @@ class FriendsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCellID", for: indexPath) as! FriendsTableViewCell
-        var configuration = cell.defaultContentConfiguration()
-        configuration.text = friends[indexPath.row].name
-        configuration.imageProperties.maximumSize = CGSize(width: 30, height: 30)
-        configuration.image = UIImage(named: friends[indexPath.row].image)
-        cell.contentConfiguration = configuration
-
+        
+        // реализация ячейки со стандартными полями
+//        var configuration = cell.defaultContentConfiguration()
+//        configuration.text = friends[indexPath.row].name
+//        configuration.imageProperties.maximumSize = CGSize(width: 30, height: 30)
+//        configuration.image = UIImage(named: friends[indexPath.row].image)
+//        cell.contentConfiguration = configuration
+        
+        //реализация ячейки через storyboard и outlet
+        cell.avatarView.image = UIImage(named: friends[indexPath.row].image)!
+        cell.name.text = friends[indexPath.row].name
+       
         return cell
     }
     

@@ -117,8 +117,42 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mWa-qI-i2L" id="e8O-BF-9qD">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dHd-0j-FO9">
+                                            <rect key="frame" x="20" y="4.3333333333333321" width="35" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="dHd-0j-FO9" secondAttribute="height" multiplier="1:1" id="MRI-Gu-Wbs"/>
+                                                <constraint firstAttribute="height" constant="35" id="ZEO-S8-g6Q"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hae-1g-FKe">
+                                            <rect key="frame" x="75" y="11.333333333333336" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="dHd-0j-FO9" firstAttribute="centerY" secondItem="e8O-BF-9qD" secondAttribute="centerY" id="6yf-QM-kmm"/>
+                                        <constraint firstItem="Hae-1g-FKe" firstAttribute="leading" secondItem="dHd-0j-FO9" secondAttribute="trailing" constant="20" id="DnV-Ly-T3l"/>
+                                        <constraint firstItem="dHd-0j-FO9" firstAttribute="leading" secondItem="e8O-BF-9qD" secondAttribute="leading" constant="20" symbolic="YES" id="dKs-yX-KTd"/>
+                                        <constraint firstItem="Hae-1g-FKe" firstAttribute="centerY" secondItem="e8O-BF-9qD" secondAttribute="centerY" id="jVg-1Q-kpU"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" red="0.20000001789999999" green="0.4588235021" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <outlet property="avatar" destination="dHd-0j-FO9" id="bNf-yP-Mj5"/>
+                                    <outlet property="name" destination="Hae-1g-FKe" id="3ij-Cy-SIW"/>
                                     <segue destination="DGP-hG-NZd" kind="show" identifier="FriendProfileSegueID" id="NTM-5Z-vsM"/>
                                 </connections>
                             </tableViewCell>
@@ -133,7 +167,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JV9-pf-K9i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2519" y="-293"/>
+            <point key="canvasLocation" x="2518.840579710145" y="-293.30357142857139"/>
         </scene>
         <!--Photo-->
         <scene sceneID="eAU-u4-Ffd">
