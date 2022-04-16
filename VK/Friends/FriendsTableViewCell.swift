@@ -9,6 +9,8 @@ import UIKit
 
 class FriendsTableViewCell: UITableViewCell {
     
+    // MARK: - IBOutlets
+   
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var name: UILabel!
     
@@ -17,11 +19,19 @@ class FriendsTableViewCell: UITableViewCell {
     @IBInspectable var shadowOpacity: Float = 1
     @IBInspectable var shadowRadius: CGFloat = 1
     
+    // MARK: - Public Properties
+    
+    // свойство в которое передается картинка аватарки
     var avatarView = UIImageView()
+    
+    // MARK: - Private Properties
+    // MARK: - Initializers
+    // MARK: - Override Methods
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        // Initialization code
+
         // получаем размер imageView со storyboard
         let size = avatar.frame.height
         
@@ -30,7 +40,7 @@ class FriendsTableViewCell: UITableViewCell {
         avatar.layer.shadowColor = shadowColor.cgColor
         avatar.layer.shadowOpacity = shadowOpacity
         avatar.layer.shadowRadius = shadowRadius
-        avatar.layer.shadowOffset = CGSize(width: 5, height: 5)
+        avatar.layer.shadowOffset = CGSize(width: 5, height: 2)
         avatar.layer.masksToBounds = false
         
         // добавляем на вью с тенью вью с аватаркой
@@ -39,11 +49,6 @@ class FriendsTableViewCell: UITableViewCell {
         avatarView.clipsToBounds = true
         avatar.addSubview(avatarView)
         
-        // add shape and shadow
-        
-
-        
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -51,4 +56,8 @@ class FriendsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    // MARK: - IBActions
+    // MARK: - Public Methods
+    // MARK: - Private Methods
 }

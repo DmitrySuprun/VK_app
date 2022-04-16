@@ -91,7 +91,6 @@ class FriendProfileCollectionViewController: UICollectionViewController {
     // Передача данных из FriendstableView
     func updateData(user: User) {
         userProfileInfo.append(user)
-        print(userProfileInfo)
     }
 
 }

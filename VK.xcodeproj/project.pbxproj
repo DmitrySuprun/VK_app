@@ -17,7 +17,6 @@
 		D50C01962803CC80006D8583 /* CommunitySearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01952803CC80006D8583 /* CommunitySearchTableViewController.swift */; };
 		D50C01982803CC92006D8583 /* CommunitySearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01972803CC92006D8583 /* CommunitySearchTableViewCell.swift */; };
 		D50C019A2803CE58006D8583 /* Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01992803CE58006D8583 /* Community.swift */; };
-		D53C9FCE2808616C004A7369 /* AvatarUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53C9FCD2808616C004A7369 /* AvatarUIImageView.swift */; };
 		D5B2B3E427FA7F7F00FA1E17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3E327FA7F7F00FA1E17 /* AppDelegate.swift */; };
 		D5B2B3E627FA7F7F00FA1E17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3E527FA7F7F00FA1E17 /* SceneDelegate.swift */; };
 		D5B2B3EB27FA7F7F00FA1E17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B2B3E927FA7F7F00FA1E17 /* Main.storyboard */; };
@@ -26,6 +25,7 @@
 		D5B2B3F327FA7F8100FA1E17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B2B3F127FA7F8100FA1E17 /* LaunchScreen.storyboard */; };
 		D5B2B3FB27FAE9DC00FA1E17 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3FA27FAE9DC00FA1E17 /* LoginViewController.swift */; };
 		D5B2B3FD27FE03CF00FA1E17 /* ExampleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3FC27FE03CF00FA1E17 /* ExampleClass.swift */; };
+		D5C667F3280B02B000B9F04A /* LikeUIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C667F2280B02B000B9F04A /* LikeUIControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,6 @@
 		D50C01952803CC80006D8583 /* CommunitySearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchTableViewController.swift; sourceTree = "<group>"; };
 		D50C01972803CC92006D8583 /* CommunitySearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchTableViewCell.swift; sourceTree = "<group>"; };
 		D50C01992803CE58006D8583 /* Community.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Community.swift; sourceTree = "<group>"; };
-		D53C9FCD2808616C004A7369 /* AvatarUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarUIImageView.swift; sourceTree = "<group>"; };
 		D5B2B3E027FA7F7F00FA1E17 /* VK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B2B3E327FA7F7F00FA1E17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5B2B3E527FA7F7F00FA1E17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +49,7 @@
 		D5B2B3F427FA7F8100FA1E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5B2B3FA27FAE9DC00FA1E17 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D5B2B3FC27FE03CF00FA1E17 /* ExampleClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleClass.swift; sourceTree = "<group>"; };
+		D5C667F2280B02B000B9F04A /* LikeUIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeUIControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */,
-				D53C9FCD2808616C004A7369 /* AvatarUIImageView.swift */,
 				D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */,
 			);
 			path = Friends;
@@ -86,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				D50C018B2803AA73006D8583 /* FriendProfileCollectionViewController.swift */,
+				D5C667F2280B02B000B9F04A /* LikeUIControl.swift */,
 				D50C018D2803AA8D006D8583 /* FriendProfileCollectionViewCell.swift */,
 			);
 			path = FriendProfile;
@@ -219,6 +219,7 @@
 			files = (
 				D50C019A2803CE58006D8583 /* Community.swift in Sources */,
 				D5B2B3FB27FAE9DC00FA1E17 /* LoginViewController.swift in Sources */,
+				D5C667F3280B02B000B9F04A /* LikeUIControl.swift in Sources */,
 				D50C018C2803AA73006D8583 /* FriendProfileCollectionViewController.swift in Sources */,
 				D50C01962803CC80006D8583 /* CommunitySearchTableViewController.swift in Sources */,
 				D50C01982803CC92006D8583 /* CommunitySearchTableViewCell.swift in Sources */,
@@ -230,7 +231,6 @@
 				D5B2B3E627FA7F7F00FA1E17 /* SceneDelegate.swift in Sources */,
 				D50C01842801E044006D8583 /* UserModel.swift in Sources */,
 				D50C01872801E2BE006D8583 /* FriendsTableViewController.swift in Sources */,
-				D53C9FCE2808616C004A7369 /* AvatarUIImageView.swift in Sources */,
 				D5B2B3FD27FE03CF00FA1E17 /* ExampleClass.swift in Sources */,
 				D50C01932803CC25006D8583 /* CommunitiesTableViewController.swift in Sources */,
 			);

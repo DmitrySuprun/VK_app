@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct Community {
+protocol CommunityProtocol {
+    var name: String { get }
+    var image: String { get }
+}
+
+struct Community: Equatable {
     var name: String
     var image: String
 }
