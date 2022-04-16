@@ -199,9 +199,19 @@
                                                 <constraint firstAttribute="width" constant="150" id="Nod-A9-uGP"/>
                                             </constraints>
                                         </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3A-OG-gUp" customClass="LikeControl" customModule="VK" customModuleProvider="target">
+                                            <rect key="frame" x="92" y="92" width="50" height="50"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="1Te-RW-gJS"/>
+                                                <constraint firstAttribute="height" constant="50" id="eeh-IY-6h5"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="c3A-OG-gUp" secondAttribute="trailing" constant="8" id="Cj1-21-nRW"/>
                                         <constraint firstItem="Tpr-o8-xpO" firstAttribute="centerX" secondItem="SRV-Rd-2av" secondAttribute="centerX" id="Clt-3Y-MQC"/>
+                                        <constraint firstAttribute="bottom" secondItem="c3A-OG-gUp" secondAttribute="bottom" constant="8" id="QwA-Ce-nPZ"/>
                                         <constraint firstItem="Tpr-o8-xpO" firstAttribute="centerY" secondItem="SRV-Rd-2av" secondAttribute="centerY" id="x7s-pK-c6V"/>
                                     </constraints>
                                 </collectionViewCellContentView>
