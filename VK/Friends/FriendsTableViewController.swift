@@ -54,6 +54,7 @@ class FriendsTableViewController: UITableViewController {
                           .init(name: "Сальвадорэ", image: "40", likeCount: 10)]
     
     var friends: [User] = []
+    var contactListForTableView = [[User]]()
     
     // MARK: - Private Properties
     // MARK: - Initializers
@@ -63,7 +64,7 @@ class FriendsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         friends = sourse.sorted(by: { $0.name < $1.name })
-        
+        contactListForTableView = sortContactListForTableView(contactList: friends)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -76,12 +77,29 @@ class FriendsTableViewController: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return contactListForTableView.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return friends.count
+        return contactListForTableView[section].count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionName: String
+        sectionName = String(contactListForTableView[section][0].name.first!)
+        return sectionName
+        
+    }
+    
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        var result = [String]()
+        for i in 0..<contactListForTableView.count {
+            result.append(String(contactListForTableView[i][0].name.first!))
+        }
+        
+        return result
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,8 +113,8 @@ class FriendsTableViewController: UITableViewController {
         //        cell.contentConfiguration = configuration
         
         //реализация ячейки через storyboard и outlet
-        cell.avatarView.image = UIImage(named: friends[indexPath.row].image)!
-        cell.name.text = friends[indexPath.row].name
+        cell.avatarView.image = UIImage(named: contactListForTableView[indexPath.section][indexPath.row].image)!
+        cell.name.text = contactListForTableView[indexPath.section][indexPath.row].name
         
         return cell
     }
@@ -115,8 +133,13 @@ class FriendsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            friends.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            if contactListForTableView[indexPath.section].count == 1 {
+                contactListForTableView.remove(at: indexPath.section)
+                tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
+            } else {
+                contactListForTableView[indexPath.section].remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
@@ -163,5 +186,23 @@ class FriendsTableViewController: UITableViewController {
     }
     
     // MARK: - Private Methods
+    private func sortContactListForTableView (contactList: [User]) -> [[User]] {
+        let sortedList = friends
+
+        var result = [[User]]()
+        var arrayTemp = [sortedList[0]]
+
+        for i in 1...(contactList.count - 1) {
+            if arrayTemp.last!.name.first! == sortedList[i].name.first! {
+                arrayTemp.append(sortedList[i])
+            } else {
+                result.append(arrayTemp)
+                arrayTemp.removeAll()
+                arrayTemp.append(sortedList[i])
+            }
+        }
+        result.append(arrayTemp)
+        return result
+    }
     
 }
