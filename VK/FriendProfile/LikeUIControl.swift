@@ -57,6 +57,7 @@ class LikeControl: UIControl {
             likeCount -= 1
         }
         isLike.toggle()
+        // для реализации @IBAction control'a
         sendActions(for: .valueChanged)
     }
     
