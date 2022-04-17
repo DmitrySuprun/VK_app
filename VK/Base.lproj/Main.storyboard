@@ -200,11 +200,11 @@
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3A-OG-gUp" customClass="LikeControl" customModule="VK" customModuleProvider="target">
-                                            <rect key="frame" x="92" y="92" width="50" height="50"/>
+                                            <rect key="frame" x="72" y="102" width="70" height="40"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="1Te-RW-gJS"/>
-                                                <constraint firstAttribute="height" constant="50" id="eeh-IY-6h5"/>
+                                                <constraint firstAttribute="width" constant="70" id="3ln-bF-UpB"/>
+                                                <constraint firstAttribute="height" constant="40" id="jv1-Qv-0LI"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -216,6 +216,7 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
+                                    <outlet property="likeControl" destination="c3A-OG-gUp" id="X65-q7-7ZX"/>
                                     <outlet property="userImage" destination="Tpr-o8-xpO" id="ApT-D0-5HW"/>
                                 </connections>
                             </collectionViewCell>

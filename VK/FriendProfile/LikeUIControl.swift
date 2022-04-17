@@ -9,71 +9,92 @@ import UIKit
 
 class LikeControl: UIControl {
     
-    // MARK: - IBOutlets
     // MARK: - Public Properties
-    public var isLike: Bool = false {
+        
+    public var likeCount: Int = 0
+    // при изменении значения control'a меняются картинка и лайки
+    public var isLike: Bool = true {
         didSet {
             imageView.image = image
+            lableView.text = String(likeCount)
         }
     }
     // MARK: - Private Properties
+    
     private weak var imageView: UIImageView!
+    private weak var lableView: UILabel!
     private var image: UIImage {
         return isLike ? UIImage(systemName: "heart.fill")! : UIImage(systemName: "heart")!
     }
     
     
     // MARK: - Initializers
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
     
     required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
+        //        fatalError("init(coder:) has not been implemented")
         super.init(coder: coder)
         setup()
     }
     
     // MARK: - Override Methods
+    // для обновления при появлении окна likeCount, т.к. при инициализации всегда 0
+    override func layoutSubviews() {
+        isLike.toggle()
+    }
     // MARK: - IBActions
     // MARK: - Public Methods
+    
+    @objc func touchUpInside () {
+        
+        if !isLike {
+            likeCount += 1
+        } else {
+            likeCount -= 1
+        }
+        isLike.toggle()
+        sendActions(for: .valueChanged)
+    }
+    
     // MARK: - Private Methods
+    
     private func setup() {
+        
         let imageView = UIImageView()
+        let label = UILabel()
+        
+        label.text = String(likeCount)
+        label.textAlignment = .center
+        label.textColor = .white
+        
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
         addSubview(imageView)
+        addSubview(label)
         
         imageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        imageView.widthAnchor.constraint(equalTo: heightAnchor, multiplier: 1).isActive = true
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         
         imageView.image = image
         imageView.contentMode = .scaleAspectFit
         
+        label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
+        label.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+
         self.imageView = imageView
+        self.lableView = label
         backgroundColor = UIColor.clear
         
         addTarget(self, action: #selector(touchUpInside), for: .touchUpInside)
-        
     }
-    
-    @objc func touchUpInside () {
-        isLike.toggle()
-        sendActions(for: .valueChanged)
-    }
-
-    
-    
-    
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
     
 }
 
