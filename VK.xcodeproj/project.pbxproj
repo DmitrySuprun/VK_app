@@ -25,6 +25,7 @@
 		D5B2B3F327FA7F8100FA1E17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B2B3F127FA7F8100FA1E17 /* LaunchScreen.storyboard */; };
 		D5B2B3FB27FAE9DC00FA1E17 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3FA27FAE9DC00FA1E17 /* LoginViewController.swift */; };
 		D5B2B3FD27FE03CF00FA1E17 /* ExampleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3FC27FE03CF00FA1E17 /* ExampleClass.swift */; };
+		D5C667F3280B02B000B9F04A /* LikeUIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C667F2280B02B000B9F04A /* LikeUIControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		D5B2B3F427FA7F8100FA1E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5B2B3FA27FAE9DC00FA1E17 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D5B2B3FC27FE03CF00FA1E17 /* ExampleClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleClass.swift; sourceTree = "<group>"; };
+		D5C667F2280B02B000B9F04A /* LikeUIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeUIControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				D50C018B2803AA73006D8583 /* FriendProfileCollectionViewController.swift */,
+				D5C667F2280B02B000B9F04A /* LikeUIControl.swift */,
 				D50C018D2803AA8D006D8583 /* FriendProfileCollectionViewCell.swift */,
 			);
 			path = FriendProfile;
@@ -216,6 +219,7 @@
 			files = (
 				D50C019A2803CE58006D8583 /* Community.swift in Sources */,
 				D5B2B3FB27FAE9DC00FA1E17 /* LoginViewController.swift in Sources */,
+				D5C667F3280B02B000B9F04A /* LikeUIControl.swift in Sources */,
 				D50C018C2803AA73006D8583 /* FriendProfileCollectionViewController.swift in Sources */,
 				D50C01962803CC80006D8583 /* CommunitySearchTableViewController.swift in Sources */,
 				D50C01982803CC92006D8583 /* CommunitySearchTableViewCell.swift in Sources */,

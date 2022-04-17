@@ -7,18 +7,13 @@
 
 import UIKit
 
-class ExampleClass: UIViewController {
+class ExampleClass {
     
     // MARK: - IBOutlets
     // MARK: - Public Properties
     // MARK: - Private Properties
     // MARK: - Initializers
     // MARK: - Override Methods
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     // MARK: - IBActions
     // MARK: - Public Methods
     // MARK: - Private Methods

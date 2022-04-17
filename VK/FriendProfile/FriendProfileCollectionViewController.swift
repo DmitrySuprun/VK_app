@@ -51,6 +51,7 @@ class FriendProfileCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendProfileCellID", for: indexPath) as! FriendProfileCollectionViewCell
         cell.userImage.image = UIImage(named: userProfileInfo[indexPath.row].image)
+        cell.likeControl.likeCount = userProfileInfo[indexPath.row].likeCount
 
         // Configure the cell
     
@@ -91,7 +92,6 @@ class FriendProfileCollectionViewController: UICollectionViewController {
     // Передача данных из FriendstableView
     func updateData(user: User) {
         userProfileInfo.append(user)
-        print(userProfileInfo)
     }
 
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class CommunitiesTableViewController: UITableViewController {
     
-    var communitiesList: [Community] = []
+    var communitiesList = [Community]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +38,8 @@ class CommunitiesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommunityCellID", for: indexPath) as! CommunitiesTableViewCell
         var configuration = cell.defaultContentConfiguration()
         configuration.image = UIImage(named: communitiesList[indexPath.row].image)
+        configuration.imageProperties.maximumSize = CGSize(width: 50, height: 50)
+        configuration.imageProperties.cornerRadius = CGFloat(25)
         configuration.text = communitiesList[indexPath.row].name
         cell.contentConfiguration = configuration
 
