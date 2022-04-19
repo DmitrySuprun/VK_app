@@ -10,6 +10,7 @@ import UIKit
 class CommunitiesTableViewController: UITableViewController {
     
     var communitiesList = [Community]()
+    private var searchBackup = [Community]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,5 +97,21 @@ class CommunitiesTableViewController: UITableViewController {
     @IBAction func unwindToCommuniesController(_ segue: UIStoryboardSegue) {
         tableView.reloadData()
     }
+}
 
+extension CommunitiesTableViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBackup = communitiesList
+    }
+    func searchBarTextDidEndEditing (_ searchBar: UISearchBar) {
+        communitiesList = searchBackup
+        tableView.reloadData()
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        communitiesList = searchBackup
+        if !searchText.isEmpty {
+            communitiesList = communitiesList.filter({ $0.name.lowercased().contains(searchText.lowercased())})
+        }
+        tableView.reloadData()
+    }
 }
