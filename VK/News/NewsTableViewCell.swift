@@ -1,0 +1,27 @@
+//
+//  NewsTableViewCell.swift
+//  VK
+//
+//  Created by Дмитрий Супрун on 19.04.22.
+//
+
+import UIKit
+
+class NewsTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var imageNews: UIImageView!
+    @IBOutlet weak var newsText: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        newsText.text = "Создать экран новостей. Добавить туда таблицу и сделать ячейку для новости.  Ячейка должна содержать то же самое, что и в оригинальном приложении ВКонтакте: надпись, фотографии, кнопки «Мне нравится», «Комментировать», «Поделиться» и индикатор количества просмотров. Сделать поддержку только одной фотографии, которая должна быть квадратной формы и растягиваться на всю ширину ячейки. Высота ячейки должна вычисляться автоматически."
+        imageNews.layer.cornerRadius = 20
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
+}

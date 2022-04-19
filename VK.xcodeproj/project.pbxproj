@@ -26,6 +26,9 @@
 		D5B2B3FB27FAE9DC00FA1E17 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3FA27FAE9DC00FA1E17 /* LoginViewController.swift */; };
 		D5B2B3FD27FE03CF00FA1E17 /* ExampleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3FC27FE03CF00FA1E17 /* ExampleClass.swift */; };
 		D5C667F3280B02B000B9F04A /* LikeUIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C667F2280B02B000B9F04A /* LikeUIControl.swift */; };
+		D5C66819280F462600B9F04A /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C66818280F462600B9F04A /* NewsTableViewController.swift */; };
+		D5C6681C280F464100B9F04A /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C6681A280F464100B9F04A /* NewsTableViewCell.swift */; };
+		D5C6681D280F464100B9F04A /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5C6681B280F464100B9F04A /* NewsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		D5B2B3FA27FAE9DC00FA1E17 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D5B2B3FC27FE03CF00FA1E17 /* ExampleClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleClass.swift; sourceTree = "<group>"; };
 		D5C667F2280B02B000B9F04A /* LikeUIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeUIControl.swift; sourceTree = "<group>"; };
+		D5C66818280F462600B9F04A /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		D5C6681A280F464100B9F04A /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		D5C6681B280F464100B9F04A /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,7 @@
 		D5B2B3E227FA7F7F00FA1E17 /* VK */ = {
 			isa = PBXGroup;
 			children = (
+				D5C66817280F45EA00B9F04A /* News */,
 				D50C01942803CC5D006D8583 /* CommunitySearch */,
 				D50C018F2803CBE0006D8583 /* Communities */,
 				D50C018A2803AA17006D8583 /* FriendProfile */,
@@ -144,6 +151,16 @@
 				D5B2B3EC27FA7F7F00FA1E17 /* VK.xcdatamodeld */,
 			);
 			path = VK;
+			sourceTree = "<group>";
+		};
+		D5C66817280F45EA00B9F04A /* News */ = {
+			isa = PBXGroup;
+			children = (
+				D5C66818280F462600B9F04A /* NewsTableViewController.swift */,
+				D5C6681A280F464100B9F04A /* NewsTableViewCell.swift */,
+				D5C6681B280F464100B9F04A /* NewsTableViewCell.xib */,
+			);
+			path = News;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +223,7 @@
 			files = (
 				D5B2B3F327FA7F8100FA1E17 /* LaunchScreen.storyboard in Resources */,
 				D5B2B3F027FA7F8100FA1E17 /* Assets.xcassets in Resources */,
+				D5C6681D280F464100B9F04A /* NewsTableViewCell.xib in Resources */,
 				D5B2B3EB27FA7F7F00FA1E17 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,10 +238,12 @@
 				D50C019A2803CE58006D8583 /* Community.swift in Sources */,
 				D5B2B3FB27FAE9DC00FA1E17 /* LoginViewController.swift in Sources */,
 				D5C667F3280B02B000B9F04A /* LikeUIControl.swift in Sources */,
+				D5C66819280F462600B9F04A /* NewsTableViewController.swift in Sources */,
 				D50C018C2803AA73006D8583 /* FriendProfileCollectionViewController.swift in Sources */,
 				D50C01962803CC80006D8583 /* CommunitySearchTableViewController.swift in Sources */,
 				D50C01982803CC92006D8583 /* CommunitySearchTableViewCell.swift in Sources */,
 				D5B2B3EE27FA7F7F00FA1E17 /* VK.xcdatamodeld in Sources */,
+				D5C6681C280F464100B9F04A /* NewsTableViewCell.swift in Sources */,
 				D5B2B3E427FA7F7F00FA1E17 /* AppDelegate.swift in Sources */,
 				D50C01912803CC12006D8583 /* CommunitiesTableViewCell.swift in Sources */,
 				D50C018E2803AA8D006D8583 /* FriendProfileCollectionViewCell.swift in Sources */,
