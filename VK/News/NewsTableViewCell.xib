@@ -17,22 +17,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="101" translatesAutoresizingMaskIntoConstraints="NO" id="WCb-E7-iA2">
-                        <rect key="frame" x="16" y="197" width="288" height="288"/>
+                        <rect key="frame" x="16" y="212" width="288" height="288"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="WCb-E7-iA2" secondAttribute="height" multiplier="1:1" id="Lus-wq-TrM"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbj-2S-RTj">
-                        <rect key="frame" x="16" y="0.0" width="288" height="189"/>
-                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AwL-tL-ICz">
                         <rect key="frame" x="16" y="513" width="54" height="31"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="filled" image="heart" catalog="system" title="7"/>
+                        <connections>
+                            <action selector="likeButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PbO-KB-Sab"/>
+                        </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbj-2S-RTj">
+                        <rect key="frame" x="16" y="0.0" width="288" height="184"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fzd-hE-lcq">
                         <rect key="frame" x="78" y="513" width="34" height="31"/>
                         <constraints>
@@ -40,39 +43,62 @@
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="filled" image="bubble.right" catalog="system"/>
+                        <connections>
+                            <action selector="commentButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="l9a-xa-NeJ"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oy6-Rk-Lmj">
                         <rect key="frame" x="120" y="513" width="55.5" height="31"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="filled" image="arrowshape.turn.up.right" catalog="system" title="3"/>
+                        <connections>
+                            <action selector="forwardButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5Vb-uj-HLy"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KO1-wA-fKC">
                         <rect key="frame" x="236" y="513" width="69" height="31"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="gray" image="eye" catalog="system" imagePlacement="trailing" title="23"/>
+                        <connections>
+                            <action selector="viewsButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eJw-nj-gTM"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gik-Sn-RoJ">
+                        <rect key="frame" x="16" y="184" width="97" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Qlt-v5-0wg"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Show more"/>
+                        <connections>
+                            <action selector="showMoreButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="nkx-aY-u36"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Nbj-2S-RTj" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="5sZ-Ry-raf"/>
                     <constraint firstItem="Nbj-2S-RTj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="6eg-sL-Bc4"/>
+                    <constraint firstItem="oy6-Rk-Lmj" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="8kd-vF-XZz"/>
                     <constraint firstItem="AwL-tL-ICz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="9Ss-w8-rTg"/>
-                    <constraint firstAttribute="bottom" secondItem="WCb-E7-iA2" secondAttribute="bottom" constant="70" id="A0k-Ja-5Zp"/>
-                    <constraint firstItem="Fzd-hE-lcq" firstAttribute="baseline" secondItem="AwL-tL-ICz" secondAttribute="baseline" id="AKv-o7-qgO"/>
+                    <constraint firstAttribute="bottom" secondItem="WCb-E7-iA2" secondAttribute="bottom" constant="55" id="A0k-Ja-5Zp"/>
                     <constraint firstItem="WCb-E7-iA2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="BDo-ac-gaf"/>
+                    <constraint firstItem="Fzd-hE-lcq" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="Dvr-5k-YNH"/>
                     <constraint firstAttribute="bottom" secondItem="KO1-wA-fKC" secondAttribute="bottom" constant="11" id="IHn-mr-9by"/>
-                    <constraint firstItem="WCb-E7-iA2" firstAttribute="top" secondItem="Nbj-2S-RTj" secondAttribute="bottom" constant="8" id="Kmx-QS-OTp"/>
                     <constraint firstItem="oy6-Rk-Lmj" firstAttribute="leading" secondItem="Fzd-hE-lcq" secondAttribute="trailing" constant="8" id="Nyk-oc-AKK"/>
                     <constraint firstAttribute="trailing" secondItem="WCb-E7-iA2" secondAttribute="trailing" constant="16" id="OlR-AE-f5a"/>
-                    <constraint firstItem="Fzd-hE-lcq" firstAttribute="baseline" secondItem="oy6-Rk-Lmj" secondAttribute="baseline" id="PQH-Kl-1J3"/>
+                    <constraint firstItem="WCb-E7-iA2" firstAttribute="top" secondItem="gik-Sn-RoJ" secondAttribute="bottom" constant="8" symbolic="YES" id="OrA-Jn-A8P"/>
                     <constraint firstItem="AwL-tL-ICz" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="bAx-tl-otn"/>
                     <constraint firstAttribute="trailing" secondItem="KO1-wA-fKC" secondAttribute="trailing" constant="15" id="cFJ-Hj-nNY"/>
                     <constraint firstItem="Nbj-2S-RTj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="oRF-a0-GOo"/>
                     <constraint firstItem="Fzd-hE-lcq" firstAttribute="leading" secondItem="AwL-tL-ICz" secondAttribute="trailing" constant="8" id="rCH-T2-lze"/>
+                    <constraint firstItem="gik-Sn-RoJ" firstAttribute="top" secondItem="Nbj-2S-RTj" secondAttribute="bottom" id="svM-7S-heg"/>
+                    <constraint firstItem="gik-Sn-RoJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="usP-FF-Sqx"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="imageNews" destination="WCb-E7-iA2" id="fCF-Ag-MGR"/>
+                <outlet property="likeButton" destination="AwL-tL-ICz" id="pOH-mm-I2R"/>
                 <outlet property="newsText" destination="Nbj-2S-RTj" id="XcG-yW-avY"/>
             </connections>
             <point key="canvasLocation" x="128.98550724637681" y="-11.049107142857142"/>
