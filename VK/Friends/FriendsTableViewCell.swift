@@ -19,6 +19,7 @@ class FriendsTableViewCell: UITableViewCell {
     @IBInspectable var shadowOpacity: Float = 1
     @IBInspectable var shadowRadius: CGFloat = 1
     
+    
     // MARK: - Public Properties
     
     // свойство в которое передается картинка аватарки
@@ -31,7 +32,7 @@ class FriendsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-
+        
         // получаем размер imageView со storyboard
         let size = avatar.frame.height
         
@@ -49,15 +50,35 @@ class FriendsTableViewCell: UITableViewCell {
         avatarView.clipsToBounds = true
         avatar.addSubview(avatarView)
         
+        // add gesture to imageView
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchAnimation(tapGestureRecognizer: )))
+        avatar.isUserInteractionEnabled = true
+        avatar.addGestureRecognizer(tapGesture)
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
+        
 
         // Configure the view for the selected state
     }
     
     // MARK: - IBActions
+    
+    
     // MARK: - Public Methods
     // MARK: - Private Methods
+    
+    @objc func touchAnimation(tapGestureRecognizer: UITapGestureRecognizer) {
+        
+        let animation = CABasicAnimation(keyPath: "frame")
+                
+        animation.fromValue = CGRect(x: 0, y: 0, width: 5, height: 5)
+        animation.toValue = CGRect(x: 0, y: 0, width: 50, height: 50)
+        animation.duration = 3
+        avatarView.layer.add(animation, forKey: nil)
+        
+    }
 }
