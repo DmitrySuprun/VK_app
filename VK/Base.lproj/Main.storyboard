@@ -18,43 +18,60 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qxm-l9-fIZ">
-                                <rect key="frame" x="107" y="438" width="200" height="20"/>
+                                <rect key="frame" x="107" y="440.5" width="200" height="15"/>
                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="Rhb-ev-OGB"/>
+                                    <constraint firstAttribute="width" priority="999" constant="100" id="DCp-7B-dQj"/>
+                                    <constraint firstAttribute="height" priority="999" constant="25" id="Rhb-ev-OGB"/>
+                                    <constraint firstAttribute="height" constant="15" id="T3W-yR-0Fw"/>
                                     <constraint firstAttribute="width" constant="200" id="kGd-Up-haE"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VK_Compact_Logo-png" translatesAutoresizingMaskIntoConstraints="NO" id="VZG-Cg-JSj">
-                                <rect key="frame" x="157" y="318" width="100" height="100"/>
+                                <rect key="frame" x="157" y="330.5" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="4A6-4s-2H6"/>
                                     <constraint firstAttribute="width" secondItem="VZG-Cg-JSj" secondAttribute="height" multiplier="1:1" id="ww0-R3-Ai7"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evw-ZY-EHK">
+                                <rect key="frame" x="132" y="796" width="150" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="h9R-2l-mX9"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Next"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="Nvy-3b-CxH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZCK-Aw-eA6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Qxm-l9-fIZ" firstAttribute="centerY" secondItem="gkl-C3-O1e" secondAttribute="centerY" id="5cP-qj-eId"/>
-                            <constraint firstItem="Qxm-l9-fIZ" firstAttribute="leading" secondItem="VZG-Cg-JSj" secondAttribute="leading" priority="999" id="JHq-sw-EjA"/>
+                            <constraint firstItem="evw-ZY-EHK" firstAttribute="centerX" secondItem="gkl-C3-O1e" secondAttribute="centerX" id="KX3-6h-oxY"/>
                             <constraint firstItem="VZG-Cg-JSj" firstAttribute="centerX" secondItem="gkl-C3-O1e" secondAttribute="centerX" id="Vf4-bd-4h9"/>
-                            <constraint firstItem="Qxm-l9-fIZ" firstAttribute="top" secondItem="VZG-Cg-JSj" secondAttribute="bottom" priority="999" constant="20" id="YvD-hJ-zm6"/>
-                            <constraint firstItem="Qxm-l9-fIZ" firstAttribute="trailing" secondItem="VZG-Cg-JSj" secondAttribute="trailing" priority="999" id="f3F-nc-Upi"/>
-                            <constraint firstItem="VZG-Cg-JSj" firstAttribute="top" secondItem="ZCK-Aw-eA6" secondAttribute="top" priority="900" constant="20" id="xGI-zc-1HD"/>
+                            <constraint firstItem="ZCK-Aw-eA6" firstAttribute="bottom" secondItem="evw-ZY-EHK" secondAttribute="bottom" constant="35" id="XMY-MU-D6O"/>
+                            <constraint firstItem="Qxm-l9-fIZ" firstAttribute="top" secondItem="VZG-Cg-JSj" secondAttribute="bottom" constant="10" id="YvD-hJ-zm6"/>
+                            <constraint firstItem="VZG-Cg-JSj" firstAttribute="top" secondItem="ZCK-Aw-eA6" secondAttribute="top" priority="999" constant="20" id="xGI-zc-1HD"/>
                             <constraint firstItem="Qxm-l9-fIZ" firstAttribute="centerX" secondItem="gkl-C3-O1e" secondAttribute="centerX" id="xTQ-nb-Hte"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="animateLine" destination="Qxm-l9-fIZ" id="IU7-1E-481"/>
                         <outlet property="animatedLogo" destination="VZG-Cg-JSj" id="TzF-ZP-Yqe"/>
+                        <outlet property="heightLineConstraint" destination="Rhb-ev-OGB" id="D0x-SO-VWc"/>
+                        <outlet property="safeAreaTopConstraintLogoLine" destination="xGI-zc-1HD" id="7C9-it-p35"/>
+                        <outlet property="shortWidthLineConstraint" destination="DCp-7B-dQj" id="xsb-8Y-81r"/>
+                        <outlet property="thinHeightLineConstraint" destination="T3W-yR-0Fw" id="a73-vD-7BJ"/>
                         <outlet property="verticalSpaceConstraintLogoLine" destination="YvD-hJ-zm6" id="XNn-52-NrK"/>
                         <outlet property="widthLineConstraint" destination="kGd-Up-haE" id="wWA-Dj-0Qm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kIx-rG-kJT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1704.3478260869567" y="-11.383928571428571"/>
+            <point key="canvasLocation" x="-1510.144927536232" y="39.508928571428569"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -139,6 +156,7 @@
                             <constraint firstAttribute="bottom" secondItem="BZu-Ib-nQ1" secondAttribute="bottom" id="s0I-j9-xgX"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Yxf-Xd-FOt"/>
                     <connections>
                         <outlet property="loginTextField" destination="Z5h-lX-g84" id="zng-12-Hnz"/>
                         <outlet property="passwordTextField" destination="Jr3-RQ-JrW" id="IkM-4g-qQp"/>
