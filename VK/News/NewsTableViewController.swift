@@ -1,19 +1,17 @@
 //
-//  CommunitiesTableViewController.swift
+//  NewsTableViewController.swift
 //  VK
 //
-//  Created by Дмитрий Супрун on 11.04.22.
+//  Created by Дмитрий Супрун on 19.04.22.
 //
 
 import UIKit
 
-class CommunitiesTableViewController: UITableViewController {
-    
-    var communitiesList = [Community]()
-    private var searchBackup = [Community]()
+class NewsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsTableViewCellID")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -31,19 +29,13 @@ class CommunitiesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return communitiesList.count
+        return 1
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CommunityCellID", for: indexPath) as! CommunitiesTableViewCell
-        var configuration = cell.defaultContentConfiguration()
-        configuration.image = UIImage(named: communitiesList[indexPath.row].image)
-        configuration.imageProperties.maximumSize = CGSize(width: 50, height: 50)
-        configuration.imageProperties.cornerRadius = CGFloat(25)
-        configuration.text = communitiesList[indexPath.row].name
-        cell.contentConfiguration = configuration
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCellID", for: indexPath) as! NewsTableViewCell
+        
 
         return cell
     }
@@ -57,17 +49,17 @@ class CommunitiesTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            communitiesList.remove(at: indexPath.row)
+            // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
+    */
 
     /*
     // Override to support rearranging the table view.
@@ -93,25 +85,5 @@ class CommunitiesTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    @IBAction func unwindToCommuniesController(_ segue: UIStoryboardSegue) {
-        tableView.reloadData()
-    }
-}
 
-extension CommunitiesTableViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBackup = communitiesList
-    }
-    func searchBarTextDidEndEditing (_ searchBar: UISearchBar) {
-        communitiesList = searchBackup
-        tableView.reloadData()
-    }
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        communitiesList = searchBackup
-        if !searchText.isEmpty {
-            communitiesList = communitiesList.filter({ $0.name.lowercased().contains(searchText.lowercased())})
-        }
-        tableView.reloadData()
-    }
 }

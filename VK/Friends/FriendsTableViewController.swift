@@ -111,13 +111,21 @@ class FriendsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if contactListForTableView[indexPath.section].count == 1 {
-                contactListForTableView.remove(at: indexPath.section)
-                tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
-            } else {
-                contactListForTableView[indexPath.section].remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
+            let alert = UIAlertController(title: "Delete contact?", message: "Action cannot be undone", preferredStyle: .alert)
+            let buttonOk = UIAlertAction(title: "Ok", style: .default) { _ in
+                if self.contactListForTableView[indexPath.section].count == 1 {
+                    self.contactListForTableView.remove(at: indexPath.section)
+                    tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
+                } else {
+                    self.contactListForTableView[indexPath.section].remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                }
             }
+            let buttonCancel = UIAlertAction(title: "Cancel", style: .destructive)
+            alert.addAction(buttonOk)
+            alert.addAction(buttonCancel)
+            present(alert, animated: true)
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
@@ -127,7 +135,7 @@ class FriendsTableViewController: UITableViewController {
         if segue.identifier == "FriendProfileSegueID" {
             let destination = segue.destination as! FriendProfileCollectionViewController
             let index = tableView.indexPathForSelectedRow
-            destination.updateData(user: friends[index!.row])
+            destination.updateData(user: contactListForTableView[index!.section][index!.row])
         }
     }
     
