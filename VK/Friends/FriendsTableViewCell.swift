@@ -73,11 +73,15 @@ class FriendsTableViewCell: UITableViewCell {
     
     @objc func touchAnimation(tapGestureRecognizer: UITapGestureRecognizer) {
         
-        let animation = CABasicAnimation(keyPath: "frame")
+        let animation = CASpringAnimation(keyPath: #keyPath(CALayer.bounds))
                 
-        animation.fromValue = CGRect(x: 0, y: 0, width: 5, height: 5)
-        animation.toValue = CGRect(x: 0, y: 0, width: 50, height: 50)
-        animation.duration = 3
+        animation.fromValue = avatarView.bounds
+        animation.toValue = CGRect(x: 0, y: 0, width: 32, height: 32)
+        animation.initialVelocity = 0.1
+        animation.damping = 0.7
+        animation.stiffness = 70
+        animation.mass = 0.1
+        animation.duration = 1
         avatarView.layer.add(animation, forKey: nil)
         
     }
