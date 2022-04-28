@@ -51,6 +51,19 @@ class LikeControl: UIControl {
     
     @objc func touchUpInside () {
         
+        let animation = CASpringAnimation(keyPath: #keyPath(CALayer.bounds))
+
+        animation.fromValue = CGRect(x: 0, y: 0,
+                                     width: imageView.bounds.width - 5,
+                                     height: imageView.bounds.height - 5)
+        animation.toValue = imageView.bounds
+        animation.initialVelocity = 0.1
+        animation.damping = 0.7
+        animation.stiffness = 70
+        animation.mass = 0.1
+        animation.duration = 1
+        imageView.layer.add(animation, forKey: nil)
+        
         if !isLike {
             likeCount += 1
         } else {
