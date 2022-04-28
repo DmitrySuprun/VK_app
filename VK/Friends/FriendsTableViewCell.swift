@@ -41,7 +41,7 @@ class FriendsTableViewCell: UITableViewCell {
         avatar.layer.shadowColor = shadowColor.cgColor
         avatar.layer.shadowOpacity = shadowOpacity
         avatar.layer.shadowRadius = shadowRadius
-        avatar.layer.shadowOffset = CGSize(width: 5, height: 2)
+        avatar.layer.shadowOffset = CGSize(width: 4, height: 4)
         avatar.layer.masksToBounds = false
         
         // добавляем на вью с тенью вью с аватаркой
