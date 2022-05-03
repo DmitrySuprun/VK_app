@@ -11,7 +11,7 @@ import UIKit
 
 class FriendProfileCollectionViewController: UICollectionViewController {
     
-    var userProfileInfo = [User]()
+    var userProfileInfo = User(name: "", avatarImage: "", likeCount: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +45,14 @@ class FriendProfileCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return userProfileInfo.count
+        return userProfileInfo.images.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendProfileCellID", for: indexPath) as! FriendProfileCollectionViewCell
-        cell.userImage.image = UIImage(named: userProfileInfo[indexPath.row].image)
-        cell.likeControl.likeCount = userProfileInfo[indexPath.row].likeCount
+        cell.userImage.image = userProfileInfo.images[indexPath.row]
+        cell.likeControl.likeCount = userProfileInfo.likeCount
+        cell.likeControl.isLike = userProfileInfo.isLike
 
         // Configure the cell
     
@@ -91,7 +92,7 @@ class FriendProfileCollectionViewController: UICollectionViewController {
     
     // Передача данных из FriendstableView
     func updateData(user: User) {
-        userProfileInfo.append(user)
+        userProfileInfo = user
     }
 
 }

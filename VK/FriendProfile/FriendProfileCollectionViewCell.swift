@@ -13,4 +13,6 @@ class FriendProfileCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var likeControl: LikeControl!
     
+    
+    
 }

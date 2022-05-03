@@ -119,11 +119,18 @@
 			path = CommunitySearch;
 			sourceTree = "<group>";
 		};
+		D5106B0A28203199006A02EE /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				D5D7FC40281555BF00B34F78 /* AnimationThreeDotsUIView.swift */,
+				D5C66846281308A800B9F04A /* AnimationViewController.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		D5B2B3D727FA7F7F00FA1E17 = {
 			isa = PBXGroup;
 			children = (
-				D5C66846281308A800B9F04A /* AnimationViewController.swift */,
-				D5D7FC40281555BF00B34F78 /* AnimationThreeDotsUIView.swift */,
 				D5B2B3FC27FE03CF00FA1E17 /* ExampleClass.swift */,
 				D5B2B3E227FA7F7F00FA1E17 /* VK */,
 				D5B2B3E127FA7F7F00FA1E17 /* Products */,
@@ -141,6 +148,7 @@
 		D5B2B3E227FA7F7F00FA1E17 /* VK */ = {
 			isa = PBXGroup;
 			children = (
+				D5106B0A28203199006A02EE /* Animation */,
 				D5C66817280F45EA00B9F04A /* News */,
 				D50C01942803CC5D006D8583 /* CommunitySearch */,
 				D50C018F2803CBE0006D8583 /* Communities */,
