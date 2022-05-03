@@ -42,10 +42,6 @@ class LikeControl: UIControl {
     }
     
     // MARK: - Override Methods
-    // для обновления при появлении окна likeCount, т.к. при инициализации всегда 0
-    override func layoutSubviews() {
-        isLike.toggle()
-    }
     // MARK: - IBActions
     // MARK: - Public Methods
     
