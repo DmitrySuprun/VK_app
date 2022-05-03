@@ -15,6 +15,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    let blurEffect = UIBlurEffect(style: .extraLight)
+    let visualEffect = UIVisualEffectView()
+    
     // MARK: - Public Properties
     // MARK: - Private Properties
     // MARK: - Initializers
@@ -24,6 +27,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+                
         // Жест нажатия
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         
@@ -53,8 +57,12 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButton(_ sender: Any) {
         
+        addBlurEffect(effect: blurEffect)
+
+        
         let login = loginTextField.text!
         let password = passwordTextField.text!
+        
         
         if login == "admin" && password == "123456" {
             print("успешная авторизация")
@@ -65,8 +73,13 @@ class LoginViewController: UIViewController {
             let insertDefaultLoginAndPassword = UIAlertAction(title: "Insert admin password", style: .destructive) { _ in
                 self.loginTextField.text = "admin"
                 self.passwordTextField.text = "123456"
+                self.removeBlurEffect(view: self.visualEffect)
+
             }
-            let okButton = UIAlertAction(title: "Ok", style: .default)
+            
+            let okButton = UIAlertAction(title: "Ok", style: .default) { _ in
+                self.removeBlurEffect(view: self.visualEffect)
+            }
             alert.addAction(okButton)
             alert.addAction(insertDefaultLoginAndPassword)
             present(alert, animated: true)
@@ -101,6 +114,16 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Private Methods
+    
+    private func addBlurEffect(effect: UIBlurEffect) {
+        
+        visualEffect.effect = effect
+        self.view.addSubview(visualEffect)
+        visualEffect.frame = self.view.frame
+    }
+    private func removeBlurEffect(view: UIVisualEffectView) {
+        view.removeFromSuperview()
+    }
     
 }
 
