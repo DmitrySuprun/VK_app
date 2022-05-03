@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TYG-E6-r4p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SGi-jE-xUb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -9,6 +9,46 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Cloud Animation View Controller-->
+        <scene sceneID="EQ1-Ng-m1H">
+            <objects>
+                <viewController id="SGi-jE-xUb" customClass="CloudAnimationViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r80-af-rRr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Loa-rW-mjO">
+                                <rect key="frame" x="20" y="64" width="374" height="679"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPg-xc-W7R">
+                                <rect key="frame" x="157" y="751" width="100" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="7Q1-sg-VfW"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nNi-SA-nfk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nNi-SA-nfk" firstAttribute="bottom" secondItem="sPg-xc-W7R" secondAttribute="bottom" constant="80" id="2dq-1y-hLM"/>
+                            <constraint firstItem="sPg-xc-W7R" firstAttribute="top" secondItem="Loa-rW-mjO" secondAttribute="bottom" constant="8" symbolic="YES" id="Kru-Co-Qsy"/>
+                            <constraint firstItem="sPg-xc-W7R" firstAttribute="centerX" secondItem="r80-af-rRr" secondAttribute="centerX" id="Y5n-FZ-L9y"/>
+                            <constraint firstItem="Loa-rW-mjO" firstAttribute="top" secondItem="nNi-SA-nfk" secondAttribute="top" constant="20" id="eB7-ru-OfW"/>
+                            <constraint firstItem="Loa-rW-mjO" firstAttribute="leading" secondItem="nNi-SA-nfk" secondAttribute="leading" constant="20" id="gBE-n0-PV0"/>
+                            <constraint firstItem="nNi-SA-nfk" firstAttribute="trailing" secondItem="Loa-rW-mjO" secondAttribute="trailing" constant="20" id="qzb-nj-LDh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="animationView" destination="Loa-rW-mjO" id="bHa-1q-N7n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wfA-vl-KdR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3204.347826086957" y="41.517857142857139"/>
+        </scene>
         <!--Animation View Controller-->
         <scene sceneID="cLB-1F-gr1">
             <objects>
