@@ -90,6 +90,13 @@ class FriendProfileCollectionViewController: UICollectionViewController {
     }
     */
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PhotoAnimationViewControllerID" {
+            let destination = segue.destination as! PhotoAnimationViewController
+            destination.userProfileInfo = self.userProfileInfo
+        }
+    }
+    
     // Передача данных из FriendstableView
     func updateData(user: User) {
         userProfileInfo = user

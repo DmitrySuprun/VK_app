@@ -35,6 +35,12 @@ class CloudAnimationViewController: UIViewController {
         bezierPath.addCurve(to: CGPoint(x: 259.92, y: 72.7), controlPoint1: CGPoint(x: 230.89, y: 49.98), controlPoint2: CGPoint(x: 257.84, y: 43.16))
         bezierPath.addCurve(to: CGPoint(x: 224.67, y: 99.96), controlPoint1: CGPoint(x: 261.99, y: 102.23), controlPoint2: CGPoint(x: 224.67, y: 99.96))
         bezierPath.close()
+        
+        // Ложное облако для бэкграунда бегущей stroke
+        let bezierPathBackground = bezierPath
+        bezierPathBackground.lineWidth = 10
+        UIColor.red.setStroke()
+        bezierPathBackground.stroke()
 
         UIColor.systemBlue.setFill()
         bezierPath.fill()
@@ -42,17 +48,26 @@ class CloudAnimationViewController: UIViewController {
         bezierPath.lineWidth = 10
         bezierPath.stroke()
         
+        let layerBackgroundStroke = CAShapeLayer()
+        layerBackgroundStroke.path = bezierPathBackground.cgPath
+        layerBackgroundStroke.lineWidth = 10
+        layerBackgroundStroke.strokeColor = UIColor.lightGray.cgColor
+        layerBackgroundStroke.fillColor = UIColor.clear.cgColor
+        layerBackgroundStroke.strokeStart = 0
+        layerBackgroundStroke.strokeEnd = 1
+        
         let layer = CAShapeLayer()
         layer.path = bezierPath.cgPath
         layer.lineWidth = 10
-        layer.strokeColor = UIColor.blue.cgColor
-        layer.fillColor = UIColor.systemBlue.cgColor
+        layer.strokeColor = UIColor.systemBlue.cgColor
+        layer.fillColor = UIColor.clear.cgColor
         layer.strokeStart = 0
         layer.strokeEnd = 1
         layer.lineCap = .round
-        layer.lineDashPattern = [15, 15]
+        // прерывистая линия
+//        layer.lineDashPattern = [15, 15]
     
-        
+        animationView.layer.addSublayer(layerBackgroundStroke)
         animationView.layer.addSublayer(layer)
         
         let strokeEndAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.strokeEnd))

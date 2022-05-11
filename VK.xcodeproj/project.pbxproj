@@ -18,6 +18,7 @@
 		D50C01982803CC92006D8583 /* CommunitySearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01972803CC92006D8583 /* CommunitySearchTableViewCell.swift */; };
 		D50C019A2803CE58006D8583 /* Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01992803CE58006D8583 /* Community.swift */; };
 		D5106B0E2821C56B006A02EE /* CloudAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5106B0D2821C56B006A02EE /* CloudAnimationViewController.swift */; };
+		D5106B102822FE78006A02EE /* PhotoAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5106B0F2822FE78006A02EE /* PhotoAnimationViewController.swift */; };
 		D5B2B3E427FA7F7F00FA1E17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3E327FA7F7F00FA1E17 /* AppDelegate.swift */; };
 		D5B2B3E627FA7F7F00FA1E17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3E527FA7F7F00FA1E17 /* SceneDelegate.swift */; };
 		D5B2B3EB27FA7F7F00FA1E17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B2B3E927FA7F7F00FA1E17 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		D50C01972803CC92006D8583 /* CommunitySearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySearchTableViewCell.swift; sourceTree = "<group>"; };
 		D50C01992803CE58006D8583 /* Community.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Community.swift; sourceTree = "<group>"; };
 		D5106B0D2821C56B006A02EE /* CloudAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudAnimationViewController.swift; sourceTree = "<group>"; };
+		D5106B0F2822FE78006A02EE /* PhotoAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAnimationViewController.swift; sourceTree = "<group>"; };
 		D5B2B3E027FA7F7F00FA1E17 /* VK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B2B3E327FA7F7F00FA1E17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5B2B3E527FA7F7F00FA1E17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				D50C018B2803AA73006D8583 /* FriendProfileCollectionViewController.swift */,
 				D5C667F2280B02B000B9F04A /* LikeUIControl.swift */,
+				D5106B0F2822FE78006A02EE /* PhotoAnimationViewController.swift */,
 				D50C018D2803AA8D006D8583 /* FriendProfileCollectionViewCell.swift */,
 			);
 			path = FriendProfile;
@@ -254,6 +257,7 @@
 			files = (
 				D50C019A2803CE58006D8583 /* Community.swift in Sources */,
 				D5B2B3FB27FAE9DC00FA1E17 /* LoginViewController.swift in Sources */,
+				D5106B102822FE78006A02EE /* PhotoAnimationViewController.swift in Sources */,
 				D5C667F3280B02B000B9F04A /* LikeUIControl.swift in Sources */,
 				D5C66819280F462600B9F04A /* NewsTableViewController.swift in Sources */,
 				D50C018C2803AA73006D8583 /* FriendProfileCollectionViewController.swift in Sources */,

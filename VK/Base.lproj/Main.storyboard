@@ -47,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wfA-vl-KdR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3204.347826086957" y="41.517857142857139"/>
+            <point key="canvasLocation" x="-2438" y="40"/>
         </scene>
         <!--Animation View Controller-->
         <scene sceneID="cLB-1F-gr1">
@@ -316,6 +316,48 @@
             </objects>
             <point key="canvasLocation" x="2518.840579710145" y="-293.30357142857139"/>
         </scene>
+        <!--Photo-->
+        <scene sceneID="7Tj-iL-NLj">
+            <objects>
+                <viewController id="d4g-EI-7Q6" customClass="PhotoAnimationViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fwc-HN-1f3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="BVZ-CB-HKk">
+                                <rect key="frame" x="157" y="398" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="2TS-Gj-cXL"/>
+                                    <constraint firstAttribute="width" constant="100" id="bIC-oJ-w1H"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="QFD-Hu-t2K">
+                                <rect key="frame" x="87" y="328" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="1zU-xf-HTr"/>
+                                    <constraint firstAttribute="height" constant="240" id="DKu-gf-xc7"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Le5-Ma-sxR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QFD-Hu-t2K" firstAttribute="centerX" secondItem="Fwc-HN-1f3" secondAttribute="centerX" id="8Im-5k-yJv"/>
+                            <constraint firstItem="BVZ-CB-HKk" firstAttribute="centerX" secondItem="Fwc-HN-1f3" secondAttribute="centerX" id="FMC-rR-boR"/>
+                            <constraint firstItem="QFD-Hu-t2K" firstAttribute="centerY" secondItem="Fwc-HN-1f3" secondAttribute="centerY" id="N4E-WY-eY9"/>
+                            <constraint firstItem="BVZ-CB-HKk" firstAttribute="centerY" secondItem="Fwc-HN-1f3" secondAttribute="centerY" id="O5D-kh-gA3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Photo" id="Moo-8O-KPx"/>
+                    <connections>
+                        <outlet property="image" destination="QFD-Hu-t2K" id="5ix-au-DKC"/>
+                        <outlet property="imageNext" destination="BVZ-CB-HKk" id="D6M-p7-KC8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dya-u5-9cA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4382.608695652174" y="-293.30357142857139"/>
+        </scene>
         <!--Profile-->
         <scene sceneID="eAU-u4-Ffd">
             <objects>
@@ -364,6 +406,7 @@
                                 <connections>
                                     <outlet property="likeControl" destination="c3A-OG-gUp" id="X65-q7-7ZX"/>
                                     <outlet property="userImage" destination="Tpr-o8-xpO" id="ApT-D0-5HW"/>
+                                    <segue destination="d4g-EI-7Q6" kind="show" identifier="PhotoAnimationViewControllerID" id="syd-nt-wzb"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="X8a-OS-4Qf">
@@ -605,6 +648,7 @@
         <segue reference="t99-NF-XCS"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="1" width="184" height="184"/>
         <image name="VK_Compact_Logo-png" width="1440" height="1440"/>
         <image name="VK_Full_Logo" width="5520" height="960"/>
         <image name="newspaper" catalog="system" width="128" height="111"/>
