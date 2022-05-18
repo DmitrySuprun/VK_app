@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SGi-jE-xUb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -338,6 +338,13 @@
                                     <constraint firstAttribute="height" constant="240" id="DKu-gf-xc7"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="SMV-Km-AZn">
+                                <rect key="frame" x="414" y="328" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Daq-IT-4ec"/>
+                                    <constraint firstAttribute="height" constant="240" id="IhA-ZD-pWk"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Le5-Ma-sxR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -346,12 +353,15 @@
                             <constraint firstItem="BVZ-CB-HKk" firstAttribute="centerX" secondItem="Fwc-HN-1f3" secondAttribute="centerX" id="FMC-rR-boR"/>
                             <constraint firstItem="QFD-Hu-t2K" firstAttribute="centerY" secondItem="Fwc-HN-1f3" secondAttribute="centerY" id="N4E-WY-eY9"/>
                             <constraint firstItem="BVZ-CB-HKk" firstAttribute="centerY" secondItem="Fwc-HN-1f3" secondAttribute="centerY" id="O5D-kh-gA3"/>
+                            <constraint firstItem="SMV-Km-AZn" firstAttribute="leading" secondItem="Fwc-HN-1f3" secondAttribute="trailing" id="Ufx-8H-5pZ"/>
+                            <constraint firstItem="SMV-Km-AZn" firstAttribute="centerY" secondItem="QFD-Hu-t2K" secondAttribute="centerY" id="d0w-W2-O7n"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photo" id="Moo-8O-KPx"/>
                     <connections>
                         <outlet property="image" destination="QFD-Hu-t2K" id="5ix-au-DKC"/>
                         <outlet property="imageNext" destination="BVZ-CB-HKk" id="D6M-p7-KC8"/>
+                        <outlet property="imagePrevious" destination="SMV-Km-AZn" id="Y7L-cy-I7Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dya-u5-9cA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -645,7 +655,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="t99-NF-XCS"/>
+        <segue reference="Nvy-3b-CxH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1" width="184" height="184"/>
