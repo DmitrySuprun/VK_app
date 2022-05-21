@@ -114,11 +114,6 @@ class PhotoAnimationViewController: UIViewController {
                 self.imagePrevious.transform = .identity
                 
             }
-            
-            print("privious:", self.previousImageIndex)
-            print("current:", self.currentImageIndex)
-            print("next:", self.nextImageIndex)
-            
         default: break
         }
     }
@@ -126,7 +121,7 @@ class PhotoAnimationViewController: UIViewController {
     func updateData(user: User) {
         userProfileInfo = user
     }
-    
+    // Считаем индекс предыдущей и последующей картинки
     func calculatePreviousNextIndex() {
         
         switch currentImageIndex {

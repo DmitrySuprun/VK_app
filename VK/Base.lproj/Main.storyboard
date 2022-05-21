@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TYG-E6-r4p">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -17,10 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Loa-rW-mjO">
-                                <rect key="frame" x="20" y="64" width="374" height="679"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPg-xc-W7R">
                                 <rect key="frame" x="157" y="751" width="100" height="31"/>
                                 <constraints>
@@ -28,17 +24,26 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <connections>
+                                    <segue destination="IFJ-af-Eqq" kind="presentation" modalPresentationStyle="fullScreen" id="6Pd-ER-lO9"/>
+                                </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Loa-rW-mjO">
+                                <rect key="frame" x="76.5" y="348.5" width="261" height="199"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="199" id="CWo-KW-A5u"/>
+                                    <constraint firstAttribute="width" constant="261" id="VYd-UQ-5j8"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nNi-SA-nfk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="nNi-SA-nfk" firstAttribute="bottom" secondItem="sPg-xc-W7R" secondAttribute="bottom" constant="80" id="2dq-1y-hLM"/>
-                            <constraint firstItem="sPg-xc-W7R" firstAttribute="top" secondItem="Loa-rW-mjO" secondAttribute="bottom" constant="8" symbolic="YES" id="Kru-Co-Qsy"/>
+                            <constraint firstItem="Loa-rW-mjO" firstAttribute="centerY" secondItem="r80-af-rRr" secondAttribute="centerY" id="434-Uv-evj"/>
+                            <constraint firstItem="Loa-rW-mjO" firstAttribute="centerX" secondItem="r80-af-rRr" secondAttribute="centerX" id="RVP-xi-ykE"/>
                             <constraint firstItem="sPg-xc-W7R" firstAttribute="centerX" secondItem="r80-af-rRr" secondAttribute="centerX" id="Y5n-FZ-L9y"/>
-                            <constraint firstItem="Loa-rW-mjO" firstAttribute="top" secondItem="nNi-SA-nfk" secondAttribute="top" constant="20" id="eB7-ru-OfW"/>
-                            <constraint firstItem="Loa-rW-mjO" firstAttribute="leading" secondItem="nNi-SA-nfk" secondAttribute="leading" constant="20" id="gBE-n0-PV0"/>
-                            <constraint firstItem="nNi-SA-nfk" firstAttribute="trailing" secondItem="Loa-rW-mjO" secondAttribute="trailing" constant="20" id="qzb-nj-LDh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -47,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wfA-vl-KdR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2438" y="40"/>
+            <point key="canvasLocation" x="-3045" y="40"/>
         </scene>
         <!--Animation View Controller-->
         <scene sceneID="cLB-1F-gr1">
@@ -82,7 +87,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Next"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="Nvy-3b-CxH"/>
+                                    <segue destination="TYG-E6-r4p" kind="presentation" modalPresentationStyle="fullScreen" id="jzk-Aw-Agq"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bAt-HC-YoP" customClass="AnimationThreeDotsUIView" customModule="VK" customModuleProvider="target">
@@ -116,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kIx-rG-kJT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1510.144927536232" y="39.508928571428569"/>
+            <point key="canvasLocation" x="-2183" y="40"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="k1Y-iC-33N">
@@ -153,7 +158,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3sx-5O-KnY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1510" y="723"/>
+            <point key="canvasLocation" x="-1328" y="40"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -522,7 +527,7 @@
                     <navigationItem key="navigationItem" title="Communities" id="laA-aR-lnU">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="QJG-Jl-2X3">
                             <connections>
-                                <segue destination="0W3-py-GxI" kind="show" id="XV8-GL-Kdn"/>
+                                <action selector="addNewCommunity:" destination="li8-re-W88" id="U1l-N8-5e3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -654,9 +659,6 @@
             <point key="canvasLocation" x="457" y="40"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Nvy-3b-CxH"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="1" width="184" height="184"/>
         <image name="VK_Compact_Logo-png" width="1440" height="1440"/>

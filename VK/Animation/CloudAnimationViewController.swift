@@ -38,15 +38,15 @@ class CloudAnimationViewController: UIViewController {
         
         // Ложное облако для бэкграунда бегущей stroke
         let bezierPathBackground = bezierPath
-        bezierPathBackground.lineWidth = 10
-        UIColor.red.setStroke()
-        bezierPathBackground.stroke()
+//        bezierPathBackground.lineWidth = 10
+//        UIColor.red.setStroke()
+//        bezierPathBackground.stroke()
 
-        UIColor.systemBlue.setFill()
-        bezierPath.fill()
-        UIColor.blue.setStroke()
-        bezierPath.lineWidth = 10
-        bezierPath.stroke()
+//        UIColor.systemBlue.setFill()
+//        bezierPath.fill()
+//        UIColor.blue.setStroke()
+//        bezierPath.lineWidth = 10
+//        bezierPath.stroke()
         
         let layerBackgroundStroke = CAShapeLayer()
         layerBackgroundStroke.path = bezierPathBackground.cgPath
