@@ -49,10 +49,7 @@ class CommunitiesTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func addNewCommunity(_ sender: Any) {
-        let newVC = UITableViewController()
-        self.navigationController?.pushViewController(newVC , animated: true)
-    }
+    
     @IBAction func unwindToCommuniesController(_ segue: UIStoryboardSegue) {
         tableView.reloadData()
     }

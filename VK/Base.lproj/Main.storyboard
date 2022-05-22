@@ -543,6 +543,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="QJG-Jl-2X3">
                             <connections>
                                 <action selector="addNewCommunity:" destination="li8-re-W88" id="U1l-N8-5e3"/>
+                                <segue destination="0W3-py-GxI" kind="show" id="icA-ne-oUw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

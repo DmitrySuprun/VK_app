@@ -27,13 +27,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-<<<<<<< HEAD
-                
-=======
         // Анимация появления этого VC
         self.transitioningDelegate = self
         
->>>>>>> 8thHomework
+
         // Жест нажатия
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         
