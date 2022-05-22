@@ -133,11 +133,11 @@ extension UITextField {
 extension LoginViewController: UIViewControllerTransitioningDelegate {
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AnimationTransitionViewController()
+        return PushAnimationTransitionViewController()
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AnimationTransitionViewController()
+        return PopAnimationTransitionViewController()
     }
     
 }

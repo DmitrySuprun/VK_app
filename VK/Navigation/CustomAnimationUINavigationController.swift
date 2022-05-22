@@ -11,11 +11,16 @@ class CustomAnimationUINavigationController: UINavigationController, UINavigatio
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.delegate = self
+        self.delegate = self
     }
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AnimationTransitionViewController()
+        switch operation {
+        case .pop: return PopAnimationTransitionViewController()
+        case .push: return PushAnimationTransitionViewController()
+        case .none: return nil
+        @unknown default: return nil
+        }
     }
     
 
