@@ -57,7 +57,7 @@
         <!--Animation View Controller-->
         <scene sceneID="cLB-1F-gr1">
             <objects>
-                <viewController id="IFJ-af-Eqq" customClass="AnimationViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VKLogoID" id="IFJ-af-Eqq" customClass="AnimationViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gkl-C3-O1e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,14 +87,9 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Next"/>
                                 <connections>
-                                    <segue destination="TYG-E6-r4p" kind="presentation" modalPresentationStyle="fullScreen" id="jzk-Aw-Agq"/>
+                                    <segue destination="TYG-E6-r4p" kind="presentation" identifier="SegueToAnimationViewController" modalPresentationStyle="fullScreen" id="jzk-Aw-Agq"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bAt-HC-YoP" customClass="AnimationThreeDotsUIView" customModule="VK" customModuleProvider="target">
-                                <rect key="frame" x="87" y="113" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZCK-Aw-eA6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -126,7 +121,7 @@
         <!--View Controller-->
         <scene sceneID="k1Y-iC-33N">
             <objects>
-                <viewController id="TYG-E6-r4p" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="3DotsID" id="TYG-E6-r4p" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1r9-CE-DCg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

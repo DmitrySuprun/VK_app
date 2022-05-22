@@ -30,6 +30,7 @@ class PushAnimationTransitionViewController: NSObject, UIViewControllerAnimatedT
             .concatenating(CGAffineTransform(translationX: heihtView / 2 + widthView / 2, y: -widthView / 2))
                 
         sourse.frame = transitionContext.containerView.frame
+        
         UIView.animate(withDuration: timeInterval, delay: 0, options: .curveEaseOut) {
             
             destination.transform = .identity
@@ -60,9 +61,7 @@ class PopAnimationTransitionViewController: NSObject, UIViewControllerAnimatedTr
         
         transitionContext.containerView.addSubview(destination)
         destination.frame = transitionContext.containerView.frame
-        
-
-                
+               
         sourse.frame = transitionContext.containerView.frame
         UIView.animate(withDuration: timeInterval, delay: 0, options: .curveEaseIn) {
             

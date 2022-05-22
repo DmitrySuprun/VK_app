@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    let blurEffect = UIBlurEffect(style: .extraLight)
+    let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialLight)
     let visualEffect = UIVisualEffectView()
     
     // MARK: - Public Properties
@@ -121,6 +121,7 @@ class LoginViewController: UIViewController {
     private func addBlurEffect(effect: UIBlurEffect) {
         
         visualEffect.effect = effect
+    
         self.view.addSubview(visualEffect)
         visualEffect.frame = self.view.frame
     }

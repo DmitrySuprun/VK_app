@@ -53,8 +53,8 @@ class AnimationViewController: UIViewController {
     func animate () {
         UIView.animate(withDuration: 0.8,
                        delay: 0,
-//                       usingSpringWithDamping: 0.3,
-//                       initialSpringVelocity: 0,
+                       //                       usingSpringWithDamping: 0.3,
+                       //                       initialSpringVelocity: 0,
                        options: [.autoreverse, .curveEaseIn]) {
             
             self.animatedLogo.transform = CGAffineTransform(rotationAngle: .pi)
@@ -78,6 +78,10 @@ class AnimationViewController: UIViewController {
                 self.setup()
                 self.view.layoutIfNeeded()
                 
+            } completion: { _ in
+                if self.shouldPerformSegue(withIdentifier: "SegueToAnimationViewController", sender: nil) {
+                    self.performSegue(withIdentifier: "SegueToAnimationViewController", sender: nil)
+                }
             }
         }
     }
