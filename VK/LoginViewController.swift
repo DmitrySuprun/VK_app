@@ -27,7 +27,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+<<<<<<< HEAD
                 
+=======
+        // Анимация появления этого VC
+        self.transitioningDelegate = self
+        
+>>>>>>> 8thHomework
         // Жест нажатия
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         
@@ -148,4 +154,16 @@ extension UITextField {
         isSecureTextEntry.toggle()
         setPasswordToggleImage(sender as! UIButton)
     }
+}
+
+extension LoginViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PushAnimationTransitionViewController()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PopAnimationTransitionViewController()
+    }
+    
 }
