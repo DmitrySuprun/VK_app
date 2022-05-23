@@ -27,9 +27,10 @@ class CustomAnimationUINavigationController: UINavigationController, UINavigatio
             self.interactieveTransition.viewController = toVC
             return PopAnimationTransitionViewController()
         case .push:
-            if navigationController.viewControllers.first != toVC {
-                self.interactieveTransition.viewController = toVC
-            }
+//            if navigationController.viewControllers.first != toVC {
+//                self.interactieveTransition.viewController = toVC
+//            }
+            self.interactieveTransition.viewController = toVC
             return PushAnimationTransitionViewController()
         case .none: return nil
         @unknown default: return nil
