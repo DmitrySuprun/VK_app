@@ -73,7 +73,7 @@ class PopAnimationTransitionViewController: NSObject, UIViewControllerAnimatedTr
             sourse.alpha = 0
             
         } completion: { completed in
-            transitionContext.completeTransition(completed)
+            transitionContext.completeTransition(completed && !transitionContext.transitionWasCancelled)
         }
     }
 }
