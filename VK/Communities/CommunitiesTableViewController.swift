@@ -37,7 +37,6 @@ class CommunitiesTableViewController: UITableViewController {
         configuration.text = communitiesList[indexPath.row].name
         cell.contentConfiguration = configuration
         
-        
         return cell
     }
     
@@ -48,7 +47,6 @@ class CommunitiesTableViewController: UITableViewController {
         } else if editingStyle == .insert {
         }
     }
-    
     
     @IBAction func unwindToCommuniesController(_ segue: UIStoryboardSegue) {
         tableView.reloadData()

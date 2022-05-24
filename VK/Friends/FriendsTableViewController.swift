@@ -12,6 +12,7 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - IBOutlets
     // MARK: - Public Properties
     
+    // Временное свойство для работы с анимацией картинок в PhotoAnimationVC
     let imagesTemp: [UIImage?] = [UIImage(named: "33"),
                       UIImage(named: "34"),
                       UIImage(named: "35"),
@@ -64,6 +65,7 @@ class FriendsTableViewController: UITableViewController {
     ]
     
     var friends: [User] = []
+    // Двумерный массив отсортированный по первой букве
     var contactListForTableView = [[User]]()
     
     // MARK: - Private Properties
@@ -73,6 +75,7 @@ class FriendsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Временно для работы с анимацией картинок в PhotoAnimationVC добавляем массив этих картинок к каждому User в sourse
         for i in sourse.indices {
             sourse[i].images = imagesTemp
         }
@@ -141,9 +144,7 @@ class FriendsTableViewController: UITableViewController {
             alert.addAction(buttonCancel)
             present(alert, animated: true)
             
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
+        } else if editingStyle == .insert {}
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

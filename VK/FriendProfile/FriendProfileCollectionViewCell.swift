@@ -10,9 +10,5 @@ import UIKit
 class FriendProfileCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var userImage: UIImageView!
-    
     @IBOutlet weak var likeControl: LikeControl!
-    
-    
-    
 }

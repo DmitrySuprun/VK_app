@@ -14,8 +14,6 @@ class CloudAnimationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,16 +36,7 @@ class CloudAnimationViewController: UIViewController {
         
         // Ложное облако для бэкграунда бегущей stroke
         let bezierPathBackground = bezierPath
-//        bezierPathBackground.lineWidth = 10
-//        UIColor.red.setStroke()
-//        bezierPathBackground.stroke()
 
-//        UIColor.systemBlue.setFill()
-//        bezierPath.fill()
-//        UIColor.blue.setStroke()
-//        bezierPath.lineWidth = 10
-//        bezierPath.stroke()
-        
         let layerBackgroundStroke = CAShapeLayer()
         layerBackgroundStroke.path = bezierPathBackground.cgPath
         layerBackgroundStroke.lineWidth = 10
@@ -89,16 +78,4 @@ class CloudAnimationViewController: UIViewController {
         groupAnimation.repeatCount = .infinity
         layer.add(groupAnimation, forKey: nil)
     }
-
-
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destination.
- // Pass the selected object to the new view controller.
- }
- */
-
 }
