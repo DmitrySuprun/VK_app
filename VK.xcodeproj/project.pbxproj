@@ -115,8 +115,8 @@
 		D50C018F2803CBE0006D8583 /* Communities */ = {
 			isa = PBXGroup;
 			children = (
-				D50C01902803CC12006D8583 /* CommunitiesTableViewCell.swift */,
 				D50C01922803CC25006D8583 /* CommunitiesTableViewController.swift */,
+				D50C01902803CC12006D8583 /* CommunitiesTableViewCell.swift */,
 			);
 			path = Communities;
 			sourceTree = "<group>";

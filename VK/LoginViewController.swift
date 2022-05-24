@@ -18,10 +18,6 @@ class LoginViewController: UIViewController {
     let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialLight)
     let visualEffect = UIVisualEffectView()
     
-    // MARK: - Public Properties
-    // MARK: - Private Properties
-    // MARK: - Initializers
-    
     // MARK: - Override Methods
     
     override func viewDidLoad() {
@@ -30,7 +26,6 @@ class LoginViewController: UIViewController {
         // Анимация появления этого VC
         self.transitioningDelegate = self
         
-
         // Жест нажатия
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         
@@ -62,10 +57,8 @@ class LoginViewController: UIViewController {
         
         addBlurEffect(effect: blurEffect)
 
-        
         let login = loginTextField.text!
         let password = passwordTextField.text!
-        
         
         if login == "admin" && password == "123456" {
             print("успешная авторизация")
@@ -125,6 +118,7 @@ class LoginViewController: UIViewController {
         self.view.addSubview(visualEffect)
         visualEffect.frame = self.view.frame
     }
+    
     private func removeBlurEffect(view: UIVisualEffectView) {
         view.removeFromSuperview()
     }
@@ -133,6 +127,7 @@ class LoginViewController: UIViewController {
 
 // Отображение пароля в поле ввода
 extension UITextField {
+    
     fileprivate func setPasswordToggleImage(_ button: UIButton) {
         if (isSecureTextEntry) {
             button.setImage(UIImage(systemName: "eye"), for: .normal)
@@ -140,6 +135,7 @@ extension UITextField {
             button.setImage(UIImage(systemName: "eye.slash"), for: .normal)
         }
     }
+    
     // Добавляет кнопку "глаз" справа в textField
     func enablePasswordToggle() {
         let button = UIButton(type: .custom)
@@ -148,6 +144,7 @@ extension UITextField {
         self.rightView = button
         self.rightViewMode = .always
     }
+    
     @IBAction func togglePasswordView(_ sender: Any) {
         isSecureTextEntry.toggle()
         setPasswordToggleImage(sender as! UIButton)

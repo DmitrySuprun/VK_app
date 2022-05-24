@@ -12,6 +12,7 @@ protocol CommunityProtocol {
     var image: String { get }
 }
 
+// Для возможности сравнения пришлось подписать на Equatable
 struct Community: Equatable {
     var name: String
     var image: String

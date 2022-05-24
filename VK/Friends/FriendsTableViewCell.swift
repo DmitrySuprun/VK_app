@@ -31,7 +31,6 @@ class FriendsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         // получаем размер imageView со storyboard
         let size = avatar.frame.height
@@ -54,24 +53,13 @@ class FriendsTableViewCell: UITableViewCell {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchAnimation(tapGestureRecognizer: )))
         avatar.isUserInteractionEnabled = true
         avatar.addGestureRecognizer(tapGesture)
-        
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        
-
-        // Configure the view for the selected state
-    }
-    
     // MARK: - IBActions
-    
-    
     // MARK: - Public Methods
     // MARK: - Private Methods
     
-    @objc func touchAnimation(tapGestureRecognizer: UITapGestureRecognizer) {
+    @objc private func touchAnimation(tapGestureRecognizer: UITapGestureRecognizer) {
         
         let animation = CASpringAnimation(keyPath: #keyPath(CALayer.bounds))
 
@@ -85,7 +73,5 @@ class FriendsTableViewCell: UITableViewCell {
         animation.mass = 0.1
         animation.duration = 1
         avatarView.layer.add(animation, forKey: nil)
- 
-        
     }
 }
