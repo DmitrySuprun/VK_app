@@ -66,7 +66,9 @@ class FriendsTableViewController: UITableViewController {
     
     var friends: [User] = []
     // Двумерный массив отсортированный по первой букве
-    var contactListForTableView = [[User]]()
+    var contactListForTableView = [[ User ]]()
+    // Переделываем таблицу из многомерного массива на Set
+    var contactListForTableViewDictionary = [ String:[User] ]()
     
     // MARK: - Private Properties
     // MARK: - Initializers
@@ -89,14 +91,17 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+//        return contactListForTableViewSet.count
         return contactListForTableView.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return contactListForTableViewSet.indices.count
         return contactListForTableView[section].count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return contactListForTableViewSet.indices.sorted().first
         return String(contactListForTableView[section][0].name.first!)
     }
     
@@ -182,4 +187,22 @@ class FriendsTableViewController: UITableViewController {
         return result
     }
     
+//    private func createDictionaryForContactList (contactList: [User]) -> [String : [User]] {
+//
+//        var result = [String : [User]]()
+//
+//        for item in contactList {
+//
+//            if let existingKey = result.index(forKey: String(item.name.first!)) {
+//
+//                var tempArray = result[existingKey]
+//                tempArray.appe
+//
+//
+//            } else {
+//                result.updateValue([item], forKey: String(item.name.first!))
+//            }
+//        }
+//    }
+//
 }
