@@ -81,7 +81,7 @@ class FriendsTableViewController: UITableViewController {
         for i in sourse.indices {
             sourse[i].images = imagesTemp
         }
-        
+//        createDictionaryForContactList(contactList: sourse)
         friends = sourse.sorted(by: { $0.name < $1.name })
         contactListForTableView = sortContactListForTableView(contactList: friends)
         // заполняем временными картинками
@@ -91,18 +91,21 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-//        return contactListForTableViewSet.count
         return contactListForTableView.count
+        return contactListForTableViewDictionary.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return contactListForTableViewSet.indices.count
         return contactListForTableView[section].count
+//        return contactListForTableViewDictionary.keys.count
+
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return contactListForTableViewSet.indices.sorted().first
+
         return String(contactListForTableView[section][0].name.first!)
+//        return contactListForTableViewDictionary.keys.sorted()[section]
+
     }
     
     
@@ -187,22 +190,20 @@ class FriendsTableViewController: UITableViewController {
         return result
     }
     
-//    private func createDictionaryForContactList (contactList: [User]) -> [String : [User]] {
-//
-//        var result = [String : [User]]()
-//
-//        for item in contactList {
-//
-//            if let existingKey = result.index(forKey: String(item.name.first!)) {
-//
-//                var tempArray = result[existingKey]
-//                tempArray.appe
-//
-//
-//            } else {
-//                result.updateValue([item], forKey: String(item.name.first!))
-//            }
-//        }
-//    }
-//
+    private func createDictionaryForContactList (contactList: [User]) -> [String : [User]] {
+
+        var result = [String : [User]]()
+
+        for item in contactList {
+
+            if var existingArray = result[String(item.name.first!)] {
+                existingArray.append(item)
+                result[String(item.name.first!)] = existingArray
+            } else {
+                result.updateValue([item], forKey: String(item.name.first!))
+            }
+        }
+        return result
+    }
+
 }
