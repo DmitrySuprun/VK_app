@@ -19,24 +19,23 @@ class PushAnimationTransitionViewController: NSObject, UIViewControllerAnimatedT
         
         guard let sourse = transitionContext.view(forKey: .from) else { return }
         guard let destination = transitionContext.view(forKey: .to) else { return }
-        destination.alpha = 0
-        
-        let heihtView = transitionContext.containerView.frame.height
-        let widthView = transitionContext.containerView.frame.width
         
         transitionContext.containerView.addSubview(destination)
         destination.frame = transitionContext.containerView.frame
-        destination.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
-            .concatenating(CGAffineTransform(translationX: heihtView / 2 + widthView / 2, y: -widthView / 2))
-                
-        sourse.frame = transitionContext.containerView.frame
+        // эффект затемнения
+        destination.alpha = 0
         
-        UIView.animate(withDuration: timeInterval, delay: 0, options: .curveEaseOut) {
+        // меняем точку поворота, через расширение UIView
+        destination.setAnchorPoint(CGPoint(x: 1, y: 0))
+        destination.transform = CGAffineTransform(rotationAngle: -.pi/2)
+        
+        UIView.animate(withDuration: timeInterval,
+                       delay: 0,
+                       options: .curveEaseOut) {
             
+            sourse.alpha = 0
             destination.transform = .identity
             destination.alpha = 1
-            destination.layer.cornerRadius = 50
-            sourse.alpha = 0
             
         } completion: { completed in
             transitionContext.completeTransition(completed)
@@ -54,26 +53,49 @@ class PopAnimationTransitionViewController: NSObject, UIViewControllerAnimatedTr
         
         guard let sourse = transitionContext.view(forKey: .from) else { return }
         guard let destination = transitionContext.view(forKey: .to) else { return }
-        destination.alpha = 0
-        
-        let heihtView = transitionContext.containerView.frame.height
-        let widthView = transitionContext.containerView.frame.width
         
         transitionContext.containerView.addSubview(destination)
         destination.frame = transitionContext.containerView.frame
-               
-        sourse.frame = transitionContext.containerView.frame
-        UIView.animate(withDuration: timeInterval, delay: 0, options: .curveEaseIn) {
-            
-            sourse.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
-                .concatenating(CGAffineTransform(translationX: heihtView / 2 + widthView / 2, y: -widthView / 2))
+        destination.alpha = 0
+
+        sourse.setAnchorPoint(CGPoint(x: 1, y: 0))
+        
+        UIView.animate(withDuration: 0,
+                       delay: timeInterval,
+                       options: .curveEaseOut) {
             
             destination.alpha = 1
             destination.layer.cornerRadius = 0
+            
+            sourse.transform = CGAffineTransform(rotationAngle: -.pi/2)
             sourse.alpha = 0
             
         } completion: { completed in
             transitionContext.completeTransition(completed && !transitionContext.transitionWasCancelled)
         }
+    }
+}
+
+// Расширение позволяющее менять AnchorPoint (точку вокруг которой анимируется view, например при повороте)
+// Если напрямую менять AnchorPoint будет перемещаться view
+
+extension UIView {
+    func setAnchorPoint(_ point: CGPoint) {
+        var newPoint = CGPoint(x: bounds.size.width * point.x, y: bounds.size.height * point.y)
+        var oldPoint = CGPoint(x: bounds.size.width * layer.anchorPoint.x, y: bounds.size.height * layer.anchorPoint.y);
+
+        newPoint = newPoint.applying(transform)
+        oldPoint = oldPoint.applying(transform)
+
+        var position = layer.position
+
+        position.x -= oldPoint.x
+        position.x += newPoint.x
+
+        position.y -= oldPoint.y
+        position.y += newPoint.y
+
+        layer.position = position
+        layer.anchorPoint = point
     }
 }

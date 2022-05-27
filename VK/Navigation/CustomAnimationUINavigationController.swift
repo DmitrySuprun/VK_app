@@ -27,6 +27,7 @@ class CustomAnimationUINavigationController: UINavigationController, UINavigatio
             self.interactieveTransition.viewController = toVC
             return PopAnimationTransitionViewController()
         case .push:
+            // Работает без кода ниже списанного из методички
 //            if navigationController.viewControllers.first != toVC {
 //                self.interactieveTransition.viewController = toVC
 //            }
