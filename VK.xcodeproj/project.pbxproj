@@ -36,6 +36,7 @@
 		D5C66847281308A800B9F04A /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C66846281308A800B9F04A /* AnimationViewController.swift */; };
 		D5D7FC41281555BF00B34F78 /* AnimationThreeDotsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D7FC40281555BF00B34F78 /* AnimationThreeDotsUIView.swift */; };
 		D5DD35902841173700CA2092 /* VKSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DD358F2841173700CA2092 /* VKSession.swift */; };
+		D5DD35932841292000CA2092 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DD35922841292000CA2092 /* LoginService.swift */; };
 		D5EEF1AB283A978300403D5F /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EEF1AA283A978300403D5F /* CustomInteractiveTransition.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		D5C66846281308A800B9F04A /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		D5D7FC40281555BF00B34F78 /* AnimationThreeDotsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationThreeDotsUIView.swift; sourceTree = "<group>"; };
 		D5DD358F2841173700CA2092 /* VKSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKSession.swift; sourceTree = "<group>"; };
+		D5DD35922841292000CA2092 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		D5EEF1AA283A978300403D5F /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +165,7 @@
 		D5B2B3E227FA7F7F00FA1E17 /* VK */ = {
 			isa = PBXGroup;
 			children = (
+				D5DD3591284128EE00CA2092 /* ServiceLayer */,
 				D5B4EC7C28388A280073F14E /* Navigation */,
 				D5106B0A28203199006A02EE /* Animation */,
 				D5C66817280F45EA00B9F04A /* News */,
@@ -174,8 +177,8 @@
 				D5B2B3E327FA7F7F00FA1E17 /* AppDelegate.swift */,
 				D5B2B3E527FA7F7F00FA1E17 /* SceneDelegate.swift */,
 				D5B2B3E927FA7F7F00FA1E17 /* Main.storyboard */,
-				D5DD358F2841173700CA2092 /* VKSession.swift */,
 				D5B2B3FA27FAE9DC00FA1E17 /* LoginViewController.swift */,
+				D5DD358F2841173700CA2092 /* VKSession.swift */,
 				D5B2B3EF27FA7F8100FA1E17 /* Assets.xcassets */,
 				D5B2B3F127FA7F8100FA1E17 /* LaunchScreen.storyboard */,
 				D5B2B3F427FA7F8100FA1E17 /* Info.plist */,
@@ -201,6 +204,14 @@
 				D5C6681B280F464100B9F04A /* NewsTableViewCell.xib */,
 			);
 			path = News;
+			sourceTree = "<group>";
+		};
+		D5DD3591284128EE00CA2092 /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				D5DD35922841292000CA2092 /* LoginService.swift */,
+			);
+			path = ServiceLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +290,7 @@
 				D5B2B3FB27FAE9DC00FA1E17 /* LoginViewController.swift in Sources */,
 				D5106B102822FE78006A02EE /* PhotoAnimationViewController.swift in Sources */,
 				D5B4EC7E28388ACF0073F14E /* CustomAnimationUINavigationController.swift in Sources */,
+				D5DD35932841292000CA2092 /* LoginService.swift in Sources */,
 				D5C667F3280B02B000B9F04A /* LikeUIControl.swift in Sources */,
 				D5C66819280F462600B9F04A /* NewsTableViewController.swift in Sources */,
 				D50C018C2803AA73006D8583 /* FriendProfileCollectionViewController.swift in Sources */,
