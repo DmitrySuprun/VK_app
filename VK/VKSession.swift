@@ -11,8 +11,8 @@ class VKSession {
     
     static var instance = VKSession()
     
-    let token:String = ""
-    let userID:Int = 0
+    var token:String = ""
+    var userID:Int? = 0
     
     private init () {}
 }
