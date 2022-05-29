@@ -7,9 +7,10 @@
 
 import UIKit
 
-class VKSession {
+/// Singleton for store user login data
+final class VKSession {
     
-    static var instance = VKSession()
+    static let instance = VKSession()
     
     var token:String = ""
     var userID:Int? = 0

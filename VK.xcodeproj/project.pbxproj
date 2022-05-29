@@ -19,6 +19,7 @@
 		D50C019A2803CE58006D8583 /* Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01992803CE58006D8583 /* Community.swift */; };
 		D5106B0E2821C56B006A02EE /* CloudAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5106B0D2821C56B006A02EE /* CloudAnimationViewController.swift */; };
 		D5106B102822FE78006A02EE /* PhotoAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5106B0F2822FE78006A02EE /* PhotoAnimationViewController.swift */; };
+		D51C429F2842F8C0000CE622 /* TestRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C429E2842F8C0000CE622 /* TestRequestViewController.swift */; };
 		D5B2B3E427FA7F7F00FA1E17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3E327FA7F7F00FA1E17 /* AppDelegate.swift */; };
 		D5B2B3E627FA7F7F00FA1E17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3E527FA7F7F00FA1E17 /* SceneDelegate.swift */; };
 		D5B2B3EB27FA7F7F00FA1E17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B2B3E927FA7F7F00FA1E17 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		D50C01992803CE58006D8583 /* Community.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Community.swift; sourceTree = "<group>"; };
 		D5106B0D2821C56B006A02EE /* CloudAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudAnimationViewController.swift; sourceTree = "<group>"; };
 		D5106B0F2822FE78006A02EE /* PhotoAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAnimationViewController.swift; sourceTree = "<group>"; };
+		D51C429E2842F8C0000CE622 /* TestRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRequestViewController.swift; sourceTree = "<group>"; };
 		D5B2B3E027FA7F7F00FA1E17 /* VK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B2B3E327FA7F7F00FA1E17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5B2B3E527FA7F7F00FA1E17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -178,7 +180,6 @@
 				D5B2B3E527FA7F7F00FA1E17 /* SceneDelegate.swift */,
 				D5B2B3E927FA7F7F00FA1E17 /* Main.storyboard */,
 				D5B2B3FA27FAE9DC00FA1E17 /* LoginViewController.swift */,
-				D5DD358F2841173700CA2092 /* VKSession.swift */,
 				D5B2B3EF27FA7F8100FA1E17 /* Assets.xcassets */,
 				D5B2B3F127FA7F8100FA1E17 /* LaunchScreen.storyboard */,
 				D5B2B3F427FA7F8100FA1E17 /* Info.plist */,
@@ -209,7 +210,9 @@
 		D5DD3591284128EE00CA2092 /* ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
+				D5DD358F2841173700CA2092 /* VKSession.swift */,
 				D5DD35922841292000CA2092 /* LoginService.swift */,
+				D51C429E2842F8C0000CE622 /* TestRequestViewController.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				D5C66847281308A800B9F04A /* AnimationViewController.swift in Sources */,
 				D50C01892801E2D7006D8583 /* FriendsTableViewCell.swift in Sources */,
 				D5B2B3E627FA7F7F00FA1E17 /* SceneDelegate.swift in Sources */,
+				D51C429F2842F8C0000CE622 /* TestRequestViewController.swift in Sources */,
 				D5106B0E2821C56B006A02EE /* CloudAnimationViewController.swift in Sources */,
 				D50C01842801E044006D8583 /* UserModel.swift in Sources */,
 				D50C01872801E2BE006D8583 /* FriendsTableViewController.swift in Sources */,

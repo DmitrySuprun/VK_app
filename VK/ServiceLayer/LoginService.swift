@@ -12,9 +12,12 @@ class LoginService {
     
 }
 
+/// Login VK with web interface. Response with token
 final class LoginVKViewController: UIViewController {
     
     private var webView: WKWebView!
+    
+    // MARK: LifeCycle
     
     override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
@@ -30,6 +33,7 @@ final class LoginVKViewController: UIViewController {
     }
 }
 
+
 extension LoginVKViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView,
                  decidePolicyFor navigationResponse: WKNavigationResponse,
@@ -40,10 +44,10 @@ extension LoginVKViewController: WKNavigationDelegate {
             return
         }
         
-        // Останавливаем навигацию VKWebView
+        // Stop navigation VKWebView
         decisionHandler(.cancel)
         
-        // Достаем Token из URL
+        // Get out token from URL
         
         let params = fragment.components(separatedBy: "&").map { $0.components(separatedBy: "=") }.reduce([String: String]()) { result, param in
             var dict = result
@@ -57,22 +61,20 @@ extension LoginVKViewController: WKNavigationDelegate {
         VKSession.instance.token = token
         VKSession.instance.userID = Int(userID)
         
-        print(token)
-        print(userID)
-
-        
-        // Презентуем VC приложения
+        // Present next VC
         let stb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = stb.instantiateViewController(withIdentifier: "Login")
+        let vc = stb.instantiateViewController(withIdentifier: "TestRequestViewControllerID")
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
 }
 
 private extension LoginVKViewController {
+    
+    /// Web request for authorization form
     func loadAuth() {
         
-        // Требования от VK API для регистрации и получения Token
+        // Requirements from VK API for authorization and get token
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "oauth.vk.com"
@@ -82,11 +84,10 @@ private extension LoginVKViewController {
                                      URLQueryItem(name: "display", value: "mobile"),
                                      URLQueryItem(name: "response_type", value: "token"),
                                      URLQueryItem(name: "revoke", value: "1"),
-                                     URLQueryItem(name: "scope", value: "111111111111")
+                                     URLQueryItem(name: "scope", value: "11111111111111111111")
         ]
         guard let url = urlComponents.url else { return }
         let loginRequest = URLRequest(url: url)
-        print(url)
         webView.load(loginRequest)
     }
 }
