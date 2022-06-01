@@ -61,7 +61,6 @@ class LoginViewController: UIViewController {
         let password = passwordTextField.text!
         
         if login == "admin" && password == "123456" {
-            print("успешная авторизация")
         } else {
             let alert = UIAlertController(title: "Wrong password", message: "Check your password", preferredStyle: .alert)
             

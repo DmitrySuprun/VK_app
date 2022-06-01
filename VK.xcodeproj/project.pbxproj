@@ -20,6 +20,7 @@
 		D5106B0E2821C56B006A02EE /* CloudAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5106B0D2821C56B006A02EE /* CloudAnimationViewController.swift */; };
 		D5106B102822FE78006A02EE /* PhotoAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5106B0F2822FE78006A02EE /* PhotoAnimationViewController.swift */; };
 		D51C429F2842F8C0000CE622 /* TestRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C429E2842F8C0000CE622 /* TestRequestViewController.swift */; };
+		D51C42A32847F23A000CE622 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C42A22847F23A000CE622 /* Friends.swift */; };
 		D5B2B3E427FA7F7F00FA1E17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3E327FA7F7F00FA1E17 /* AppDelegate.swift */; };
 		D5B2B3E627FA7F7F00FA1E17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3E527FA7F7F00FA1E17 /* SceneDelegate.swift */; };
 		D5B2B3EB27FA7F7F00FA1E17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B2B3E927FA7F7F00FA1E17 /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		D5106B0D2821C56B006A02EE /* CloudAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudAnimationViewController.swift; sourceTree = "<group>"; };
 		D5106B0F2822FE78006A02EE /* PhotoAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAnimationViewController.swift; sourceTree = "<group>"; };
 		D51C429E2842F8C0000CE622 /* TestRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRequestViewController.swift; sourceTree = "<group>"; };
+		D51C42A22847F23A000CE622 /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		D5B2B3E027FA7F7F00FA1E17 /* VK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B2B3E327FA7F7F00FA1E17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5B2B3E527FA7F7F00FA1E17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				D50C01832801E044006D8583 /* UserModel.swift */,
+				D51C42A22847F23A000CE622 /* Friends.swift */,
 				D50C01992803CE58006D8583 /* Community.swift */,
 			);
 			path = Model;
@@ -296,6 +299,7 @@
 				D5DD35932841292000CA2092 /* LoginService.swift in Sources */,
 				D5C667F3280B02B000B9F04A /* LikeUIControl.swift in Sources */,
 				D5C66819280F462600B9F04A /* NewsTableViewController.swift in Sources */,
+				D51C42A32847F23A000CE622 /* Friends.swift in Sources */,
 				D50C018C2803AA73006D8583 /* FriendProfileCollectionViewController.swift in Sources */,
 				D50C01962803CC80006D8583 /* CommunitySearchTableViewController.swift in Sources */,
 				D50C01982803CC92006D8583 /* CommunitySearchTableViewCell.swift in Sources */,

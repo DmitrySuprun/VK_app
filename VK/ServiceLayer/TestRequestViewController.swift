@@ -25,12 +25,12 @@ class TestRequestViewController: UIViewController {
     }
     @IBAction func getGroup(_ sender: Any) {
         
-        customRequest(items: [URLQueryItem(name: "owner_id", value: "159716695")], method: "groups.get")
+        customRequest(items: [URLQueryItem(name: "owner_id", value: "293246301")], method: "groups.get")
     }
     @IBAction func findGroup(_ sender: Any) {
-        // 139873795
+        
         let desiredGrop = groupTextField.text
-        customRequest(items: [URLQueryItem(name: "user_id", value: "159716695"),
+        customRequest(items: [URLQueryItem(name: "user_id", value: "293246301"),
                              URLQueryItem(name: "group_id", value: desiredGrop),
                              URLQueryItem(name: "extended", value: "1")], method: "groups.isMember")
     }
@@ -41,7 +41,9 @@ class TestRequestViewController: UIViewController {
     /// - Parameters:
     ///   - items: параметры запроса
     ///   - method: метод API
-    private func customRequest(items: [URLQueryItem], method: String) {
+    private func customRequest(items: [URLQueryItem], method: String) -> Any? {
+        
+        var jsonReturn: Any!
         
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
@@ -51,17 +53,17 @@ class TestRequestViewController: UIViewController {
         urlComponents.queryItems?.append(URLQueryItem(name: "access_token", value: VKSession.instance.token))
         urlComponents.queryItems?.append(URLQueryItem(name: "v", value: "5.131"))
         
-        guard let url = urlComponents.url else { return }
+        guard let url = urlComponents.url else { return nil }
         print(url)
         
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { (data, response, error) in
-            guard let data = data else {
-                return
-            }
+            guard let data = data else { return }
             let json = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-            print(json)
+            jsonReturn = json
+            
         }
         task.resume()
+        return jsonReturn
     }
 }
