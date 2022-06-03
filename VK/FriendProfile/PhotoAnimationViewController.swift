@@ -9,7 +9,7 @@ import UIKit
 
 class PhotoAnimationViewController: UIViewController {
     
-    var userProfileInfo: User!
+    var userProfileInfo: UserModel!
     var currentImageIndex = 1
     var nextImageIndex = 2
     var previousImageIndex = 0
@@ -118,7 +118,7 @@ class PhotoAnimationViewController: UIViewController {
         }
     }
     
-    func updateData(user: User) {
+    func updateData(user: UserModel) {
         userProfileInfo = user
     }
     // Считаем индекс предыдущей и последующей картинки

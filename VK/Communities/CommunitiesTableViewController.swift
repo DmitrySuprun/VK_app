@@ -48,7 +48,7 @@ class CommunitiesTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func unwindToCommuniesController(_ segue: UIStoryboardSegue) {
+    @IBAction func unwindToCommunitiesController(_ segue: UIStoryboardSegue) {
         tableView.reloadData()
     }
 }

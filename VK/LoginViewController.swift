@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
         // Присваиваем его UIScrollVIew
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
         
-        // Добавляем extention для отображения параля в поле ввода
+        // Добавляем extension для отображения пароля в поле ввода
         passwordTextField.enablePasswordToggle()
     }
     

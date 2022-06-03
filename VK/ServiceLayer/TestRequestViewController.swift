@@ -8,7 +8,7 @@
 import UIKit
 
 class TestRequestViewController: UIViewController {
-        
+            
     @IBOutlet weak var groupTextField: UITextField!
     
     // MARK: - LifeCycle
@@ -17,7 +17,10 @@ class TestRequestViewController: UIViewController {
     }
     
     @IBAction func getFriendList(_ sender: Any) {
-        customRequest(items: [], method: "friends.get")
+        let json = customRequest(items: [], method: "friends.get")
+        
+        
+        
     }
     @IBAction func getPhoto(_ sender: Any) {
         
@@ -43,7 +46,7 @@ class TestRequestViewController: UIViewController {
     ///   - method: метод API
     private func customRequest(items: [URLQueryItem], method: String) -> Any? {
         
-        var jsonReturn: Any!
+        var jsonReturn: Any?
         
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
@@ -60,8 +63,14 @@ class TestRequestViewController: UIViewController {
         let task = session.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
             let json = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+            print(json)
             jsonReturn = json
-            
+            do {
+                let friendsID = try JSONDecoder().decode(FriendsIDModel.self, from: data)
+                print(friendsID)
+            } catch {
+                
+            }
         }
         task.resume()
         return jsonReturn

@@ -62,8 +62,8 @@ extension LoginVKViewController: WKNavigationDelegate {
         VKSession.instance.userID = Int(userID)
         
         // Present next VC
-        let stb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = stb.instantiateViewController(withIdentifier: "TestRequestViewControllerID")
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "Login")
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

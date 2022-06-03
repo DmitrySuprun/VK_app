@@ -7,12 +7,13 @@
 
 import Foundation
 
-struct Friends: Decodable {
-    var response: FriendsResponse
+struct FriendsIDModel: Decodable {
+    var response: ResponseFriendsID
 }
 
-struct FriendsResponse: Decodable {
+struct ResponseFriendsID: Decodable {
     var count: Int
     var items: [Int]
+    
 }
 

@@ -9,7 +9,7 @@ import UIKit
 
 class FriendProfileCollectionViewController: UICollectionViewController {
     
-    var userProfileInfo = User(name: "", avatarImage: "", likeCount: 0)
+    var userProfileInfo = UserModel(name: "", avatarImage: "", likeCount: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ class FriendProfileCollectionViewController: UICollectionViewController {
     }
     
     // Передача данных из FriendstableView
-    func updateData(user: User) {
+    func updateData(user: UserModel) {
         userProfileInfo = user
     }
 

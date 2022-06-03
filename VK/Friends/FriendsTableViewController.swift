@@ -12,6 +12,9 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - IBOutlets
     // MARK: - Public Properties
     
+    // сервисный класс загрузки данных из API
+    let service = UserService()
+    
     // Временное свойство для работы с анимацией картинок в PhotoAnimationVC
     let imagesTemp: [UIImage?] = [UIImage(named: "33"),
                       UIImage(named: "34"),
@@ -22,7 +25,7 @@ class FriendsTableViewController: UITableViewController {
                       UIImage(named: "39"),
                       UIImage(named: "40")]
     
-    var sourse: [User] = [.init(name: "Иван", avatarImage: "1", likeCount: 1, isLike: true),
+    var source: [UserModel] = [.init(name: "Иван", avatarImage: "1", likeCount: 1, isLike: true),
                           .init(name: "Петр", avatarImage: "2", likeCount: 2),
                           .init(name: "Глеб", avatarImage: "3", likeCount: 3),
                           .init(name: "Сергей", avatarImage: "4", likeCount: 4),
@@ -64,11 +67,11 @@ class FriendsTableViewController: UITableViewController {
                           .init(name: "Сальвадорэ", avatarImage: "40", likeCount: 10)
     ]
     
-    var friends: [User] = []
+    var friends: [UserModel] = []
     // Двумерный массив отсортированный по первой букве
-    var contactListForTableView = [[ User ]]()
+    var contactListForTableView = [[ UserModel ]]()
     // Переделываем таблицу из многомерного массива на Set
-    var contactListForTableViewDictionary = [ String:[User] ]()
+    var contactListForTableViewDictionary = [ String:[UserModel] ]()
     
     // MARK: - Private Properties
     // MARK: - Initializers
@@ -77,12 +80,15 @@ class FriendsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchFriendsID()
+        
+        
         // Временно для работы с анимацией картинок в PhotoAnimationVC добавляем массив этих картинок к каждому User в sourse
-        for i in sourse.indices {
-            sourse[i].images = imagesTemp
+        for i in source.indices {
+            source[i].images = imagesTemp
         }
 //        createDictionaryForContactList(contactList: sourse)
-        friends = sourse.sorted(by: { $0.name < $1.name })
+        friends = source.sorted(by: { $0.name < $1.name })
         contactListForTableView = sortContactListForTableView(contactList: friends)
         // заполняем временными картинками
         
@@ -171,10 +177,21 @@ class FriendsTableViewController: UITableViewController {
 //    }
 //
     // MARK: - Private Methods
-    private func sortContactListForTableView (contactList: [User]) -> [[User]] {
+    private func fetchFriendsID() {
+        service.loadUser { result in
+            switch result {
+            case .success(let items):
+                print(items)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func sortContactListForTableView (contactList: [UserModel]) -> [[UserModel]] {
         let sortedList = friends
 
-        var result = [[User]]()
+        var result = [[UserModel]]()
         var arrayTemp = [sortedList[0]]
 
         for i in 1...(contactList.count - 1) {
@@ -190,9 +207,9 @@ class FriendsTableViewController: UITableViewController {
         return result
     }
     
-    private func createDictionaryForContactList (contactList: [User]) -> [String : [User]] {
+    private func createDictionaryForContactList (contactList: [UserModel]) -> [String : [UserModel]] {
 
-        var result = [String : [User]]()
+        var result = [String : [UserModel]]()
 
         for item in contactList {
 
