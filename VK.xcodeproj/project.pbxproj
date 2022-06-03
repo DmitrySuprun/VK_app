@@ -101,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				D50C01832801E044006D8583 /* UserModel.swift */,
-				D51C42A42848DF45000CE622 /* User.swift */,
 				D50C01992803CE58006D8583 /* Community.swift */,
 			);
 			path = Model;
@@ -112,6 +111,7 @@
 			children = (
 				D51C42A62848E70D000CE622 /* UserService.swift */,
 				D51C42A22847F23A000CE622 /* FriendsIDModel.swift */,
+				D51C42A42848DF45000CE622 /* User.swift */,
 				D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */,
 				D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */,
 			);

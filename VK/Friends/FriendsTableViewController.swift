@@ -14,6 +14,7 @@ class FriendsTableViewController: UITableViewController {
     
     // сервисный класс загрузки данных из API
     let service = UserService()
+    var usersID = [Int]()
     
     // Временное свойство для работы с анимацией картинок в PhotoAnimationVC
     let imagesTemp: [UIImage?] = [UIImage(named: "33"),
@@ -81,6 +82,7 @@ class FriendsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         fetchFriendsID()
+
         
         
         // Временно для работы с анимацией картинок в PhotoAnimationVC добавляем массив этих картинок к каждому User в sourse
@@ -177,11 +179,28 @@ class FriendsTableViewController: UITableViewController {
 //    }
 //
     // MARK: - Private Methods
+    
     private func fetchFriendsID() {
-        service.loadUser { result in
+        service.loadFriendsID { result in
             switch result {
             case .success(let items):
-                print(items)
+                DispatchQueue.main.async {
+                    print(items)
+                    self.usersID = items
+                    self.fetchUser()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func fetchUser() {
+        print(usersID)
+        service.loadFriendsProfile(userID: usersID) { result in
+            switch result {
+            case .success(let user):
+                print(user)
             case .failure(let error):
                 print(error)
             }

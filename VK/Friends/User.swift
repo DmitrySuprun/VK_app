@@ -10,7 +10,7 @@ import Foundation
 
 
 struct User: Decodable {
-    let response: ResponseUser
+    let response: [ResponseUser]
 }
 
 struct ResponseUser: Decodable {

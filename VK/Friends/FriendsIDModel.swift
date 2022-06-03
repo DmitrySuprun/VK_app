@@ -13,7 +13,6 @@ struct FriendsIDModel: Decodable {
 
 struct ResponseFriendsID: Decodable {
     var count: Int
-    var items: [Int]
-    
+    var items: [Int]    
 }
 

@@ -19,8 +19,6 @@ class TestRequestViewController: UIViewController {
     @IBAction func getFriendList(_ sender: Any) {
         let json = customRequest(items: [], method: "friends.get")
         
-        
-        
     }
     @IBAction func getPhoto(_ sender: Any) {
         
