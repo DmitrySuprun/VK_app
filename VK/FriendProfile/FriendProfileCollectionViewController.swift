@@ -9,7 +9,7 @@ import UIKit
 
 class FriendProfileCollectionViewController: UICollectionViewController {
     
-    var userProfileInfo = UserModel(name: "", avatarImage: "", likeCount: 0)
+    var userProfileInfo = UserModel(name: "", avatarImage: nil, likeCount: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()

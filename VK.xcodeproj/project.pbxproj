@@ -24,6 +24,7 @@
 		D51C42A52848DF45000CE622 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C42A42848DF45000CE622 /* User.swift */; };
 		D51C42A72848E70D000CE622 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C42A62848E70D000CE622 /* UserService.swift */; };
 		D51C42AA284A2F98000CE622 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C42A9284A2F98000CE622 /* Constants.swift */; };
+		D59EAF3F284B30D600461B5D /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59EAF3E284B30D600461B5D /* UIImageExtension.swift */; };
 		D5B2B3E427FA7F7F00FA1E17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3E327FA7F7F00FA1E17 /* AppDelegate.swift */; };
 		D5B2B3E627FA7F7F00FA1E17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3E527FA7F7F00FA1E17 /* SceneDelegate.swift */; };
 		D5B2B3EB27FA7F7F00FA1E17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B2B3E927FA7F7F00FA1E17 /* Main.storyboard */; };
@@ -63,6 +64,7 @@
 		D51C42A42848DF45000CE622 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D51C42A62848E70D000CE622 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		D51C42A9284A2F98000CE622 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D59EAF3E284B30D600461B5D /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		D5B2B3E027FA7F7F00FA1E17 /* VK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B2B3E327FA7F7F00FA1E17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5B2B3E527FA7F7F00FA1E17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +168,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		D59EAF3C284B309D00461B5D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D59EAF3E284B30D600461B5D /* UIImageExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		D5B2B3D727FA7F7F00FA1E17 = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +196,7 @@
 		D5B2B3E227FA7F7F00FA1E17 /* VK */ = {
 			isa = PBXGroup;
 			children = (
+				D59EAF3C284B309D00461B5D /* Extension */,
 				D51C42A8284A2F65000CE622 /* Common */,
 				D5DD3591284128EE00CA2092 /* ServiceLayer */,
 				D5B4EC7C28388A280073F14E /* Navigation */,
@@ -333,6 +344,7 @@
 				D50C018E2803AA8D006D8583 /* FriendProfileCollectionViewCell.swift in Sources */,
 				D5D7FC41281555BF00B34F78 /* AnimationThreeDotsUIView.swift in Sources */,
 				D5C66847281308A800B9F04A /* AnimationViewController.swift in Sources */,
+				D59EAF3F284B30D600461B5D /* UIImageExtension.swift in Sources */,
 				D50C01892801E2D7006D8583 /* FriendsTableViewCell.swift in Sources */,
 				D5B2B3E627FA7F7F00FA1E17 /* SceneDelegate.swift in Sources */,
 				D51C429F2842F8C0000CE622 /* TestRequestViewController.swift in Sources */,

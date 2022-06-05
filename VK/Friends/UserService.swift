@@ -50,9 +50,12 @@ final class UserService {
         urlComponents.host = "api.vk.com"
         urlComponents.path = "/method/users.get"
         urlComponents.queryItems = [URLQueryItem(name: "access_token", value: VKSession.instance.token),
-                                    URLQueryItem(name: "v", value: "5.131"), URLQueryItem(name: "user_ids", value: ids)]
+                                    URLQueryItem(name: "v", value: "5.131"), URLQueryItem(name: "user_ids", value: ids),
+                                    URLQueryItem(name: "fields", value: "photo_200")]
         
         guard let url = urlComponents.url else { return }
+//        Для проверки через postman
+//        print(url)
 
         session.dataTask(with: url) { data, response, error in
     

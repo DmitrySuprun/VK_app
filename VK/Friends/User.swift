@@ -18,10 +18,12 @@ struct ResponseUser: Decodable {
     let id: Int
     let firstName: String
     let lastName: String
+    let avatarImage: String
     
     enum CodingKeys: String, CodingKey {
-        case id = "id"
+        case id
         case firstName = "first_name"
         case lastName = "last_name"
+        case avatarImage = "photo_200"
     }
 }

@@ -9,13 +9,13 @@ import UIKit
 
 protocol UserListProtocol {
     var name: String { get }
-    var avatarImage: String { get }
+    var avatarImage: UIImage? { get }
     var likeCount: Int { get }
 }
 
 struct UserModel: UserListProtocol {
     var name: String
-    var avatarImage: String
+    var avatarImage: UIImage?
     var likeCount: Int
     var isLike = false
     var images = [UIImage?]()
