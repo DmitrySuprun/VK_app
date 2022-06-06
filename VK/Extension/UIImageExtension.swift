@@ -14,14 +14,18 @@ extension UIImageView {
 //        let urlValid = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         
         guard let urlValid = URL(string: url) else {
-            self.image = placeHolder
+            DispatchQueue.main.async {
+                self.image = placeHolder
+            }
             return
         }
         URLSession.shared.dataTask(with: urlValid) { data, response, error in
-            guard let data = data else {
-                return
+            DispatchQueue.main.async {
+                guard let data = data else {
+                    return
+                }
+                self.image = UIImage(data: data)
             }
-            self.image = UIImage(data: data)
         }.resume()
         
     }

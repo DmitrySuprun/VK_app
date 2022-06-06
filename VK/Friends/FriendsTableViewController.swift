@@ -39,12 +39,6 @@ class FriendsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         fetchFriendsID()
-        
-        
-        // Временно для работы с анимацией картинок в PhotoAnimationVC добавляем массив этих картинок к каждому User в source
-        for i in source.indices {
-            source[i].images = imagesTemp
-        }
     }
     
     // MARK: - Table view data source
@@ -61,7 +55,6 @@ class FriendsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return contactListForTableViewDictionary.keys.sorted()[section]
     }
-    
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return contactListForTableViewDictionary.keys.sorted()
@@ -80,7 +73,7 @@ class FriendsTableViewController: UITableViewController {
         //реализация ячейки через storyboard и outlet
         let keyByIndexPath = contactListForTableViewDictionary.keys.sorted()[indexPath.section]
         
-        cell.avatarView.image = contactListForTableViewDictionary[keyByIndexPath]![indexPath.row].avatarImage
+        cell.avatarView.loadImage(url: contactListForTableViewDictionary[keyByIndexPath]![indexPath.row].avatarImage)
         cell.name.text = contactListForTableViewDictionary[keyByIndexPath]![indexPath.row].name
         
         return cell
@@ -110,6 +103,7 @@ class FriendsTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "FriendProfileSegueID" {
             let destination = segue.destination as! FriendProfileCollectionViewController
             let index = tableView.indexPathForSelectedRow
@@ -121,28 +115,9 @@ class FriendsTableViewController: UITableViewController {
     
     // MARK: - IBActions
     // MARK: - Public Methods
-    //
-    //    func firstLettersArray(_ friends: [User]) -> [Character] {
-    //        return Array(Set(friends.compactMap( {$0.name.first!}))).sorted()
-    //    }
-    //
     // MARK: - Private Methods
     
-    private func updateSource() {
-        DispatchQueue.main.async {
-            for i in 0..<self.userFromApiVK.response.count {
-                let name = self.userFromApiVK.response[i].firstName + " " + self.userFromApiVK.response[i].lastName
-                let avatarImageLoad = UIImageView()
-                avatarImageLoad.loadImage(url: self.userFromApiVK.response[i].avatarImage)
-                let userModel = UserModel(name: name, avatarImage: avatarImageLoad.image, likeCount: Int.random(in: 1...30), isLike: Bool.random(), images: [nil])
-                self.source.append(userModel)
-            }
-            self.contactListForTableViewDictionary = self.createDictionaryForContactList(contactList: self.source)
-            self.tableView.reloadData()
-        }
-        
-    }
-    
+    // Получаем id друзей пользователя
     private func fetchFriendsID() {
         self.service.loadFriendsID { result in
             switch result {
@@ -156,18 +131,39 @@ class FriendsTableViewController: UITableViewController {
         
     }
     
+    // Получаем данные друзей (имя, аватарку)
     private func fetchUser() {
         print(usersID)
         service.loadFriendsProfile(userID: usersID) { result in
             switch result {
             case .success(let user):
                 self.userFromApiVK = user
-                print(user)
                 self.updateSource()
             case .failure(let error):
                 print(error)
             }
         }
+    }
+    
+    private func updateSource() {
+        DispatchQueue.main.async {
+            for i in 0..<self.userFromApiVK.response.count {
+                let name = self.userFromApiVK.response[i].firstName + " " + self.userFromApiVK.response[i].lastName
+                let avatarImageLoad = self.userFromApiVK.response[i].avatarImage
+                
+                let userModel = UserModel(name: name, avatarImage: avatarImageLoad, likeCount: Int.random(in: 1...30), isLike: Bool.random(), images: [nil])
+                self.source.append(userModel)
+            }
+            
+            // Временно для работы с анимацией картинок в PhotoAnimationVC добавляем массив этих картинок к каждому User в source
+            for i in self.source.indices {
+                self.source[i].images = self.imagesTemp
+            }
+            
+            self.contactListForTableViewDictionary = self.createDictionaryForContactList(contactList: self.source)
+            self.tableView.reloadData()
+        }
+        
     }
     
     private func createDictionaryForContactList (contactList: [UserModel]) -> [String : [UserModel]] {
@@ -185,5 +181,4 @@ class FriendsTableViewController: UITableViewController {
         }
         return result
     }
-    
 }
