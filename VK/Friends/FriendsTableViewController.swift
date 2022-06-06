@@ -129,27 +129,22 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - Private Methods
     
     private func updateSource() {
-        
-        for i in 0..<userFromApiVK.response.count {
-            let name = self.userFromApiVK.response[i].firstName + " " + self.userFromApiVK.response[i].lastName
-            let avatarImageLoad = UIImageView()
-            avatarImageLoad.loadImage(url: self.userFromApiVK.response[i].avatarImage)
-            let userModel = UserModel(name: name, avatarImage: avatarImageLoad.image, likeCount: Int.random(in: 1...30), isLike: Bool.random(), images: [nil])
-            self.source.append(userModel)
-            
-            
-            
-            
-        }
-        print(source)
-        contactListForTableViewDictionary = createDictionaryForContactList(contactList: source)
         DispatchQueue.main.async {
+            for i in 0..<self.userFromApiVK.response.count {
+                let name = self.userFromApiVK.response[i].firstName + " " + self.userFromApiVK.response[i].lastName
+                let avatarImageLoad = UIImageView()
+                avatarImageLoad.loadImage(url: self.userFromApiVK.response[i].avatarImage)
+                let userModel = UserModel(name: name, avatarImage: avatarImageLoad.image, likeCount: Int.random(in: 1...30), isLike: Bool.random(), images: [nil])
+                self.source.append(userModel)
+            }
+            self.contactListForTableViewDictionary = self.createDictionaryForContactList(contactList: self.source)
             self.tableView.reloadData()
         }
         
     }
+    
     private func fetchFriendsID() {
-        service.loadFriendsID { result in
+        self.service.loadFriendsID { result in
             switch result {
             case .success(let items):
                 self.usersID = items
@@ -158,6 +153,7 @@ class FriendsTableViewController: UITableViewController {
                 print(error)
             }
         }
+        
     }
     
     private func fetchUser() {
