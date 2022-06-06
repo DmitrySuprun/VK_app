@@ -134,9 +134,10 @@ class FriendsTableViewController: UITableViewController {
             let name = self.userFromApiVK.response[i].firstName + " " + self.userFromApiVK.response[i].lastName
             let avatarImageLoad = UIImageView()
             avatarImageLoad.loadImage(url: self.userFromApiVK.response[i].avatarImage)
-            
             let userModel = UserModel(name: name, avatarImage: avatarImageLoad.image, likeCount: Int.random(in: 1...30), isLike: Bool.random(), images: [nil])
             self.source.append(userModel)
+            
+            
             
             
         }
@@ -151,7 +152,6 @@ class FriendsTableViewController: UITableViewController {
         service.loadFriendsID { result in
             switch result {
             case .success(let items):
-                print(items)
                 self.usersID = items
                 self.fetchUser()
             case .failure(let error):
