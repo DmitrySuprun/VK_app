@@ -71,57 +71,59 @@ import Foundation
 //}
 
 
-struct Photo1: Decodable {
+struct Photo: Decodable {
+    
     let response: Response
     
     struct Response: Decodable {
         let count: Int
-        let items: Items
+        let items: [Items]
+    }
+    
+    struct Items: Decodable {
+        let albumID: Int
+        let date: Int
+        let id: Int
+        let ownerID: Int
+        let sizes: [Sizes]
+        let text: String
+        let hasTags: Bool
+        let likes: Likes
+        let reposts: Reposts
         
-        struct Items: Decodable {
-            let albumID: Int
-            let date: Int
-            let id: Int
-            let ownerID: Int
-            let sizes: Sizes
-            let text: String
-            let hasTags: Bool
-            let likes: Likes
-            let reposts: Reposts
+        enum CodingKeys: String, CodingKey {
+            case albumID = "album_id"
+            case date
+            case id
+            case ownerID = "owner_id"
+            case sizes
+            case text
+            case hasTags = "has_tags"
+            case likes
+            case reposts
+        }
+        
+        struct Sizes: Decodable {
+            let height: Int
+            let url: String
+            let type: String
+            let width: Int
+        }
+        
+        struct Likes: Decodable {
+            let count: Int
+            let userLikes: Int
             
             enum CodingKeys: String, CodingKey {
-                case albumID = "album_id"
-                case date
-                case id
-                case ownerID = "owner_id"
-                case sizes
-                case text
-                case hasTags = "has_tags"
-                case likes
-                case reposts
+                case count
+                case userLikes = "user_likes"
             }
-            
-            struct Sizes: Decodable {
-                let height: Int
-                let url: String
-                let type: String
-                let width: Int
-            }
-            
-            struct Likes: Decodable {
-                let count: Int
-                let userLikes: Int
-                
-                enum CodingKeys: String, CodingKey {
-                    case count
-                    case userLikes = "user_likes"
-                }
-            }
-            
-            struct Reposts: Decodable {
-                let count: Int
-            }
+        }
+        
+        struct Reposts: Decodable {
+            let count: Int
         }
     }
 }
+
 

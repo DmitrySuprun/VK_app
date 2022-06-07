@@ -31,18 +31,21 @@ final class TestResponse {
         print("🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈")
         print(url)
         print("🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈")
+        
         session.dataTask(with: request) { data, response, error in
             
-            guard let data = data, error != nil else { return }
-           
+            guard let data = data else { return }
+            
             do {
-                let photo = try JSONDecoder().decode(Photo1.self, from: data)
+                let photo = try JSONDecoder().decode(Photo.self, from: data)
                 print("🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈")
                 print(photo)
                 print("🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈")
-
             } catch {
-                print(Constants.Service.ServiceError.decodingError)
+                print("❌")
+                print("ERROR")
+                print("❌")
+
             }
             
         }.resume()
