@@ -39,6 +39,8 @@ class FriendsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         fetchFriendsID()
+        // test
+        TestResponse.instance.getResponse()
     }
     
     // MARK: - Table view data source
@@ -168,7 +170,7 @@ class FriendsTableViewController: UITableViewController {
     
     private func createDictionaryForContactList (contactList: [UserModel]) -> [String : [UserModel]] {
         
-        var result = [String : [UserModel]]()
+        var result = [ String:[UserModel] ]()
         
         for item in contactList {
             

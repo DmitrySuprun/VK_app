@@ -84,7 +84,7 @@ private extension LoginVKViewController {
                                      URLQueryItem(name: "display", value: "mobile"),
                                      URLQueryItem(name: "response_type", value: "token"),
                                      URLQueryItem(name: "revoke", value: "1"),
-                                     URLQueryItem(name: "scope", value: "11111111111111111111")
+                                     URLQueryItem(name: "scope", value: "offline,friends,groups,photos")
         ]
         guard let url = urlComponents.url else { return }
         let loginRequest = URLRequest(url: url)

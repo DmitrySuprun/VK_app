@@ -23,6 +23,10 @@ final class UserService {
                                     URLQueryItem(name: "v", value: "5.131")]
         guard let url = urlComponents.url else { return }
         
+        print("♦️♦️♦️♦️♦️♦️♦️♦️♦️♦️♦️♦️")
+        print(url)
+        print("♦️♦️♦️♦️♦️♦️♦️♦️♦️♦️♦️♦️")
+        
         session.dataTask(with: url) { data, response, error in
             
             guard let data = data, error == nil else { return }
