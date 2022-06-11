@@ -9,7 +9,7 @@ import UIKit
 
 class GetAllPhotoService {
     
-    func loadPhoto(id: String, completion: @escaping (Result<[String], Error>) -> () ) {
+    func loadPhoto(id: String, completion: @escaping (Result<[(String, Int)], Error>) -> () ) {
         
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
@@ -32,12 +32,12 @@ class GetAllPhotoService {
             guard let data = data else { return }
             
             do {
-                var result = [String]()
+                var result = [(String, Int)]()
                 let photo = try JSONDecoder().decode(PhotoGetAllModel.self, from: data)
                 for item in photo.photos {
                     for size in item.sizes {
                         if size.type == "x" {
-                            result.append(size.url)
+                            result.append((size.url, item.likes.count))
                         }
                     }
                 }

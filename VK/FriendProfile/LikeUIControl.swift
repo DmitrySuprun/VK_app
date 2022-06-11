@@ -16,13 +16,13 @@ class LikeControl: UIControl {
     public var isLike: Bool = true {
         didSet {
             imageView.image = image
-            lableView.text = String(likeCount)
+            labelView.text = String(likeCount)
         }
     }
     // MARK: - Private Properties
     
     private weak var imageView: UIImageView!
-    private weak var lableView: UILabel!
+    private weak var labelView: UILabel!
     private var image: UIImage {
         return isLike ? UIImage(systemName: "heart.fill")! : UIImage(systemName: "heart")!
     }
@@ -100,7 +100,7 @@ class LikeControl: UIControl {
         label.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
 
         self.imageView = imageView
-        self.lableView = label
+        self.labelView = label
         backgroundColor = UIColor.clear
         
         addTarget(self, action: #selector(touchUpInside), for: .touchUpInside)

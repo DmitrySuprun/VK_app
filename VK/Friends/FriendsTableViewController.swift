@@ -146,6 +146,7 @@ class FriendsTableViewController: UITableViewController {
             
             let name = self.userFromApiVK.userData[i].firstName + " " + self.userFromApiVK.userData[i].lastName
             let avatarImageLoad = self.userFromApiVK.userData[i].avatarImage
+            let likeCount: [Int] = []
 
             self.getAllPhotosService.loadPhoto(id: String(self.userFromApiVK.userData[i].id)) { result in
                 switch result {
@@ -161,7 +162,7 @@ class FriendsTableViewController: UITableViewController {
         }
     }
     
-    func addUser(name: String, avatarImage: String, images: [String]) {
+    func addUser(name: String, avatarImage: String, images: [(String, Int)]) {
         let model = UserModel(name: name, avatarImage: avatarImage,
                               likeCount: Int.random(in: 1...10),
                               isLike: Bool.random(),

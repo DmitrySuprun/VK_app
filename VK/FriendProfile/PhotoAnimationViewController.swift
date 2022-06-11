@@ -26,9 +26,9 @@ class PhotoAnimationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        image.loadImage(url: userProfileInfo.images[currentImageIndex]!)
-        imageNext.loadImage(url: userProfileInfo.images[nextImageIndex]!)
-        imagePrevious.loadImage(url: userProfileInfo.images[previousImageIndex]!)
+        image.loadImage(url: userProfileInfo.images[currentImageIndex].0)
+        imageNext.loadImage(url: userProfileInfo.images[nextImageIndex].0)
+        imagePrevious.loadImage(url: userProfileInfo.images[previousImageIndex].0)
         imageNext.alpha = 0
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(viewPanned(_:)))
         view.addGestureRecognizer(panGestureRecognizer)
@@ -90,7 +90,7 @@ class PhotoAnimationViewController: UIViewController {
                 }
                 self.calculatePreviousNextIndex()
     
-                self.imageNext.loadImage(url: self.userProfileInfo.images[self.nextImageIndex]!)
+                self.imageNext.loadImage(url: self.userProfileInfo.images[self.nextImageIndex].0)
                 self.image.transform = .identity
                 self.imageNext.transform = .identity
                 self.imageNext.alpha = 0
@@ -108,7 +108,7 @@ class PhotoAnimationViewController: UIViewController {
                 }
                 self.calculatePreviousNextIndex()
                 
-                self.imagePrevious.loadImage(url: self.userProfileInfo.images[self.previousImageIndex]!)
+                self.imagePrevious.loadImage(url: self.userProfileInfo.images[self.previousImageIndex].0)
                 self.image.transform = .identity
                 self.image.alpha = 1
                 self.imagePrevious.transform = .identity
@@ -136,8 +136,5 @@ class PhotoAnimationViewController: UIViewController {
             nextImageIndex = currentImageIndex + 1
             
         }
-        
     }
-    
-    
 }
