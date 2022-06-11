@@ -23,21 +23,17 @@ final class UserService {
                                     URLQueryItem(name: "v", value: "5.131")]
         guard let url = urlComponents.url else { return }
         
-        DispatchQueue.main.async {
-            session.dataTask(with: url) { data, response, error in
-                
-                guard let data = data, error == nil else { return }
-                
-                do {
-                    let friendsID = try JSONDecoder().decode(FriendsIDModel.self, from: data)
-                    completion(.success(friendsID.items))
-                } catch {
-                    completion(.failure(Constants.Service.ServiceError.decodingError))
-                }
-            }.resume()
-        }
-
-        
+        session.dataTask(with: url) { data, response, error in
+            
+            guard let data = data, error == nil else { return }
+            
+            do {
+                let friendsID = try JSONDecoder().decode(FriendsIDModel.self, from: data)
+                completion(.success(friendsID.items))
+            } catch {
+                completion(.failure(Constants.Service.ServiceError.decodingError))
+            }
+        }.resume()
     }
     
     func loadFriendsProfile(userID: [Int], completion: @escaping(UserProfileResult) -> ()) {

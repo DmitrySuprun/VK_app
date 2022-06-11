@@ -79,7 +79,8 @@ class LikeControl: UIControl {
         
         label.text = String(likeCount)
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = .red
+        label.font = .boldSystemFont(ofSize: 20)
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
