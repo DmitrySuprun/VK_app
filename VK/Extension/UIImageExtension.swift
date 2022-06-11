@@ -8,10 +8,10 @@
 import UIKit
 extension UIImageView {
     
-    func loadImage(url: String, placeHolder: UIImage? = UIImage(systemName: "❌") ) {
+    func loadImage(url: String, placeHolder: UIImage? = UIImage(systemName: "📷") ) {
         self.image = nil
-        // Encode url
-//        let urlValid = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        // Check validation URL Encoding замена символов на валидные
+        let urlValid = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         
         guard let urlValid = URL(string: url) else {
             DispatchQueue.main.async {

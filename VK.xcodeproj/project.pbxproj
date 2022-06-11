@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D5017884284DEBD800403228 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017883284DEBD800403228 /* Photo.swift */; };
+		D5017884284DEBD800403228 /* PhotoGetAllModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017883284DEBD800403228 /* PhotoGetAllModel.swift */; };
 		D5017887284FDE8200403228 /* TestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017886284FDE8200403228 /* TestResponse.swift */; };
+		D5017889285014AB00403228 /* GetAllPhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017888285014AB00403228 /* GetAllPhotoService.swift */; };
 		D50C01842801E044006D8583 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01832801E044006D8583 /* UserModel.swift */; };
 		D50C01872801E2BE006D8583 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */; };
 		D50C01892801E2D7006D8583 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */; };
@@ -21,7 +22,6 @@
 		D50C019A2803CE58006D8583 /* Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01992803CE58006D8583 /* Community.swift */; };
 		D5106B0E2821C56B006A02EE /* CloudAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5106B0D2821C56B006A02EE /* CloudAnimationViewController.swift */; };
 		D5106B102822FE78006A02EE /* PhotoAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5106B0F2822FE78006A02EE /* PhotoAnimationViewController.swift */; };
-		D51C429F2842F8C0000CE622 /* TestRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C429E2842F8C0000CE622 /* TestRequestViewController.swift */; };
 		D51C42A32847F23A000CE622 /* FriendsIDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C42A22847F23A000CE622 /* FriendsIDModel.swift */; };
 		D51C42A52848DF45000CE622 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C42A42848DF45000CE622 /* User.swift */; };
 		D51C42A72848E70D000CE622 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C42A62848E70D000CE622 /* UserService.swift */; };
@@ -49,8 +49,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D5017883284DEBD800403228 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		D5017883284DEBD800403228 /* PhotoGetAllModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGetAllModel.swift; sourceTree = "<group>"; };
 		D5017886284FDE8200403228 /* TestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResponse.swift; sourceTree = "<group>"; };
+		D5017888285014AB00403228 /* GetAllPhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllPhotoService.swift; sourceTree = "<group>"; };
 		D50C01832801E044006D8583 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
@@ -63,7 +64,6 @@
 		D50C01992803CE58006D8583 /* Community.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Community.swift; sourceTree = "<group>"; };
 		D5106B0D2821C56B006A02EE /* CloudAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudAnimationViewController.swift; sourceTree = "<group>"; };
 		D5106B0F2822FE78006A02EE /* PhotoAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAnimationViewController.swift; sourceTree = "<group>"; };
-		D51C429E2842F8C0000CE622 /* TestRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRequestViewController.swift; sourceTree = "<group>"; };
 		D51C42A22847F23A000CE622 /* FriendsIDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsIDModel.swift; sourceTree = "<group>"; };
 		D51C42A42848DF45000CE622 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D51C42A62848E70D000CE622 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -118,7 +118,6 @@
 				D51C42A62848E70D000CE622 /* UserService.swift */,
 				D51C42A22847F23A000CE622 /* FriendsIDModel.swift */,
 				D51C42A42848DF45000CE622 /* User.swift */,
-				D5017883284DEBD800403228 /* Photo.swift */,
 				D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */,
 				D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */,
 			);
@@ -128,7 +127,9 @@
 		D50C018A2803AA17006D8583 /* FriendProfile */ = {
 			isa = PBXGroup;
 			children = (
+				D5017883284DEBD800403228 /* PhotoGetAllModel.swift */,
 				D50C018B2803AA73006D8583 /* FriendProfileCollectionViewController.swift */,
+				D5017888285014AB00403228 /* GetAllPhotoService.swift */,
 				D5C667F2280B02B000B9F04A /* LikeUIControl.swift */,
 				D5106B0F2822FE78006A02EE /* PhotoAnimationViewController.swift */,
 				D50C018D2803AA8D006D8583 /* FriendProfileCollectionViewCell.swift */,
@@ -249,7 +250,6 @@
 				D5DD358F2841173700CA2092 /* VKSession.swift */,
 				D5DD35922841292000CA2092 /* LoginService.swift */,
 				D5017886284FDE8200403228 /* TestResponse.swift */,
-				D51C429E2842F8C0000CE622 /* TestRequestViewController.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -337,7 +337,7 @@
 				D51C42AA284A2F98000CE622 /* Constants.swift in Sources */,
 				D51C42A32847F23A000CE622 /* FriendsIDModel.swift in Sources */,
 				D51C42A52848DF45000CE622 /* User.swift in Sources */,
-				D5017884284DEBD800403228 /* Photo.swift in Sources */,
+				D5017884284DEBD800403228 /* PhotoGetAllModel.swift in Sources */,
 				D50C018C2803AA73006D8583 /* FriendProfileCollectionViewController.swift in Sources */,
 				D50C01962803CC80006D8583 /* CommunitySearchTableViewController.swift in Sources */,
 				D50C01982803CC92006D8583 /* CommunitySearchTableViewCell.swift in Sources */,
@@ -355,9 +355,9 @@
 				D59EAF3F284B30D600461B5D /* UIImageExtension.swift in Sources */,
 				D50C01892801E2D7006D8583 /* FriendsTableViewCell.swift in Sources */,
 				D5B2B3E627FA7F7F00FA1E17 /* SceneDelegate.swift in Sources */,
-				D51C429F2842F8C0000CE622 /* TestRequestViewController.swift in Sources */,
 				D5106B0E2821C56B006A02EE /* CloudAnimationViewController.swift in Sources */,
 				D50C01842801E044006D8583 /* UserModel.swift in Sources */,
+				D5017889285014AB00403228 /* GetAllPhotoService.swift in Sources */,
 				D50C01872801E2BE006D8583 /* FriendsTableViewController.swift in Sources */,
 				D5B2B3FD27FE03CF00FA1E17 /* ExampleClass.swift in Sources */,
 				D50C01932803CC25006D8583 /* CommunitiesTableViewController.swift in Sources */,

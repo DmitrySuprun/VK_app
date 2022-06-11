@@ -37,7 +37,7 @@ final class TestResponse {
             guard let data = data else { return }
             
             do {
-                let photo = try JSONDecoder().decode(Photo.self, from: data)
+                let photo = try JSONDecoder().decode(PhotoGetAllModel.self, from: data)
                 print("🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈")
                 print(photo)
                 print("🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈")

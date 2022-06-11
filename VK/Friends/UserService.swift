@@ -23,21 +23,21 @@ final class UserService {
                                     URLQueryItem(name: "v", value: "5.131")]
         guard let url = urlComponents.url else { return }
         
-        print("♦️♦️♦️♦️♦️♦️♦️♦️♦️♦️♦️♦️")
-        print(url)
-        print("♦️♦️♦️♦️♦️♦️♦️♦️♦️♦️♦️♦️")
+        DispatchQueue.main.async {
+            session.dataTask(with: url) { data, response, error in
+                
+                guard let data = data, error == nil else { return }
+                
+                do {
+                    let friendsID = try JSONDecoder().decode(FriendsIDModel.self, from: data)
+                    completion(.success(friendsID.items))
+                } catch {
+                    completion(.failure(Constants.Service.ServiceError.decodingError))
+                }
+            }.resume()
+        }
+
         
-        session.dataTask(with: url) { data, response, error in
-            
-            guard let data = data, error == nil else { return }
-            
-            do {
-                let friendsID = try JSONDecoder().decode(FriendsIDModel.self, from: data)
-                completion(.success(friendsID.response.items))
-            } catch {
-                completion(.failure(Constants.Service.ServiceError.decodingError))
-            }
-        }.resume()
     }
     
     func loadFriendsProfile(userID: [Int], completion: @escaping(UserProfileResult) -> ()) {
@@ -58,8 +58,6 @@ final class UserService {
                                     URLQueryItem(name: "fields", value: "photo_200")]
         
         guard let url = urlComponents.url else { return }
-//        Для проверки через postman
-//        print(url)
 
         session.dataTask(with: url) { data, response, error in
     
@@ -69,6 +67,7 @@ final class UserService {
                 let user = try JSONDecoder().decode(User.self, from: data)
                 completion(.success(user))
             } catch {
+                print(#function)
                 completion(.failure(Constants.Service.ServiceError.decodingError))
             }
         }.resume()

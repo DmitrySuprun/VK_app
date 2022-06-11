@@ -30,7 +30,7 @@ class FriendProfileCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendProfileCellID", for: indexPath) as! FriendProfileCollectionViewCell
-        cell.userImage.image = userProfileInfo.images[indexPath.row]
+        cell.userImage.loadImage(url: userProfileInfo.images[indexPath.row]!)
         cell.likeControl.likeCount = userProfileInfo.likeCount
         cell.likeControl.isLike = userProfileInfo.isLike
 

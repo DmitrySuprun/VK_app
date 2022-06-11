@@ -14,20 +14,9 @@ class FriendsTableViewController: UITableViewController {
     
     // сервисный класс загрузки данных из API
     let service = UserService()
+    let getAllPhotosService = GetAllPhotoService()
     var usersID = [Int]()
     var userFromApiVK: User!
-    
-    
-    // Временное свойство для работы с анимацией картинок в PhotoAnimationVC
-    let imagesTemp: [UIImage?] = [UIImage(named: "33"),
-                                  UIImage(named: "34"),
-                                  UIImage(named: "35"),
-                                  UIImage(named: "36"),
-                                  UIImage(named: "37"),
-                                  UIImage(named: "38"),
-                                  UIImage(named: "39"),
-                                  UIImage(named: "40")]
-    
     var source: [UserModel] = []
     var contactListForTableViewDictionary = [ String:[UserModel] ]()
     
@@ -37,10 +26,8 @@ class FriendsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         fetchFriendsID()
-        // test
-        TestResponse.instance.getResponse()
+        
     }
     
     // MARK: - Table view data source
@@ -135,37 +122,55 @@ class FriendsTableViewController: UITableViewController {
     
     // Получаем данные друзей (имя, аватарку)
     private func fetchUser() {
-        print(usersID)
         service.loadFriendsProfile(userID: usersID) { result in
             switch result {
             case .success(let user):
                 self.userFromApiVK = user
-                self.updateSource()
+                self.getAllPhoto()
             case .failure(let error):
                 print(error)
             }
         }
     }
     
+    // Получаем все фото друга
+    private func getAllPhoto() {
+        
+        self.updateSource()
+
+    }
+    
     private func updateSource() {
+        
+        for i in 0..<self.userFromApiVK.userData.count {
+            
+            let name = self.userFromApiVK.userData[i].firstName + " " + self.userFromApiVK.userData[i].lastName
+            let avatarImageLoad = self.userFromApiVK.userData[i].avatarImage
+
+            self.getAllPhotosService.loadPhoto(id: String(self.userFromApiVK.userData[i].id)) { result in
+                switch result {
+                case .success(let getImages):
+                    self.addUser(name: name, avatarImage: avatarImageLoad, images: getImages)
+                case .failure(let error):
+                    print("ERROR------")
+                    print(error)
+                    print("------ERROR")
+
+                }
+            }
+        }
+    }
+    
+    func addUser(name: String, avatarImage: String, images: [String]) {
+        let model = UserModel(name: name, avatarImage: avatarImage,
+                              likeCount: Int.random(in: 1...10),
+                              isLike: Bool.random(),
+                              images: images)
+        self.source.append(model)
+        self.contactListForTableViewDictionary = self.createDictionaryForContactList(contactList: self.source)
         DispatchQueue.main.async {
-            for i in 0..<self.userFromApiVK.response.count {
-                let name = self.userFromApiVK.response[i].firstName + " " + self.userFromApiVK.response[i].lastName
-                let avatarImageLoad = self.userFromApiVK.response[i].avatarImage
-                
-                let userModel = UserModel(name: name, avatarImage: avatarImageLoad, likeCount: Int.random(in: 1...30), isLike: Bool.random(), images: [nil])
-                self.source.append(userModel)
-            }
-            
-            // Временно для работы с анимацией картинок в PhotoAnimationVC добавляем массив этих картинок к каждому User в source
-            for i in self.source.indices {
-                self.source[i].images = self.imagesTemp
-            }
-            
-            self.contactListForTableViewDictionary = self.createDictionaryForContactList(contactList: self.source)
             self.tableView.reloadData()
         }
-        
     }
     
     private func createDictionaryForContactList (contactList: [UserModel]) -> [String : [UserModel]] {

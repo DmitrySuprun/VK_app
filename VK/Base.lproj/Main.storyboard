@@ -191,7 +191,6 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="Next"/>
                                                 <connections>
                                                     <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Ag-Bf-QXi"/>
-                                                    <segue destination="MJw-1x-1EZ" kind="presentation" modalPresentationStyle="fullScreen" id="MGm-ah-lna"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email or phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z5h-lX-g84">
@@ -636,7 +635,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="OK3-Dr-G0H">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="MJw-1x-1EZ" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarControllerID" automaticallyAdjustsScrollViewInsets="NO" id="MJw-1x-1EZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lEe-cC-KDS"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NcD-8h-Zxw">

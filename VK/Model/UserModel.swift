@@ -18,6 +18,6 @@ struct UserModel: UserListProtocol {
     var avatarImage: String
     var likeCount: Int
     var isLike = false
-    var images = [UIImage?]()
+    var images = [String?]()
 }
 

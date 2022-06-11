@@ -22,8 +22,8 @@ final class LoginVKViewController: UIViewController {
     override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        view = webView
         webView.navigationDelegate = self
+        view = webView
     }
     
     override func viewDidLoad() {
@@ -71,7 +71,7 @@ extension LoginVKViewController: WKNavigationDelegate {
 
 private extension LoginVKViewController {
     
-    /// Web request for authorization form
+    // Web request for authorization form
     func loadAuth() {
         
         // Requirements from VK API for authorization and get token
