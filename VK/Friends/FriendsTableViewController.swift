@@ -12,63 +12,16 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - IBOutlets
     // MARK: - Public Properties
     
-    // Временное свойство для работы с анимацией картинок в PhotoAnimationVC
-    let imagesTemp: [UIImage?] = [UIImage(named: "33"),
-                      UIImage(named: "34"),
-                      UIImage(named: "35"),
-                      UIImage(named: "36"),
-                      UIImage(named: "37"),
-                      UIImage(named: "38"),
-                      UIImage(named: "39"),
-                      UIImage(named: "40")]
-    
-    var sourse: [User] = [.init(name: "Иван", avatarImage: "1", likeCount: 1, isLike: true),
-                          .init(name: "Петр", avatarImage: "2", likeCount: 2),
-                          .init(name: "Глеб", avatarImage: "3", likeCount: 3),
-                          .init(name: "Сергей", avatarImage: "4", likeCount: 4),
-                          .init(name: "Елена", avatarImage: "5", likeCount: 5),
-                          .init(name: "Юлия", avatarImage: "6", likeCount: 6),
-                          .init(name: "Виктор", avatarImage: "7", likeCount: 7),
-                          .init(name: "Вацлав", avatarImage: "8", likeCount: 8),
-                          .init(name: "Гражина", avatarImage: "9", likeCount: 9),
-                          .init(name: "Андрей", avatarImage: "10", likeCount: 10),
-                          .init(name: "Роман", avatarImage: "11", likeCount: 11),
-                          .init(name: "Ярослав", avatarImage: "12", likeCount: 12, isLike: true),
-                          .init(name: "Алена", avatarImage: "13", likeCount: 13),
-                          .init(name: "Филипп", avatarImage: "14", likeCount: 14),
-                          .init(name: "Алексей", avatarImage: "15", likeCount: 15),
-                          .init(name: "Жанна", avatarImage: "16", likeCount: 14),
-                          .init(name: "Гелена", avatarImage: "17", likeCount: 13),
-                          .init(name: "Борис", avatarImage: "18", likeCount: 12),
-                          .init(name: "Николай", avatarImage: "19", likeCount: 11),
-                          .init(name: "Юрий", avatarImage: "20", likeCount: 10),
-                          .init(name: "Дмитрий", avatarImage: "21", likeCount: 9),
-                          .init(name: "Кирилл", avatarImage: "22", likeCount: 8),
-                          .init(name: "Татьяна", avatarImage: "23", likeCount: 7),
-                          .init(name: "Ольга", avatarImage: "24", likeCount: 6),
-                          .init(name: "Лиза", avatarImage: "25", likeCount: 5),
-                          .init(name: "Инна", avatarImage: "26", likeCount: 4),
-                          .init(name: "Мария", avatarImage: "27", likeCount: 3),
-                          .init(name: "Константин", avatarImage: "28", likeCount: 2),
-                          .init(name: "Евгений", avatarImage: "29", likeCount: 1),
-                          .init(name: "Зинаида", avatarImage: "30", likeCount: 0),
-                          .init(name: "Владислав", avatarImage: "31", likeCount: 1),
-                          .init(name: "Вячеслав", avatarImage: "32", likeCount: 2),
-                          .init(name: "Михаил", avatarImage: "33", likeCount: 3),
-                          .init(name: "Пол", avatarImage: "34", likeCount: 4),
-                          .init(name: "Джон", avatarImage: "35", likeCount: 5),
-                          .init(name: "Элла", avatarImage: "36", likeCount: 6),
-                          .init(name: "Антуан", avatarImage: "37", likeCount: 7),
-                          .init(name: "Шон", avatarImage: "38", likeCount: 8),
-                          .init(name: "Ибрагим", avatarImage: "39", likeCount: 9),
-                          .init(name: "Сальвадорэ", avatarImage: "40", likeCount: 10)
-    ]
-    
-    var friends: [User] = []
-    // Двумерный массив отсортированный по первой букве
-    var contactListForTableView = [[ User ]]()
-    // Переделываем таблицу из многомерного массива на Set
-    var contactListForTableViewDictionary = [ String:[User] ]()
+    // сервисный класс загрузки данных из API idFriends и данные друзей
+    let service = UserService()
+    // сервисный класс загрузки всех фотографий пользователя
+    let getAllPhotosService = GetAllPhotoService()
+    // полученные данные от API
+    var usersFromApiVK: User!
+    // Массив моделей всех друзей
+    var source: [UserModel] = []
+    // Отсортированный словарь с данными друзей
+    var contactListForTableViewDictionary = [ String:[UserModel] ]()
     
     // MARK: - Private Properties
     // MARK: - Initializers
@@ -76,46 +29,28 @@ class FriendsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Временно для работы с анимацией картинок в PhotoAnimationVC добавляем массив этих картинок к каждому User в sourse
-        for i in sourse.indices {
-            sourse[i].images = imagesTemp
-        }
-//        createDictionaryForContactList(contactList: sourse)
-        friends = sourse.sorted(by: { $0.name < $1.name })
-        contactListForTableView = sortContactListForTableView(contactList: friends)
-        // заполняем временными картинками
+        // получаем id'шники друзей
+        fetchFriendsID()
         
     }
     
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return contactListForTableView.count
         return contactListForTableViewDictionary.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactListForTableView[section].count
-//        return contactListForTableViewDictionary.keys.count
-
+        let keyByIndexPath = contactListForTableViewDictionary.keys.sorted()[section]
+        return contactListForTableViewDictionary[keyByIndexPath]?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-
-        return String(contactListForTableView[section][0].name.first!)
-//        return contactListForTableViewDictionary.keys.sorted()[section]
-
+        return contactListForTableViewDictionary.keys.sorted()[section]
     }
     
-    
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        var result = [String]()
-        for i in 0..<contactListForTableView.count {
-            result.append(String(contactListForTableView[i][0].name.first!))
-        }
-        
-        return result
+        return contactListForTableViewDictionary.keys.sorted()
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -129,8 +64,10 @@ class FriendsTableViewController: UITableViewController {
         //        cell.contentConfiguration = configuration
         
         //реализация ячейки через storyboard и outlet
-        cell.avatarView.image = UIImage(named: contactListForTableView[indexPath.section][indexPath.row].avatarImage)!
-        cell.name.text = contactListForTableView[indexPath.section][indexPath.row].name
+        let keyByIndexPath = contactListForTableViewDictionary.keys.sorted()[indexPath.section]
+        
+        cell.avatarView.loadImage(url: contactListForTableViewDictionary[keyByIndexPath]![indexPath.row].avatarImage)
+        cell.name.text = contactListForTableViewDictionary[keyByIndexPath]![indexPath.row].name
         
         return cell
     }
@@ -139,14 +76,18 @@ class FriendsTableViewController: UITableViewController {
         if editingStyle == .delete {
             let alert = UIAlertController(title: "Delete contact?", message: "Action cannot be undone", preferredStyle: .alert)
             let buttonOk = UIAlertAction(title: "Ok", style: .default) { _ in
-                if self.contactListForTableView[indexPath.section].count == 1 {
-                    self.contactListForTableView.remove(at: indexPath.section)
+                
+                let keyByIndexPath = self.contactListForTableViewDictionary.keys.sorted()[indexPath.section]
+                // если удаляется последний друг в секции, то удаляется и секция
+                if self.contactListForTableViewDictionary[keyByIndexPath]?.count == 1 {
+                    self.contactListForTableViewDictionary[keyByIndexPath] = nil
                     tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
                 } else {
-                    self.contactListForTableView[indexPath.section].remove(at: indexPath.row)
+                    self.contactListForTableViewDictionary[keyByIndexPath]?.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .fade)
                 }
             }
+            // подтверждение удаления
             let buttonCancel = UIAlertAction(title: "Cancel", style: .destructive)
             alert.addAction(buttonOk)
             alert.addAction(buttonCancel)
@@ -156,46 +97,89 @@ class FriendsTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "FriendProfileSegueID" {
             let destination = segue.destination as! FriendProfileCollectionViewController
             let index = tableView.indexPathForSelectedRow
-            destination.updateData(user: contactListForTableView[index!.section][index!.row])
+            // передаем на следующий VC выбранную ячейку
+            let keyByIndexPath = contactListForTableViewDictionary.keys.sorted()[index!.section]
+            destination.updateData(user: contactListForTableViewDictionary[keyByIndexPath]![index!.row])
         }
     }
     
     // MARK: - IBActions
     // MARK: - Public Methods
-//
-//    func firstLettersArray(_ friends: [User]) -> [Character] {
-//        return Array(Set(friends.compactMap( {$0.name.first!}))).sorted()
-//    }
-//
     // MARK: - Private Methods
-    private func sortContactListForTableView (contactList: [User]) -> [[User]] {
-        let sortedList = friends
-
-        var result = [[User]]()
-        var arrayTemp = [sortedList[0]]
-
-        for i in 1...(contactList.count - 1) {
-            if arrayTemp.last!.name.first! == sortedList[i].name.first! {
-                arrayTemp.append(sortedList[i])
-            } else {
-                result.append(arrayTemp)
-                arrayTemp.removeAll()
-                arrayTemp.append(sortedList[i])
+    
+    // Получаем id друзей пользователя
+    private func fetchFriendsID() {
+        
+        self.service.loadFriendsID { [weak self] result in
+            switch result {
+            case .success(let items):
+                // Запрашиваем данные пользователей по их id
+                self?.fetchUser(ids: items)
+            case .failure(let error):
+                print(#function)
+                print(error)
             }
         }
-        result.append(arrayTemp)
-        return result
     }
     
-    private func createDictionaryForContactList (contactList: [User]) -> [String : [User]] {
-
-        var result = [String : [User]]()
-
+    // Получаем данные друзей (имя, аватарку)
+    private func fetchUser(ids: [Int]) {
+        service.loadFriendsProfile(userID: ids) { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.usersFromApiVK = user
+                // Получаем все фотографии конкретного пользователя
+                self?.getAllPhoto()
+            case .failure(let error):
+                print(#function)
+                print(error)
+            }
+        }
+    }
+    
+    // Получаем все фото друга
+    private func getAllPhoto() {
+        
+        self.updateSource()
+        
+    }
+    
+    private func updateSource() {
+        
+        for user in self.usersFromApiVK.userData {
+            
+            let name = user.firstName + " " + user.lastName
+            let avatarImageLoad = user.avatarImage
+            let id = user.id
+            addUser(name: name, id: id, avatarImage: avatarImageLoad, images: [])
+            
+        }
+    }
+    
+    func addUser(name: String, id: Int, avatarImage: String, images: [(String, Int)]) {
+        let model = UserModel(name: name,
+                              id: id,
+                              avatarImage: avatarImage,
+                              likeCount: Int.random(in: 1...10),
+                              isLike: Bool.random(),
+                              images: images)
+        self.source.append(model)
+        self.contactListForTableViewDictionary = self.createDictionaryForContactList(contactList: self.source)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    private func createDictionaryForContactList (contactList: [UserModel]) -> [String : [UserModel]] {
+        
+        var result = [ String:[UserModel] ]()
+        
         for item in contactList {
-
+            
             if var existingArray = result[String(item.name.first!)] {
                 existingArray.append(item)
                 result[String(item.name.first!)] = existingArray
@@ -205,5 +189,4 @@ class FriendsTableViewController: UITableViewController {
         }
         return result
     }
-
 }

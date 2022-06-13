@@ -32,8 +32,9 @@ class LoginViewController: UIViewController {
         // Присваиваем его UIScrollVIew
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
         
-        // Добавляем extention для отображения параля в поле ввода
+        // Добавляем extension для отображения пароля в поле ввода
         passwordTextField.enablePasswordToggle()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +62,9 @@ class LoginViewController: UIViewController {
         let password = passwordTextField.text!
         
         if login == "admin" && password == "123456" {
-            print("успешная авторизация")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "tabBarControllerID")
+            show(vc, sender: nil)
         } else {
             let alert = UIAlertController(title: "Wrong password", message: "Check your password", preferredStyle: .alert)
             
