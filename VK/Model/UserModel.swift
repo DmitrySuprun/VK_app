@@ -15,6 +15,7 @@ protocol UserListProtocol {
 
 struct UserModel: UserListProtocol {
     var name: String
+    var id: Int = 0
     var avatarImage: String
     var likeCount: Int
     var isLike = false

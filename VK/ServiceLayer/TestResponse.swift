@@ -43,6 +43,7 @@ final class TestResponse {
                 print("🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈")
             } catch {
                 print("❌")
+                print(#function)
                 print("ERROR")
                 print("❌")
 

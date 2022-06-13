@@ -22,13 +22,9 @@ class GetAllPhotoService {
         ]
         
         guard let url = urlComponents.url else { return }
-        
-        print("🏳️‍🌈")
-        print(url)
-        print("🏳️‍🌈")
-        
+       
         URLSession.shared.dataTask(with: url) { data, response, error in
-            
+
             guard let data = data else { return }
             
             do {

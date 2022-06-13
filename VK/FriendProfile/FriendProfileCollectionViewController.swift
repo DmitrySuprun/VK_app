@@ -9,11 +9,13 @@ import UIKit
 
 class FriendProfileCollectionViewController: UICollectionViewController {
     
+    let service = GetAllPhotoService()
+    
     var userProfileInfo = UserModel(name: "", avatarImage: "", likeCount: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fetchAllPhoto()
     }
 
     // MARK: UICollectionViewDataSource
@@ -47,6 +49,20 @@ class FriendProfileCollectionViewController: UICollectionViewController {
     // Передача данных из FriendstableView
     func updateData(user: UserModel) {
         userProfileInfo = user
+    }
+    
+    func fetchAllPhoto() {
+        service.loadPhoto(id: String(userProfileInfo.id)) { [weak self] result in
+            switch result {
+            case .success(let photo):
+                DispatchQueue.main.async {
+                    self?.userProfileInfo.images = photo
+                    self?.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 
 }

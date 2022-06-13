@@ -21,6 +21,7 @@ final class UserService {
         urlComponents.path = "/method/friends.get"
         urlComponents.queryItems = [URLQueryItem(name: "access_token", value: VKSession.instance.token),
                                     URLQueryItem(name: "v", value: "5.131")]
+        
         guard let url = urlComponents.url else { return }
         
         session.dataTask(with: url) { data, response, error in
@@ -31,6 +32,7 @@ final class UserService {
                 let friendsID = try JSONDecoder().decode(FriendsIDModel.self, from: data)
                 completion(.success(friendsID.items))
             } catch {
+                print(#function)
                 completion(.failure(Constants.Service.ServiceError.decodingError))
             }
         }.resume()

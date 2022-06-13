@@ -12,12 +12,15 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - IBOutlets
     // MARK: - Public Properties
     
-    // сервисный класс загрузки данных из API
+    // сервисный класс загрузки данных из API idFriends и данные друзей
     let service = UserService()
+    // сервисный класс загрузки всех фотографий пользователя
     let getAllPhotosService = GetAllPhotoService()
-    var usersID = [Int]()
-    var userFromApiVK: User!
+    // полученные данные от API
+    var usersFromApiVK: User!
+    // Массив моделей всех друзей
     var source: [UserModel] = []
+    // Отсортированный словарь с данными друзей
     var contactListForTableViewDictionary = [ String:[UserModel] ]()
     
     // MARK: - Private Properties
@@ -26,6 +29,7 @@ class FriendsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // получаем id'шники друзей
         fetchFriendsID()
         
     }
@@ -74,7 +78,7 @@ class FriendsTableViewController: UITableViewController {
             let buttonOk = UIAlertAction(title: "Ok", style: .default) { _ in
                 
                 let keyByIndexPath = self.contactListForTableViewDictionary.keys.sorted()[indexPath.section]
-                
+                // если удаляется последний друг в секции, то удаляется и секция
                 if self.contactListForTableViewDictionary[keyByIndexPath]?.count == 1 {
                     self.contactListForTableViewDictionary[keyByIndexPath] = nil
                     tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
@@ -83,6 +87,7 @@ class FriendsTableViewController: UITableViewController {
                     tableView.deleteRows(at: [indexPath], with: .fade)
                 }
             }
+            // подтверждение удаления
             let buttonCancel = UIAlertAction(title: "Cancel", style: .destructive)
             alert.addAction(buttonOk)
             alert.addAction(buttonCancel)
@@ -96,7 +101,7 @@ class FriendsTableViewController: UITableViewController {
         if segue.identifier == "FriendProfileSegueID" {
             let destination = segue.destination as! FriendProfileCollectionViewController
             let index = tableView.indexPathForSelectedRow
-            
+            // передаем на следующий VC выбранную ячейку
             let keyByIndexPath = contactListForTableViewDictionary.keys.sorted()[index!.section]
             destination.updateData(user: contactListForTableViewDictionary[keyByIndexPath]![index!.row])
         }
@@ -108,26 +113,29 @@ class FriendsTableViewController: UITableViewController {
     
     // Получаем id друзей пользователя
     private func fetchFriendsID() {
-        self.service.loadFriendsID { result in
+        
+        self.service.loadFriendsID { [weak self] result in
             switch result {
             case .success(let items):
-                self.usersID = items
-                self.fetchUser()
+                // Запрашиваем данные пользователей по их id
+                self?.fetchUser(ids: items)
             case .failure(let error):
+                print(#function)
                 print(error)
             }
         }
-        
     }
     
     // Получаем данные друзей (имя, аватарку)
-    private func fetchUser() {
-        service.loadFriendsProfile(userID: usersID) { result in
+    private func fetchUser(ids: [Int]) {
+        service.loadFriendsProfile(userID: ids) { [weak self] result in
             switch result {
             case .success(let user):
-                self.userFromApiVK = user
-                self.getAllPhoto()
+                self?.usersFromApiVK = user
+                // Получаем все фотографии конкретного пользователя
+                self?.getAllPhoto()
             case .failure(let error):
+                print(#function)
                 print(error)
             }
         }
@@ -137,33 +145,25 @@ class FriendsTableViewController: UITableViewController {
     private func getAllPhoto() {
         
         self.updateSource()
-
+        
     }
     
     private func updateSource() {
         
-        for i in 0..<self.userFromApiVK.userData.count {
+        for user in self.usersFromApiVK.userData {
             
-            let name = self.userFromApiVK.userData[i].firstName + " " + self.userFromApiVK.userData[i].lastName
-            let avatarImageLoad = self.userFromApiVK.userData[i].avatarImage
-            let likeCount: [Int] = []
-
-            self.getAllPhotosService.loadPhoto(id: String(self.userFromApiVK.userData[i].id)) { result in
-                switch result {
-                case .success(let getImages):
-                    self.addUser(name: name, avatarImage: avatarImageLoad, images: getImages)
-                case .failure(let error):
-                    print("ERROR------")
-                    print(error)
-                    print("------ERROR")
-
-                }
-            }
+            let name = user.firstName + " " + user.lastName
+            let avatarImageLoad = user.avatarImage
+            let id = user.id
+            addUser(name: name, id: id, avatarImage: avatarImageLoad, images: [])
+            
         }
     }
     
-    func addUser(name: String, avatarImage: String, images: [(String, Int)]) {
-        let model = UserModel(name: name, avatarImage: avatarImage,
+    func addUser(name: String, id: Int, avatarImage: String, images: [(String, Int)]) {
+        let model = UserModel(name: name,
+                              id: id,
+                              avatarImage: avatarImage,
                               likeCount: Int.random(in: 1...10),
                               isLike: Bool.random(),
                               images: images)
