@@ -191,7 +191,6 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="Next"/>
                                                 <connections>
                                                     <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Ag-Bf-QXi"/>
-                                                    <segue destination="MJw-1x-1EZ" kind="presentation" modalPresentationStyle="fullScreen" id="MGm-ah-lna"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email or phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z5h-lX-g84">
@@ -636,7 +635,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="OK3-Dr-G0H">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="MJw-1x-1EZ" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarControllerID" automaticallyAdjustsScrollViewInsets="NO" id="MJw-1x-1EZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lEe-cC-KDS"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NcD-8h-Zxw">
@@ -715,6 +714,13 @@
                                     <action selector="findGroup:" destination="o4L-nf-A9I" eventType="touchUpInside" id="D23-NO-z06"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sLA-jQ-Gi9">
+                                <rect key="frame" x="87" y="474" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="sLA-jQ-Gi9" secondAttribute="height" multiplier="1:1" id="1rY-QP-fZ0"/>
+                                    <constraint firstAttribute="width" constant="240" id="51n-bt-AaK"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PQ1-88-VSc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -723,11 +729,13 @@
                             <constraint firstItem="DKC-r6-Mnu" firstAttribute="centerX" secondItem="qbB-LO-25b" secondAttribute="centerX" id="4up-xh-JxD"/>
                             <constraint firstItem="7Ei-TN-a3f" firstAttribute="centerX" secondItem="PQ1-88-VSc" secondAttribute="centerX" id="ARG-7V-Cp3"/>
                             <constraint firstItem="7Ei-TN-a3f" firstAttribute="top" secondItem="DKC-r6-Mnu" secondAttribute="bottom" constant="41" id="C69-7j-Hbg"/>
+                            <constraint firstItem="sLA-jQ-Gi9" firstAttribute="centerX" secondItem="qbB-LO-25b" secondAttribute="centerX" id="Daa-ii-lh6"/>
                             <constraint firstItem="2W4-xr-UXH" firstAttribute="centerX" secondItem="PQ1-88-VSc" secondAttribute="centerX" id="GaH-Gc-ATo"/>
                             <constraint firstItem="2W4-xr-UXH" firstAttribute="top" secondItem="PQ1-88-VSc" secondAttribute="top" id="Gnv-Ze-jfh"/>
                             <constraint firstItem="DKC-r6-Mnu" firstAttribute="top" secondItem="Yaq-qu-iol" secondAttribute="bottom" constant="33" id="IyO-Uu-ZEF"/>
                             <constraint firstItem="7QL-ev-uSn" firstAttribute="centerX" secondItem="PQ1-88-VSc" secondAttribute="centerX" id="M5R-lZ-NuW"/>
                             <constraint firstItem="Yaq-qu-iol" firstAttribute="centerX" secondItem="PQ1-88-VSc" secondAttribute="centerX" id="SJL-wE-mk4"/>
+                            <constraint firstItem="PQ1-88-VSc" firstAttribute="bottom" secondItem="sLA-jQ-Gi9" secondAttribute="bottom" constant="148" id="p7n-HQ-rYP"/>
                             <constraint firstItem="Yaq-qu-iol" firstAttribute="top" secondItem="2W4-xr-UXH" secondAttribute="bottom" constant="34" id="vaU-e8-0Um"/>
                         </constraints>
                     </view>

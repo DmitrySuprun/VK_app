@@ -22,8 +22,8 @@ final class LoginVKViewController: UIViewController {
     override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        view = webView
         webView.navigationDelegate = self
+        view = webView
     }
     
     override func viewDidLoad() {
@@ -62,8 +62,8 @@ extension LoginVKViewController: WKNavigationDelegate {
         VKSession.instance.userID = Int(userID)
         
         // Present next VC
-        let stb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = stb.instantiateViewController(withIdentifier: "TestRequestViewControllerID")
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "Login")
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -71,7 +71,7 @@ extension LoginVKViewController: WKNavigationDelegate {
 
 private extension LoginVKViewController {
     
-    /// Web request for authorization form
+    // Web request for authorization form
     func loadAuth() {
         
         // Requirements from VK API for authorization and get token
@@ -84,7 +84,7 @@ private extension LoginVKViewController {
                                      URLQueryItem(name: "display", value: "mobile"),
                                      URLQueryItem(name: "response_type", value: "token"),
                                      URLQueryItem(name: "revoke", value: "1"),
-                                     URLQueryItem(name: "scope", value: "11111111111111111111")
+                                     URLQueryItem(name: "scope", value: "offline,friends,groups,photos")
         ]
         guard let url = urlComponents.url else { return }
         let loginRequest = URLRequest(url: url)
