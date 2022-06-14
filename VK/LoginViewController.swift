@@ -35,6 +35,10 @@ class LoginViewController: UIViewController {
         // Добавляем extension для отображения пароля в поле ввода
         passwordTextField.enablePasswordToggle()
         
+        // Заполняем логин и пароль из предыдущего ввода сохраненного в UserDefaults
+        loginTextField.text = (userDefaults.string(forKey: "login") ?? "") as String
+        passwordTextField.text = (userDefaults.string(forKey: "password") ?? "") as String
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +64,10 @@ class LoginViewController: UIViewController {
 
         let login = loginTextField.text!
         let password = passwordTextField.text!
+        
+        // Временно сохраняем введенные значения в UserDefaults для автоматического заполнения в следующий раз
+        userDefaults.setValue(login, forKey: "login")
+        userDefaults.setValue(password, forKey: "password")
         
         if login == "admin" && password == "123456" {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

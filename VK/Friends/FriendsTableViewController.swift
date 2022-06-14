@@ -65,7 +65,6 @@ class FriendsTableViewController: UITableViewController {
         
         //реализация ячейки через storyboard и outlet
         let keyByIndexPath = contactListForTableViewDictionary.keys.sorted()[indexPath.section]
-        
         cell.avatarView.loadImage(url: contactListForTableViewDictionary[keyByIndexPath]![indexPath.row].avatarImage)
         cell.name.text = contactListForTableViewDictionary[keyByIndexPath]![indexPath.row].name
         
