@@ -39,6 +39,9 @@ class LoginViewController: UIViewController {
         loginTextField.text = (userDefaults.string(forKey: "login") ?? "") as String
         passwordTextField.text = (userDefaults.string(forKey: "password") ?? "") as String
         
+        
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -134,7 +137,6 @@ class LoginViewController: UIViewController {
     private func removeBlurEffect(view: UIVisualEffectView) {
         view.removeFromSuperview()
     }
-    
 }
 
 // Отображение пароля в поле ввода

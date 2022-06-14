@@ -26,14 +26,23 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - Private Properties
     // MARK: - Initializers
     // MARK: - Override Methods
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // получаем id'шники друзей
         fetchFriendsID()
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Устанавливаем darkMode из userDefaults не работает во viewDidLoad и villAppear
+        self.view.window?.overrideUserInterfaceStyle = userDefaults.bool(forKey: "darkMode") ? .dark : .light
+    
+    }
+   
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -112,6 +121,7 @@ class FriendsTableViewController: UITableViewController {
     
     // Получаем id друзей пользователя
     private func fetchFriendsID() {
+       
         
         self.service.loadFriendsID { [weak self] result in
             switch result {
@@ -169,6 +179,7 @@ class FriendsTableViewController: UITableViewController {
         self.source.append(model)
         self.contactListForTableViewDictionary = self.createDictionaryForContactList(contactList: self.source)
         DispatchQueue.main.async {
+            
             self.tableView.reloadData()
         }
     }

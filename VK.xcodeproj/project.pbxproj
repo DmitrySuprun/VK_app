@@ -12,6 +12,7 @@
 		D501788B2854CE0600403228 /* CommunitiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501788A2854CE0600403228 /* CommunitiesService.swift */; };
 		D501788D2854D8E900403228 /* Communities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501788C2854D8E900403228 /* Communities.swift */; };
 		D50178922858653D00403228 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50178912858653D00403228 /* UserDefaults.swift */; };
+		D5017895285876BD00403228 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017894285876BD00403228 /* SettingsViewController.swift */; };
 		D50C01842801E044006D8583 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01832801E044006D8583 /* UserModel.swift */; };
 		D50C01872801E2BE006D8583 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */; };
 		D50C01892801E2D7006D8583 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */; };
@@ -56,6 +57,7 @@
 		D501788A2854CE0600403228 /* CommunitiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesService.swift; sourceTree = "<group>"; };
 		D501788C2854D8E900403228 /* Communities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communities.swift; sourceTree = "<group>"; };
 		D50178912858653D00403228 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		D5017894285876BD00403228 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D50C01832801E044006D8583 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
@@ -107,6 +109,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D50178932858768C00403228 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D5017894285876BD00403228 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		D50C01822801DF16006D8583 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +219,7 @@
 		D5B2B3E227FA7F7F00FA1E17 /* VK */ = {
 			isa = PBXGroup;
 			children = (
+				D50178932858768C00403228 /* Settings */,
 				D59EAF3C284B309D00461B5D /* Extension */,
 				D51C42A8284A2F65000CE622 /* Common */,
 				D5DD3591284128EE00CA2092 /* ServiceLayer */,
@@ -337,6 +348,7 @@
 				D5106B102822FE78006A02EE /* PhotoAnimationViewController.swift in Sources */,
 				D5B4EC7E28388ACF0073F14E /* CustomAnimationUINavigationController.swift in Sources */,
 				D5DD35932841292000CA2092 /* LoginService.swift in Sources */,
+				D5017895285876BD00403228 /* SettingsViewController.swift in Sources */,
 				D5C667F3280B02B000B9F04A /* LikeUIControl.swift in Sources */,
 				D5C66819280F462600B9F04A /* NewsTableViewController.swift in Sources */,
 				D51C42AA284A2F98000CE622 /* Constants.swift in Sources */,

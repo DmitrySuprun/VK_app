@@ -564,6 +564,45 @@
             </objects>
             <point key="canvasLocation" x="7155.0724637681169" y="436.60714285714283"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="NhW-9c-rVg">
+            <objects>
+                <viewController id="lbV-KI-Qxg" customClass="SettingsViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="olp-eZ-7hd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrD-h0-RTq">
+                                <rect key="frame" x="68" y="120" width="84" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QzS-oS-JyM">
+                                <rect key="frame" x="191" y="115" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchDarkMode:" destination="lbV-KI-Qxg" eventType="valueChanged" id="NfL-9d-Oe7"/>
+                                </connections>
+                            </switch>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ACS-Nt-3X6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QzS-oS-JyM" firstAttribute="centerY" secondItem="yrD-h0-RTq" secondAttribute="centerY" id="4Lt-i4-GdG"/>
+                            <constraint firstItem="QzS-oS-JyM" firstAttribute="leading" secondItem="yrD-h0-RTq" secondAttribute="trailing" constant="39" id="4kR-er-EBB"/>
+                            <constraint firstItem="yrD-h0-RTq" firstAttribute="top" secondItem="ACS-Nt-3X6" secondAttribute="top" constant="76" id="5b4-qb-fVI"/>
+                            <constraint firstItem="yrD-h0-RTq" firstAttribute="leading" secondItem="ACS-Nt-3X6" secondAttribute="leading" constant="68" id="r8K-8D-V0y"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="Ifi-I3-0YI"/>
+                    <connections>
+                        <outlet property="darkModeSwitch" destination="QzS-oS-JyM" id="dxP-tm-q9K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="An0-1D-LnC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5070" y="-1010"/>
+        </scene>
         <!--Friends-->
         <scene sceneID="dfj-oW-THR">
             <objects>
@@ -647,6 +686,7 @@
                         <segue destination="e5l-ny-591" kind="relationship" relationship="viewControllers" id="rz0-K9-9z1"/>
                         <segue destination="LCQ-iu-YUp" kind="relationship" relationship="viewControllers" id="y1u-19-pAB"/>
                         <segue destination="huP-E0-LiY" kind="relationship" relationship="viewControllers" id="36x-pV-5XR"/>
+                        <segue destination="lbV-KI-Qxg" kind="relationship" relationship="viewControllers" id="YDk-vp-8o1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTS-pZ-DN2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -674,6 +714,7 @@
         <image name="1" width="184" height="184"/>
         <image name="VK_Compact_Logo-png" width="1440" height="1440"/>
         <image name="VK_Full_Logo" width="5520" height="960"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="newspaper" catalog="system" width="128" height="111"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
