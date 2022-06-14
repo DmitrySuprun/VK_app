@@ -72,6 +72,7 @@ class LoginViewController: UIViewController {
         if login == "admin" && password == "123456" {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "tabBarControllerID")
+            vc.modalPresentationStyle = .fullScreen
             show(vc, sender: nil)
         } else {
             let alert = UIAlertController(title: "Wrong password", message: "Check your password", preferredStyle: .alert)

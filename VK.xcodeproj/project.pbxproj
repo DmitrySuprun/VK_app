@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D5017884284DEBD800403228 /* PhotoGetAllModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017883284DEBD800403228 /* PhotoGetAllModel.swift */; };
-		D5017887284FDE8200403228 /* TestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017886284FDE8200403228 /* TestResponse.swift */; };
 		D5017889285014AB00403228 /* GetAllPhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017888285014AB00403228 /* GetAllPhotoService.swift */; };
 		D501788B2854CE0600403228 /* CommunitiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501788A2854CE0600403228 /* CommunitiesService.swift */; };
 		D501788D2854D8E900403228 /* Communities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501788C2854D8E900403228 /* Communities.swift */; };
@@ -53,7 +52,6 @@
 
 /* Begin PBXFileReference section */
 		D5017883284DEBD800403228 /* PhotoGetAllModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGetAllModel.swift; sourceTree = "<group>"; };
-		D5017886284FDE8200403228 /* TestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResponse.swift; sourceTree = "<group>"; };
 		D5017888285014AB00403228 /* GetAllPhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllPhotoService.swift; sourceTree = "<group>"; };
 		D501788A2854CE0600403228 /* CommunitiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesService.swift; sourceTree = "<group>"; };
 		D501788C2854D8E900403228 /* Communities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communities.swift; sourceTree = "<group>"; };
@@ -258,7 +256,6 @@
 			children = (
 				D5DD358F2841173700CA2092 /* VKSession.swift */,
 				D5DD35922841292000CA2092 /* LoginService.swift */,
-				D5017886284FDE8200403228 /* TestResponse.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -340,7 +337,6 @@
 				D5106B102822FE78006A02EE /* PhotoAnimationViewController.swift in Sources */,
 				D5B4EC7E28388ACF0073F14E /* CustomAnimationUINavigationController.swift in Sources */,
 				D5DD35932841292000CA2092 /* LoginService.swift in Sources */,
-				D5017887284FDE8200403228 /* TestResponse.swift in Sources */,
 				D5C667F3280B02B000B9F04A /* LikeUIControl.swift in Sources */,
 				D5C66819280F462600B9F04A /* NewsTableViewController.swift in Sources */,
 				D51C42AA284A2F98000CE622 /* Constants.swift in Sources */,

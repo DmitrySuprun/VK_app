@@ -64,7 +64,8 @@ extension LoginVKViewController: WKNavigationDelegate {
         // Present next VC
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = mainStoryboard.instantiateViewController(withIdentifier: "Login")
-        self.navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        show(vc, sender: nil)
         
     }
 }
