@@ -35,14 +35,6 @@ class FriendsTableViewController: UITableViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // Устанавливаем darkMode из userDefaults не работает во viewDidLoad и villAppear
-        self.view.window?.overrideUserInterfaceStyle = userDefaults.bool(forKey: "darkMode") ? .dark : .light
-    
-    }
-   
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {

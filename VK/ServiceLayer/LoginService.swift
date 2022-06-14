@@ -31,6 +31,14 @@ final class LoginVKViewController: UIViewController {
         
         loadAuth()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Устанавливаем darkMode из userDefaults не работает во viewDidLoad и villAppear
+        self.view.window?.overrideUserInterfaceStyle = userDefaults.bool(forKey: "darkMode") ? .dark : .light
+    
+    }
 }
 
 
@@ -92,3 +100,5 @@ private extension LoginVKViewController {
         webView.load(loginRequest)
     }
 }
+
+

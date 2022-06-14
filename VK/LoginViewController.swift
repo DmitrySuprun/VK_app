@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class LoginViewController: UIViewController {
     
@@ -18,6 +19,9 @@ class LoginViewController: UIViewController {
     let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialLight)
     let visualEffect = UIVisualEffectView()
     
+    // импортируем SwiftKeychainWrapper для работы с защищенным хранилищем keyChain как с userDefaults
+    let keyChain = KeychainWrapper.standard
+
     // MARK: - Override Methods
     
     override func viewDidLoad() {
@@ -36,8 +40,8 @@ class LoginViewController: UIViewController {
         passwordTextField.enablePasswordToggle()
         
         // Заполняем логин и пароль из предыдущего ввода сохраненного в UserDefaults
-        loginTextField.text = (userDefaults.string(forKey: "login") ?? "") as String
-        passwordTextField.text = (userDefaults.string(forKey: "password") ?? "") as String
+        loginTextField.text = (keyChain.string(forKey: "login") ?? "") as String
+        passwordTextField.text = (keyChain.string(forKey: "password") ?? "") as String
         
         
 
@@ -69,8 +73,8 @@ class LoginViewController: UIViewController {
         let password = passwordTextField.text!
         
         // Временно сохраняем введенные значения в UserDefaults для автоматического заполнения в следующий раз
-        userDefaults.setValue(login, forKey: "login")
-        userDefaults.setValue(password, forKey: "password")
+        keyChain.set(login, forKey: "login")
+        keyChain.set(password, forKey: "password")
         
         if login == "admin" && password == "123456" {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

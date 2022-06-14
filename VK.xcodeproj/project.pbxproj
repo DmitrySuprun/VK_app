@@ -11,8 +11,9 @@
 		D5017889285014AB00403228 /* GetAllPhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017888285014AB00403228 /* GetAllPhotoService.swift */; };
 		D501788B2854CE0600403228 /* CommunitiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501788A2854CE0600403228 /* CommunitiesService.swift */; };
 		D501788D2854D8E900403228 /* Communities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501788C2854D8E900403228 /* Communities.swift */; };
-		D50178922858653D00403228 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50178912858653D00403228 /* UserDefaults.swift */; };
 		D5017895285876BD00403228 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017894285876BD00403228 /* SettingsViewController.swift */; };
+		D50178982858CE5900403228 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D50178972858CE5900403228 /* SwiftKeychainWrapper */; };
+		D501789A2858D18000403228 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50178992858D18000403228 /* UserDefaults.swift */; };
 		D50C01842801E044006D8583 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01832801E044006D8583 /* UserModel.swift */; };
 		D50C01872801E2BE006D8583 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */; };
 		D50C01892801E2D7006D8583 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */; };
@@ -56,8 +57,8 @@
 		D5017888285014AB00403228 /* GetAllPhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllPhotoService.swift; sourceTree = "<group>"; };
 		D501788A2854CE0600403228 /* CommunitiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesService.swift; sourceTree = "<group>"; };
 		D501788C2854D8E900403228 /* Communities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communities.swift; sourceTree = "<group>"; };
-		D50178912858653D00403228 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		D5017894285876BD00403228 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D50178992858D18000403228 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		D50C01832801E044006D8583 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
@@ -103,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D50178982858CE5900403228 /* SwiftKeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				D51C42A9284A2F98000CE622 /* Constants.swift */,
-				D50178912858653D00403228 /* UserDefaults.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -266,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				D5DD358F2841173700CA2092 /* VKSession.swift */,
+				D50178992858D18000403228 /* UserDefaults.swift */,
 				D5DD35922841292000CA2092 /* LoginService.swift */,
 			);
 			path = ServiceLayer;
@@ -287,6 +289,9 @@
 			dependencies = (
 			);
 			name = VK;
+			packageProductDependencies = (
+				D50178972858CE5900403228 /* SwiftKeychainWrapper */,
+			);
 			productName = VK;
 			productReference = D5B2B3E027FA7F7F00FA1E17 /* VK.app */;
 			productType = "com.apple.product-type.application";
@@ -315,6 +320,9 @@
 				Base,
 			);
 			mainGroup = D5B2B3D727FA7F7F00FA1E17;
+			packageReferences = (
+				D50178962858CE5800403228 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+			);
 			productRefGroup = D5B2B3E127FA7F7F00FA1E17 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -375,7 +383,7 @@
 				D50C01892801E2D7006D8583 /* FriendsTableViewCell.swift in Sources */,
 				D5B2B3E627FA7F7F00FA1E17 /* SceneDelegate.swift in Sources */,
 				D5106B0E2821C56B006A02EE /* CloudAnimationViewController.swift in Sources */,
-				D50178922858653D00403228 /* UserDefaults.swift in Sources */,
+				D501789A2858D18000403228 /* UserDefaults.swift in Sources */,
 				D50C01842801E044006D8583 /* UserModel.swift in Sources */,
 				D5017889285014AB00403228 /* GetAllPhotoService.swift in Sources */,
 				D50C01872801E2BE006D8583 /* FriendsTableViewController.swift in Sources */,
@@ -598,6 +606,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D50178962858CE5800403228 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D50178972858CE5900403228 /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D50178962858CE5800403228 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D5B2B3EC27FA7F7F00FA1E17 /* VK.xcdatamodeld */ = {
