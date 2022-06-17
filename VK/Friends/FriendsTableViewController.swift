@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import CoreData
 
 class FriendsTableViewController: UITableViewController {
     
     // MARK: - IBOutlets
     // MARK: - Public Properties
+    
+    // context of CoreData
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     // сервисный класс загрузки данных из API idFriends и данные друзей
     let service = UserService()
@@ -32,7 +36,7 @@ class FriendsTableViewController: UITableViewController {
         
         // получаем id'шники друзей
         fetchFriendsID()
-        
+        getCoreDataDBPath()
     }
     
     // MARK: - Table view data source
@@ -111,6 +115,76 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - Public Methods
     // MARK: - Private Methods
     
+    // CoreData
+    
+    //
+    func getCoreDataDBPath() {
+            let path = FileManager
+                .default
+                .urls(for: .applicationSupportDirectory, in: .userDomainMask)
+                .last?
+                .absoluteString
+                .replacingOccurrences(of: "file://", with: "")
+                .removingPercentEncoding
+
+            print("Core Data DB Path :: \(path ?? "Not found")")
+        }
+    
+    private func saveCoreData() {
+        for item in source {
+            let user = UserCoreData(context: self.context)
+            user.id = Int64(item.id)
+            user.name = item.name
+            user.avatarImage = item.avatarImage
+            user.isLike = item.isLike
+            for image in item.images {
+                let images = ImagesCoreData(context: self.context)
+                images.image = image.0
+                images.likeCount = Int64(image.1)
+                user.addToImages(images)
+            }
+            do {
+                try self.context.save()
+            } catch {
+                print("❌❌❌ Can't save data in DataCore")
+            }
+        }
+    }
+    
+    private func fetchCoreData() {
+//        do {
+//            let result = try self.context.fetch(UserCoreData.fetchRequest())
+//            for item in result {
+//                var images = item.images?.allObjects
+//                images[0].
+//                for image in item.images! {
+//                    images.append((image))
+//                }
+//                addUser(name: item.name ?? "",
+//                        id: Int(item.id),
+//                        avatarImage: item.avatarImage ?? "",
+//                        images: <#T##[(String, Int)]#>)
+//            }
+//        } catch {
+//            print("❌❌❌ Couldn't read CoreData")
+//        }
+    }
+    
+    private func deleteCoreData() {
+        do {
+            let result = try self.context.fetch(UserCoreData.fetchRequest())
+            self.context.delete(result[0])
+        } catch {
+            print("❌❌❌ Couldn't read CoreData in delete func")
+        }
+        
+        do {
+            try self.context.save()
+        } catch {
+            print("❌❌❌ Can't delete CoreData")
+        }
+    }
+    
     // Получаем id друзей пользователя
     private func fetchFriendsID() {
        
@@ -159,19 +233,20 @@ class FriendsTableViewController: UITableViewController {
             addUser(name: name, id: id, avatarImage: avatarImageLoad, images: [])
             
         }
+//        saveCoreData()
     }
     
     func addUser(name: String, id: Int, avatarImage: String, images: [(String, Int)]) {
         let model = UserModel(name: name,
                               id: id,
                               avatarImage: avatarImage,
-                              likeCount: Int.random(in: 1...10),
+                              likeCount: 0,
                               isLike: Bool.random(),
                               images: images)
         self.source.append(model)
         self.contactListForTableViewDictionary = self.createDictionaryForContactList(contactList: self.source)
+        
         DispatchQueue.main.async {
-            
             self.tableView.reloadData()
         }
     }

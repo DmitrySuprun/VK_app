@@ -76,6 +76,11 @@ class LoginViewController: UIViewController {
         keyChain.set(login, forKey: "login")
         keyChain.set(password, forKey: "password")
         
+//        методы удаления из keyChain т.к. эти данные остаются даже после удаления приложения
+//        keyChain.removeObject(forKey: "login")
+//        keyChain.removeObject(forKey: "password")
+        
+        
         if login == "admin" && password == "123456" {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "tabBarControllerID")
