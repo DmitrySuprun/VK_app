@@ -30,13 +30,16 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - Private Properties
     // MARK: - Initializers
     // MARK: - Override Methods
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // чтение данных из CoreData
+        fetchCoreData()
+        
         // получаем id'шники друзей
         fetchFriendsID()
-        getCoreDataDBPath()
+        
     }
     
     // MARK: - Table view data source
@@ -117,18 +120,19 @@ class FriendsTableViewController: UITableViewController {
     
     // CoreData
     
-    //
+    // Для поиска файлов .sqlite в симуляторе и анализе через стороннее приложение
     func getCoreDataDBPath() {
-            let path = FileManager
-                .default
-                .urls(for: .applicationSupportDirectory, in: .userDomainMask)
-                .last?
-                .absoluteString
-                .replacingOccurrences(of: "file://", with: "")
-                .removingPercentEncoding
-
-            print("Core Data DB Path :: \(path ?? "Not found")")
-        }
+        let path = FileManager
+            .default
+            .urls(for: .applicationSupportDirectory, in: .userDomainMask)
+            .last?
+            .absoluteString
+            .replacingOccurrences(of: "file://", with: "")
+            .removingPercentEncoding
+        
+        print("Core Data DB Path ::")
+        print("\(path ?? "Not found")")
+    }
     
     private func saveCoreData() {
         for item in source {
@@ -152,28 +156,29 @@ class FriendsTableViewController: UITableViewController {
     }
     
     private func fetchCoreData() {
-//        do {
-//            let result = try self.context.fetch(UserCoreData.fetchRequest())
-//            for item in result {
-//                var images = item.images?.allObjects
-//                images[0].
-//                for image in item.images! {
-//                    images.append((image))
-//                }
-//                addUser(name: item.name ?? "",
-//                        id: Int(item.id),
-//                        avatarImage: item.avatarImage ?? "",
-//                        images: <#T##[(String, Int)]#>)
-//            }
-//        } catch {
-//            print("❌❌❌ Couldn't read CoreData")
-//        }
-    }
-    
-    private func deleteCoreData() {
         do {
             let result = try self.context.fetch(UserCoreData.fetchRequest())
-            self.context.delete(result[0])
+            
+            for item in result {
+                
+                addUser(name: item.name ?? "",
+                        id: Int(item.id),
+                        avatarImage: item.avatarImage ?? "",
+                        images: [])
+            }
+        } catch {
+            print("❌❌❌ Couldn't read CoreData")
+        }
+        self.updateAndReloadTableView()
+    }
+    
+    private func deleteAllCoreData() {
+        
+        do {
+            let result = try self.context.fetch(UserCoreData.fetchRequest())
+            for item in result {
+                self.context.delete(item)
+            }
         } catch {
             print("❌❌❌ Couldn't read CoreData in delete func")
         }
@@ -187,7 +192,6 @@ class FriendsTableViewController: UITableViewController {
     
     // Получаем id друзей пользователя
     private func fetchFriendsID() {
-       
         
         self.service.loadFriendsID { [weak self] result in
             switch result {
@@ -207,8 +211,8 @@ class FriendsTableViewController: UITableViewController {
             switch result {
             case .success(let user):
                 self?.usersFromApiVK = user
-                // Получаем все фотографии конкретного пользователя
-                self?.getAllPhoto()
+                // сохраняем полученные данные в DataCore
+                self?.updateDataCore()
             case .failure(let error):
                 print(#function)
                 print(error)
@@ -216,27 +220,40 @@ class FriendsTableViewController: UITableViewController {
         }
     }
     
-    // Получаем все фото друга
-    private func getAllPhoto() {
+    private func updateDataCore() {
+        // Обновляем CoreData удаляем все значения и записываем новые
+        self.deleteAllCoreData()
+        self.source.removeAll()
         
-        self.updateSource()
-        
-    }
-    
-    private func updateSource() {
-        
-        for user in self.usersFromApiVK.userData {
+        for userFromApi in self.usersFromApiVK.userData {
             
-            let name = user.firstName + " " + user.lastName
-            let avatarImageLoad = user.avatarImage
-            let id = user.id
-            addUser(name: name, id: id, avatarImage: avatarImageLoad, images: [])
+            let name = userFromApi.firstName + " " + userFromApi.lastName
+            let avatarImageLoad = userFromApi.avatarImage
+            let id = userFromApi.id
+            
+            let user = UserCoreData(context: self.context)
+            user.id = Int64(id)
+            user.name = name
+            user.avatarImage = avatarImageLoad
+            user.isLike = false
+            
+            let images = ImagesCoreData(context: self.context)
+            images.likeCount = 0
+            images.image = ""
+            user.addToImages(images)
+            
             
         }
-//        saveCoreData()
+        do {
+            try self.context.save()
+        } catch {
+            print("❌❌❌ Can't save data in DataCore")
+        }
+        self.fetchCoreData()
     }
     
-    func addUser(name: String, id: Int, avatarImage: String, images: [(String, Int)]) {
+    
+    private func addUser(name: String, id: Int, avatarImage: String, images: [(String, Int)]) {
         let model = UserModel(name: name,
                               id: id,
                               avatarImage: avatarImage,
@@ -244,15 +261,19 @@ class FriendsTableViewController: UITableViewController {
                               isLike: Bool.random(),
                               images: images)
         self.source.append(model)
-        self.contactListForTableViewDictionary = self.createDictionaryForContactList(contactList: self.source)
+    }
+    
+    private func updateAndReloadTableView() {
         
+        self.contactListForTableViewDictionary = self.createDictionaryForContactList(contactList: self.source)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
     
+    // Создаем словарь для удобной работы с TableView
     private func createDictionaryForContactList (contactList: [UserModel]) -> [String : [UserModel]] {
-        
+        // Модель словаря
         var result = [ String:[UserModel] ]()
         
         for item in contactList {
