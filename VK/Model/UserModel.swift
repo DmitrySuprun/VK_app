@@ -5,7 +5,6 @@
 //  Created by Дмитрий Супрун on 9.04.22.
 //
 
-import Foundation
 import UIKit
 
 protocol UserListProtocol {
@@ -14,10 +13,12 @@ protocol UserListProtocol {
     var likeCount: Int { get }
 }
 
-struct User: UserListProtocol {
+struct UserModel: UserListProtocol {
     var name: String
+    var id: Int = 0
     var avatarImage: String
     var likeCount: Int
     var isLike = false
-    var images = [UIImage?]()
+    var images = [(String, Int)]()
 }
+

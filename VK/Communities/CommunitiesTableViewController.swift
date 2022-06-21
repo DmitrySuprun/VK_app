@@ -11,9 +11,28 @@ class CommunitiesTableViewController: UITableViewController {
     
     var communitiesList = [Community]()
     private var searchBackup = [Community]()
+    var service = CommunitiesService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        service.loadGroup { result in
+            switch result {
+            case .success(let communities):
+                var loadedCommunities: [Community] = []
+                for item in communities.response.items {
+                    let community = Community(name: item.name, image: item.photo)
+                    loadedCommunities.append(community)
+                }
+                self.communitiesList = loadedCommunities
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(#function)
+                print(error)
+                print("⚽️")
+            }
+        }
         
     }
     
@@ -48,7 +67,7 @@ class CommunitiesTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func unwindToCommuniesController(_ segue: UIStoryboardSegue) {
+    @IBAction func unwindToCommunitiesController(_ segue: UIStoryboardSegue) {
         tableView.reloadData()
     }
 }

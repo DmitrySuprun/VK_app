@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ImagesCoreData" representedClassName="ImagesCoreData" syncable="YES">
+        <attribute name="image" attributeType="String"/>
+        <attribute name="likeCount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="userCoreData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserCoreData" inverseName="images" inverseEntity="UserCoreData"/>
+    </entity>
+    <entity name="UserCoreData" representedClassName="UserCoreData" syncable="YES">
+        <attribute name="avatarImage" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isLike" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="likeCount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ImagesCoreData" inverseName="userCoreData" inverseEntity="ImagesCoreData"/>
+    </entity>
+    <elements>
+        <element name="UserCoreData" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="ImagesCoreData" positionX="-65.40234375" positionY="160.2265625" width="128" height="88"/>
+    </elements>
 </model>

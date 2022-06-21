@@ -22,14 +22,25 @@ final class LoginVKViewController: UIViewController {
     override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        view = webView
         webView.navigationDelegate = self
+        view = webView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Тестовая проверка Realm
+        let testRealm = TestRealm()
+        testRealm.runTest()
         
         loadAuth()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Устанавливаем darkMode из userDefaults не работает во viewDidLoad и villAppear
+        self.view.window?.overrideUserInterfaceStyle = userDefaults.bool(forKey: "darkMode") ? .dark : .light
+    
     }
 }
 
@@ -62,16 +73,17 @@ extension LoginVKViewController: WKNavigationDelegate {
         VKSession.instance.userID = Int(userID)
         
         // Present next VC
-        let stb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = stb.instantiateViewController(withIdentifier: "TestRequestViewControllerID")
-        self.navigationController?.pushViewController(vc, animated: true)
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewController(withIdentifier: "Login")
+        vc.modalPresentationStyle = .fullScreen
+        show(vc, sender: nil)
         
     }
 }
 
 private extension LoginVKViewController {
     
-    /// Web request for authorization form
+    // Web request for authorization form
     func loadAuth() {
         
         // Requirements from VK API for authorization and get token
@@ -84,10 +96,12 @@ private extension LoginVKViewController {
                                      URLQueryItem(name: "display", value: "mobile"),
                                      URLQueryItem(name: "response_type", value: "token"),
                                      URLQueryItem(name: "revoke", value: "1"),
-                                     URLQueryItem(name: "scope", value: "11111111111111111111")
+                                     URLQueryItem(name: "scope", value: "offline,friends,groups,photos")
         ]
         guard let url = urlComponents.url else { return }
         let loginRequest = URLRequest(url: url)
         webView.load(loginRequest)
     }
 }
+
+

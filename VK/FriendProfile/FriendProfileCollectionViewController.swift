@@ -9,11 +9,13 @@ import UIKit
 
 class FriendProfileCollectionViewController: UICollectionViewController {
     
-    var userProfileInfo = User(name: "", avatarImage: "", likeCount: 0)
+    let service = GetAllPhotoService()
+    
+    var userProfileInfo = UserModel(name: "", avatarImage: "", likeCount: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fetchAllPhoto()
     }
 
     // MARK: UICollectionViewDataSource
@@ -30,8 +32,8 @@ class FriendProfileCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendProfileCellID", for: indexPath) as! FriendProfileCollectionViewCell
-        cell.userImage.image = userProfileInfo.images[indexPath.row]
-        cell.likeControl.likeCount = userProfileInfo.likeCount
+        cell.userImage.loadImage(url: userProfileInfo.images[indexPath.row].0)
+        cell.likeControl.likeCount = userProfileInfo.images[indexPath.row].1
         cell.likeControl.isLike = userProfileInfo.isLike
 
         return cell
@@ -44,9 +46,23 @@ class FriendProfileCollectionViewController: UICollectionViewController {
         }
     }
     
-    // Передача данных из FriendstableView
-    func updateData(user: User) {
+    // Передача данных из FriendsTableView
+    func updateData(user: UserModel) {
         userProfileInfo = user
+    }
+    
+    func fetchAllPhoto() {
+        service.loadPhoto(id: String(userProfileInfo.id)) { [weak self] result in
+            switch result {
+            case .success(let photo):
+                DispatchQueue.main.async {
+                    self?.userProfileInfo.images = photo
+                    self?.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 
 }
