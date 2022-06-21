@@ -37,7 +37,7 @@ class FriendsTableViewController: UITableViewController {
         // чтение данных из CoreData
         fetchCoreData()
         
-        // получаем id'шники друзей
+        // получаем id'шники друзей, затем все остальные данные из API VK
         fetchFriendsID()
         
     }
@@ -195,9 +195,9 @@ class FriendsTableViewController: UITableViewController {
         
         self.service.loadFriendsID { [weak self] result in
             switch result {
-            case .success(let items):
+            case .success(let friendsIdModel):
                 // Запрашиваем данные пользователей по их id
-                self?.fetchUser(ids: items)
+                self?.fetchUser(modelWithID: friendsIdModel)
             case .failure(let error):
                 print(#function)
                 print(error)
@@ -206,8 +206,8 @@ class FriendsTableViewController: UITableViewController {
     }
     
     // Получаем данные друзей (имя, аватарку)
-    private func fetchUser(ids: [Int]) {
-        service.loadFriendsProfile(userID: ids) { [weak self] result in
+    private func fetchUser(modelWithID: FriendsIDModel) {
+        service.loadFriendsProfile(modelWithUserID: modelWithID) { [weak self] result in
             switch result {
             case .success(let user):
                 self?.usersFromApiVK = user

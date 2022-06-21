@@ -28,6 +28,9 @@ final class LoginVKViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Тестовая проверка Realm
+        let testRealm = TestRealm()
+        testRealm.runTest()
         
         loadAuth()
     }

@@ -6,8 +6,83 @@
 //
 
 import Foundation
-import UIKit
+import RealmSwift
 
+// transform struct: Decodable in class: Object, Decodable for Realm
+class PhotoGetAllModel: Object, Decodable {
+
+    var photos = List<Photos>()
+
+    enum CodingKeys: String, CodingKey {
+        case response
+    }
+
+    enum ResponseCodingKeys: String, CodingKey {
+        case items
+    }
+
+    convenience required init(from decoder: Decoder) throws {
+        self.init()
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let responseContainer = try container.nestedContainer(keyedBy: ResponseCodingKeys.self, forKey: .response)
+        self.photos = try responseContainer.decode(List<Photos>.self, forKey: .items)
+
+    }
+}
+
+class Photos: Object, Decodable {
+    var sizes = List<Sizes>()
+    var likes: Like?
+}
+
+class Sizes: Object, Decodable {
+    @objc dynamic var url: String = ""
+    @objc dynamic var type: String = ""
+}
+
+class Like: Object, Decodable {
+    @objc dynamic var count: Int = 0
+}
+
+
+//struct PhotoGetAllModel: Decodable {
+//
+//    let photos: [Photos]
+//
+//    struct Photos: Decodable {
+//        let sizes: [Sizes]
+//        let likes: Like
+//    }
+//
+//    struct Sizes: Decodable {
+//        let url: String
+//        let type: String
+//
+//    }
+//
+//    struct Like: Decodable {
+//        let count: Int
+//    }
+//
+//    enum CodingKeys: String, CodingKey {
+//        case response
+//    }
+//
+//    enum ResponseCodingKeys: String, CodingKey {
+//        case items
+//    }
+//
+//
+//    init(from decoder: Decoder) throws {
+//
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        let responseContainer = try container.nestedContainer(keyedBy: ResponseCodingKeys.self, forKey: .response)
+//        self.photos = try responseContainer.decode([Photos].self, forKey: .items)
+//
+//    }
+//}
+
+// Тестовые struct с большим количеством информации
 //struct PhotoGetAll: Decodable {
 //
 //    let response: Response
@@ -39,57 +114,6 @@ import UIKit
 //        }
 //    }
 //}
-
-struct PhotoGetAllModel: Decodable {
-    
-    let photos: [Photos]
-
-    struct Photos: Decodable {
-        let sizes: [Sizes]
-        let likes: Like
-    }
-
-    struct Sizes: Decodable {
-        let url: String
-        let type: String
-        
-    }
-
-    struct Like: Decodable {
-        let count: Int
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case response
-    }
-
-    enum ResponseCodingKeys: String, CodingKey {
-        case items
-    }
-
-    enum ItemsCodingKeys: String, CodingKey {
-        case sizes
-        case likes
-    }
-
-    enum SizesCodingKeys: String, CodingKey {
-        case url
-        case type
-    }
-
-    enum Likes: String, CodingKey {
-        case count
-    }
-
-    init(from decoder: Decoder) throws {
-
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let responseContainer = try container.nestedContainer(keyedBy: ResponseCodingKeys.self, forKey: .response)
-        self.photos = try responseContainer.decode([Photos].self, forKey: .items)
-
-    }
-}
-
 
 //struct PhotoGetAll: Decodable {
 //

@@ -9,7 +9,7 @@ import Foundation
 
 final class UserService {
     
-    typealias FriendsIDResult = Result<[Int], Error>
+    typealias FriendsIDResult = Result<FriendsIDModel, Error>
     typealias UserProfileResult = Result<User, Error>
     
     func loadFriendsID(completion: @escaping(FriendsIDResult) -> ()) {
@@ -30,7 +30,7 @@ final class UserService {
             
             do {
                 let friendsID = try JSONDecoder().decode(FriendsIDModel.self, from: data)
-                completion(.success(friendsID.items))
+                completion(.success(friendsID))
             } catch {
                 print(#function)
                 completion(.failure(Constants.Service.ServiceError.decodingError))
@@ -38,10 +38,10 @@ final class UserService {
         }.resume()
     }
     
-    func loadFriendsProfile(userID: [Int], completion: @escaping(UserProfileResult) -> ()) {
+    func loadFriendsProfile(modelWithUserID: FriendsIDModel, completion: @escaping(UserProfileResult) -> ()) {
         
         // форматирование ID в String c запятыми
-        var ids = userID.reduce(into: "") { partialResult, next in
+        var ids = modelWithUserID.items.reduce(into: "") { partialResult, next in
             partialResult += "," + String(next)
         }
         ids.removeFirst()

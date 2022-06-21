@@ -33,7 +33,7 @@ class GetAllPhotoService {
                 for item in photo.photos {
                     for size in item.sizes {
                         if size.type == "x" {
-                            result.append((size.url, item.likes.count))
+                            result.append((size.url, item.likes!.count))
                         }
                     }
                 }

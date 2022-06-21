@@ -18,6 +18,9 @@
 		D50178CE285CBB7800403228 /* UserCoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50178CA285CBB7800403228 /* UserCoreData+CoreDataProperties.swift */; };
 		D50178CF285CBB7800403228 /* ImagesCoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50178CB285CBB7800403228 /* ImagesCoreData+CoreDataClass.swift */; };
 		D50178D0285CBB7800403228 /* ImagesCoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50178CC285CBB7800403228 /* ImagesCoreData+CoreDataProperties.swift */; };
+		D50178D3285E0B0E00403228 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D50178D2285E0B0E00403228 /* Realm */; };
+		D50178D5285E0B0E00403228 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D50178D4285E0B0E00403228 /* RealmSwift */; };
+		D50178D8285E6D7D00403228 /* TestRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50178D7285E6D7D00403228 /* TestRealm.swift */; };
 		D50C01842801E044006D8583 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01832801E044006D8583 /* UserModel.swift */; };
 		D50C01872801E2BE006D8583 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */; };
 		D50C01892801E2D7006D8583 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */; };
@@ -67,6 +70,7 @@
 		D50178CA285CBB7800403228 /* UserCoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCoreData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D50178CB285CBB7800403228 /* ImagesCoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImagesCoreData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D50178CC285CBB7800403228 /* ImagesCoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImagesCoreData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D50178D7285E6D7D00403228 /* TestRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRealm.swift; sourceTree = "<group>"; };
 		D50C01832801E044006D8583 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D50178D5285E0B0E00403228 /* RealmSwift in Frameworks */,
+				D50178D3285E0B0E00403228 /* Realm in Frameworks */,
 				D50178982858CE5900403228 /* SwiftKeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +143,20 @@
 		D50178A4285C5E9000403228 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				D50178C9285CBB7800403228 /* UserCoreData+CoreDataClass.swift */,
+				D50178CA285CBB7800403228 /* UserCoreData+CoreDataProperties.swift */,
+				D50178CB285CBB7800403228 /* ImagesCoreData+CoreDataClass.swift */,
+				D50178CC285CBB7800403228 /* ImagesCoreData+CoreDataProperties.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		D50178D6285E6D6700403228 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				D50178D7285E6D7D00403228 /* TestRealm.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		D50C01822801DF16006D8583 /* Model */ = {
@@ -225,10 +243,6 @@
 		D5B2B3D727FA7F7F00FA1E17 = {
 			isa = PBXGroup;
 			children = (
-				D50178C9285CBB7800403228 /* UserCoreData+CoreDataClass.swift */,
-				D50178CA285CBB7800403228 /* UserCoreData+CoreDataProperties.swift */,
-				D50178CB285CBB7800403228 /* ImagesCoreData+CoreDataClass.swift */,
-				D50178CC285CBB7800403228 /* ImagesCoreData+CoreDataProperties.swift */,
 				D5B2B3FC27FE03CF00FA1E17 /* ExampleClass.swift */,
 				D5B2B3E227FA7F7F00FA1E17 /* VK */,
 				D5B2B3E127FA7F7F00FA1E17 /* Products */,
@@ -246,6 +260,7 @@
 		D5B2B3E227FA7F7F00FA1E17 /* VK */ = {
 			isa = PBXGroup;
 			children = (
+				D50178D6285E6D6700403228 /* Realm */,
 				D50178A4285C5E9000403228 /* CoreData */,
 				D50178932858768C00403228 /* Settings */,
 				D59EAF3C284B309D00461B5D /* Extension */,
@@ -319,6 +334,8 @@
 			name = VK;
 			packageProductDependencies = (
 				D50178972858CE5900403228 /* SwiftKeychainWrapper */,
+				D50178D2285E0B0E00403228 /* Realm */,
+				D50178D4285E0B0E00403228 /* RealmSwift */,
 			);
 			productName = VK;
 			productReference = D5B2B3E027FA7F7F00FA1E17 /* VK.app */;
@@ -350,6 +367,7 @@
 			mainGroup = D5B2B3D727FA7F7F00FA1E17;
 			packageReferences = (
 				D50178962858CE5800403228 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				D50178D1285E0B0E00403228 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = D5B2B3E127FA7F7F00FA1E17 /* Products */;
 			projectDirPath = "";
@@ -417,6 +435,7 @@
 				D5106B0E2821C56B006A02EE /* CloudAnimationViewController.swift in Sources */,
 				D501789A2858D18000403228 /* UserDefaults.swift in Sources */,
 				D50C01842801E044006D8583 /* UserModel.swift in Sources */,
+				D50178D8285E6D7D00403228 /* TestRealm.swift in Sources */,
 				D5017889285014AB00403228 /* GetAllPhotoService.swift in Sources */,
 				D50C01872801E2BE006D8583 /* FriendsTableViewController.swift in Sources */,
 				D5B2B3FD27FE03CF00FA1E17 /* ExampleClass.swift in Sources */,
@@ -648,6 +667,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		D50178D1285E0B0E00403228 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -655,6 +682,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D50178962858CE5800403228 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
 			productName = SwiftKeychainWrapper;
+		};
+		D50178D2285E0B0E00403228 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D50178D1285E0B0E00403228 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		D50178D4285E0B0E00403228 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D50178D1285E0B0E00403228 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 
