@@ -39,7 +39,7 @@ class CommunitiesService {
                 print("⚽️")
             } catch {
                 print(#function)
-                completion(.failure(Constants.Service.ServiceError.decodingError))
+                completion(.failure(error))
             }
         }.resume()
     }

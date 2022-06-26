@@ -6,26 +6,25 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 class FriendsTableViewController: UITableViewController {
     
     // MARK: - IBOutlets
     // MARK: - Public Properties
     
-    // context of CoreData
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     // сервисный класс загрузки данных из API idFriends и данные друзей
     let service = UserService()
-    // сервисный класс загрузки всех фотографий пользователя
-    let getAllPhotosService = GetAllPhotoService()
+    
     // полученные данные от API
-    var usersFromApiVK: User!
+    var usersFromApiVK: UserModel!
+    
     // Массив моделей всех друзей
-    var source: [UserModel] = []
+    var source: [User] = []
+    
     // Отсортированный словарь с данными друзей
-    var contactListForTableViewDictionary = [ String:[UserModel] ]()
+    var contactListForTableViewDictionary = [ String:[User] ]()
+    
     
     // MARK: - Private Properties
     // MARK: - Initializers
@@ -34,11 +33,11 @@ class FriendsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // чтение данных из CoreData
-        fetchCoreData()
+        // Загружаем данные из Realm
+        fetchReamData()
         
-        // получаем id'шники друзей, затем все остальные данные из API VK
-        fetchFriendsID()
+        // получаем данные из API VK
+        fetchUser()
         
     }
     
@@ -103,178 +102,71 @@ class FriendsTableViewController: UITableViewController {
         } else if editingStyle == .insert {}
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "FriendProfileSegueID" {
-            let destination = segue.destination as! FriendProfileCollectionViewController
-            let index = tableView.indexPathForSelectedRow
-            // передаем на следующий VC выбранную ячейку
-            let keyByIndexPath = contactListForTableViewDictionary.keys.sorted()[index!.section]
-            destination.updateData(user: contactListForTableViewDictionary[keyByIndexPath]![index!.row])
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        if segue.identifier == "FriendProfileSegueID" {
+//            let destination = segue.destination as! FriendProfileCollectionViewController
+//            let index = tableView.indexPathForSelectedRow
+//            // передаем на следующий VC выбранную ячейку
+//            let keyByIndexPath = contactListForTableViewDictionary.keys.sorted()[index!.section]
+//            destination.updateData(user: contactListForTableViewDictionary[keyByIndexPath]![index!.row])
+//        }
+//    }
     
     // MARK: - IBActions
     // MARK: - Public Methods
     // MARK: - Private Methods
     
-    // CoreData
-    
-    // Для поиска файлов .sqlite в симуляторе и анализе через стороннее приложение
-    func getCoreDataDBPath() {
-        let path = FileManager
-            .default
-            .urls(for: .applicationSupportDirectory, in: .userDomainMask)
-            .last?
-            .absoluteString
-            .replacingOccurrences(of: "file://", with: "")
-            .removingPercentEncoding
-        
-        print("Core Data DB Path ::")
-        print("\(path ?? "Not found")")
-    }
-    
-    private func saveCoreData() {
-        for item in source {
-            let user = UserCoreData(context: self.context)
-            user.id = Int64(item.id)
-            user.name = item.name
-            user.avatarImage = item.avatarImage
-            user.isLike = item.isLike
-            for image in item.images {
-                let images = ImagesCoreData(context: self.context)
-                images.image = image.0
-                images.likeCount = Int64(image.1)
-                user.addToImages(images)
-            }
-            do {
-                try self.context.save()
-            } catch {
-                print("❌❌❌ Can't save data in DataCore")
-            }
-        }
-    }
-    
-    private func fetchCoreData() {
-        do {
-            let result = try self.context.fetch(UserCoreData.fetchRequest())
-            
-            for item in result {
-                
-                addUser(name: item.name ?? "",
-                        id: Int(item.id),
-                        avatarImage: item.avatarImage ?? "",
-                        images: [])
-            }
-        } catch {
-            print("❌❌❌ Couldn't read CoreData")
-        }
-        self.updateAndReloadTableView()
-    }
-    
-    private func deleteAllCoreData() {
+    private func fetchReamData() {
         
         do {
-            let result = try self.context.fetch(UserCoreData.fetchRequest())
-            for item in result {
-                self.context.delete(item)
-            }
+            let realm = try Realm()
+            let test = realm.objects(User.self)
+            source = test.map({ user in
+                return user
+            })
+            
         } catch {
-            print("❌❌❌ Couldn't read CoreData in delete func")
+            print(#function)
+            print("Can't get object from Realm")
         }
-        
-        do {
-            try self.context.save()
-        } catch {
-            print("❌❌❌ Can't delete CoreData")
-        }
-    }
-    
-    // Получаем id друзей пользователя
-    private func fetchFriendsID() {
-        
-        self.service.loadFriendsID { [weak self] result in
-            switch result {
-            case .success(let friendsIdModel):
-                // Запрашиваем данные пользователей по их id
-                self?.fetchUser(modelWithID: friendsIdModel)
-            case .failure(let error):
-                print(#function)
-                print(error)
-            }
-        }
-    }
-    
-    // Получаем данные друзей (имя, аватарку)
-    private func fetchUser(modelWithID: FriendsIDModel) {
-        service.loadFriendsProfile(modelWithUserID: modelWithID) { [weak self] result in
-            switch result {
-            case .success(let user):
-                self?.usersFromApiVK = user
-                // сохраняем полученные данные в DataCore
-                self?.updateDataCore()
-            case .failure(let error):
-                print(#function)
-                print(error)
-            }
-        }
-    }
-    
-    private func updateDataCore() {
-        // Обновляем CoreData удаляем все значения и записываем новые
-        self.deleteAllCoreData()
-        self.source.removeAll()
-        
-        for userFromApi in self.usersFromApiVK.userData {
-            
-            let name = userFromApi.firstName + " " + userFromApi.lastName
-            let avatarImageLoad = userFromApi.avatarImage
-            let id = userFromApi.id
-            
-            let user = UserCoreData(context: self.context)
-            user.id = Int64(id)
-            user.name = name
-            user.avatarImage = avatarImageLoad
-            user.isLike = false
-            
-            let images = ImagesCoreData(context: self.context)
-            images.likeCount = 0
-            images.image = ""
-            user.addToImages(images)
-            
-            
-        }
-        do {
-            try self.context.save()
-        } catch {
-            print("❌❌❌ Can't save data in DataCore")
-        }
-        self.fetchCoreData()
-    }
-    
-    
-    private func addUser(name: String, id: Int, avatarImage: String, images: [(String, Int)]) {
-        let model = UserModel(name: name,
-                              id: id,
-                              avatarImage: avatarImage,
-                              likeCount: 0,
-                              isLike: Bool.random(),
-                              images: images)
-        self.source.append(model)
-    }
-    
-    private func updateAndReloadTableView() {
         
         self.contactListForTableViewDictionary = self.createDictionaryForContactList(contactList: self.source)
+        
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
-    
+
+    // Получаем данные друзей (id, имя, аватарку)
+    private func fetchUser() {
+        service.loadFriendsProfile() { [weak self] result in
+            switch result {
+            case .success(let user):
+                // add User to Realm
+                do {
+                    let realm = try Realm()
+                    print(realm.configuration.fileURL)
+                    try realm.write {
+                        user.userData.forEach { user in
+                            realm.add(user)
+                        }
+                    }
+                } catch {
+                    print(#function)
+                    print("Realm write ERROR")
+                }
+            case .failure(let error):
+                print(#function)
+                print(error)
+            }
+        }
+    }
+   
     // Создаем словарь для удобной работы с TableView
-    private func createDictionaryForContactList (contactList: [UserModel]) -> [String : [UserModel]] {
+    private func createDictionaryForContactList (contactList: [User]) -> [String : [User]] {
         // Модель словаря
-        var result = [ String:[UserModel] ]()
+        var result = [ String:[User] ]()
         
         for item in contactList {
             

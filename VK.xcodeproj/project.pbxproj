@@ -20,8 +20,6 @@
 		D50178D0285CBB7800403228 /* ImagesCoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50178CC285CBB7800403228 /* ImagesCoreData+CoreDataProperties.swift */; };
 		D50178D3285E0B0E00403228 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D50178D2285E0B0E00403228 /* Realm */; };
 		D50178D5285E0B0E00403228 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D50178D4285E0B0E00403228 /* RealmSwift */; };
-		D50178D8285E6D7D00403228 /* TestRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50178D7285E6D7D00403228 /* TestRealm.swift */; };
-		D50C01842801E044006D8583 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01832801E044006D8583 /* UserModel.swift */; };
 		D50C01872801E2BE006D8583 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */; };
 		D50C01892801E2D7006D8583 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */; };
 		D50C018C2803AA73006D8583 /* FriendProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C018B2803AA73006D8583 /* FriendProfileCollectionViewController.swift */; };
@@ -33,10 +31,8 @@
 		D50C019A2803CE58006D8583 /* Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C01992803CE58006D8583 /* Community.swift */; };
 		D5106B0E2821C56B006A02EE /* CloudAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5106B0D2821C56B006A02EE /* CloudAnimationViewController.swift */; };
 		D5106B102822FE78006A02EE /* PhotoAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5106B0F2822FE78006A02EE /* PhotoAnimationViewController.swift */; };
-		D51C42A32847F23A000CE622 /* FriendsIDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C42A22847F23A000CE622 /* FriendsIDModel.swift */; };
-		D51C42A52848DF45000CE622 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C42A42848DF45000CE622 /* User.swift */; };
+		D51C42A52848DF45000CE622 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C42A42848DF45000CE622 /* UserModel.swift */; };
 		D51C42A72848E70D000CE622 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C42A62848E70D000CE622 /* UserService.swift */; };
-		D51C42AA284A2F98000CE622 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C42A9284A2F98000CE622 /* Constants.swift */; };
 		D59EAF3F284B30D600461B5D /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59EAF3E284B30D600461B5D /* UIImageExtension.swift */; };
 		D5B2B3E427FA7F7F00FA1E17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3E327FA7F7F00FA1E17 /* AppDelegate.swift */; };
 		D5B2B3E627FA7F7F00FA1E17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2B3E527FA7F7F00FA1E17 /* SceneDelegate.swift */; };
@@ -70,8 +66,6 @@
 		D50178CA285CBB7800403228 /* UserCoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCoreData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D50178CB285CBB7800403228 /* ImagesCoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImagesCoreData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D50178CC285CBB7800403228 /* ImagesCoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImagesCoreData+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D50178D7285E6D7D00403228 /* TestRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRealm.swift; sourceTree = "<group>"; };
-		D50C01832801E044006D8583 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		D50C018B2803AA73006D8583 /* FriendProfileCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileCollectionViewController.swift; sourceTree = "<group>"; };
@@ -83,10 +77,8 @@
 		D50C01992803CE58006D8583 /* Community.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Community.swift; sourceTree = "<group>"; };
 		D5106B0D2821C56B006A02EE /* CloudAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudAnimationViewController.swift; sourceTree = "<group>"; };
 		D5106B0F2822FE78006A02EE /* PhotoAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAnimationViewController.swift; sourceTree = "<group>"; };
-		D51C42A22847F23A000CE622 /* FriendsIDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsIDModel.swift; sourceTree = "<group>"; };
-		D51C42A42848DF45000CE622 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D51C42A42848DF45000CE622 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D51C42A62848E70D000CE622 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		D51C42A9284A2F98000CE622 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D59EAF3E284B30D600461B5D /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		D5B2B3E027FA7F7F00FA1E17 /* VK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B2B3E327FA7F7F00FA1E17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,18 +143,9 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		D50178D6285E6D6700403228 /* Realm */ = {
-			isa = PBXGroup;
-			children = (
-				D50178D7285E6D7D00403228 /* TestRealm.swift */,
-			);
-			path = Realm;
-			sourceTree = "<group>";
-		};
 		D50C01822801DF16006D8583 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D50C01832801E044006D8583 /* UserModel.swift */,
 				D50C01992803CE58006D8583 /* Community.swift */,
 			);
 			path = Model;
@@ -172,8 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				D51C42A62848E70D000CE622 /* UserService.swift */,
-				D51C42A22847F23A000CE622 /* FriendsIDModel.swift */,
-				D51C42A42848DF45000CE622 /* User.swift */,
+				D51C42A42848DF45000CE622 /* UserModel.swift */,
 				D50C01862801E2BE006D8583 /* FriendsTableViewController.swift */,
 				D50C01882801E2D7006D8583 /* FriendsTableViewCell.swift */,
 			);
@@ -224,14 +206,6 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
-		D51C42A8284A2F65000CE622 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				D51C42A9284A2F98000CE622 /* Constants.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		D59EAF3C284B309D00461B5D /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,11 +234,9 @@
 		D5B2B3E227FA7F7F00FA1E17 /* VK */ = {
 			isa = PBXGroup;
 			children = (
-				D50178D6285E6D6700403228 /* Realm */,
 				D50178A4285C5E9000403228 /* CoreData */,
 				D50178932858768C00403228 /* Settings */,
 				D59EAF3C284B309D00461B5D /* Extension */,
-				D51C42A8284A2F65000CE622 /* Common */,
 				D5DD3591284128EE00CA2092 /* ServiceLayer */,
 				D5B4EC7C28388A280073F14E /* Navigation */,
 				D5106B0A28203199006A02EE /* Animation */,
@@ -406,9 +378,7 @@
 				D5017895285876BD00403228 /* SettingsViewController.swift in Sources */,
 				D5C667F3280B02B000B9F04A /* LikeUIControl.swift in Sources */,
 				D5C66819280F462600B9F04A /* NewsTableViewController.swift in Sources */,
-				D51C42AA284A2F98000CE622 /* Constants.swift in Sources */,
-				D51C42A32847F23A000CE622 /* FriendsIDModel.swift in Sources */,
-				D51C42A52848DF45000CE622 /* User.swift in Sources */,
+				D51C42A52848DF45000CE622 /* UserModel.swift in Sources */,
 				D5017884284DEBD800403228 /* PhotoGetAllModel.swift in Sources */,
 				D50C018C2803AA73006D8583 /* FriendProfileCollectionViewController.swift in Sources */,
 				D50C01962803CC80006D8583 /* CommunitySearchTableViewController.swift in Sources */,
@@ -434,8 +404,6 @@
 				D50178CD285CBB7800403228 /* UserCoreData+CoreDataClass.swift in Sources */,
 				D5106B0E2821C56B006A02EE /* CloudAnimationViewController.swift in Sources */,
 				D501789A2858D18000403228 /* UserDefaults.swift in Sources */,
-				D50C01842801E044006D8583 /* UserModel.swift in Sources */,
-				D50178D8285E6D7D00403228 /* TestRealm.swift in Sources */,
 				D5017889285014AB00403228 /* GetAllPhotoService.swift in Sources */,
 				D50C01872801E2BE006D8583 /* FriendsTableViewController.swift in Sources */,
 				D5B2B3FD27FE03CF00FA1E17 /* ExampleClass.swift in Sources */,

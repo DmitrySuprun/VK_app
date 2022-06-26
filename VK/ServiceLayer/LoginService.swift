@@ -28,9 +28,6 @@ final class LoginVKViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Тестовая проверка Realm
-        let testRealm = TestRealm()
-        testRealm.runTest()
         
         loadAuth()
     }
@@ -69,8 +66,11 @@ extension LoginVKViewController: WKNavigationDelegate {
         }
         
         guard let token = params["access_token"], let userID = params["user_id"] else { return }
+        print("Token ::")
+        print(token)
         VKSession.instance.token = token
         VKSession.instance.userID = Int(userID)
+        
         
         // Present next VC
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
