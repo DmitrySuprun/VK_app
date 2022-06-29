@@ -10,7 +10,7 @@
 //
 //class GetAllPhotoService {
 //    
-//    func loadPhoto(id: String, completion: @escaping (Result<PhotoGetAllModel, Error>) -> () ) {
+//    func loadPhoto(id: String, completion: @escaping (Result<AllPhotos, Error>) -> () ) {
 //        
 //        var urlComponents = URLComponents()
 //        urlComponents.scheme = "https"

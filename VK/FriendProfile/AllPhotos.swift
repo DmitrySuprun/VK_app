@@ -8,8 +8,7 @@
 //import Foundation
 //import RealmSwift
 //
-//// transform struct: Decodable in class: Object, Decodable for Realm
-//class PhotoGetAllModel: Object, Decodable {
+//class AllPhotos: Object, Decodable {
 //
 //    var photos = List<Photos>()
 //

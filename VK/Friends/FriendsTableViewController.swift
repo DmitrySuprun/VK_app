@@ -38,7 +38,6 @@ class FriendsTableViewController: UITableViewController {
         
         // получаем данные из API VK
         fetchUser()
-        
     }
     
     // MARK: - Table view data source
@@ -62,15 +61,6 @@ class FriendsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCellID", for: indexPath) as! FriendsTableViewCell
-        
-        // реализация ячейки со стандартными полями
-        //        var configuration = cell.defaultContentConfiguration()
-        //        configuration.text = friends[indexPath.row].name
-        //        configuration.imageProperties.maximumSize = CGSize(width: 30, height: 30)
-        //        configuration.image = UIImage(named: friends[indexPath.row].image)
-        //        cell.contentConfiguration = configuration
-        
-        //реализация ячейки через storyboard и outlet
         let keyByIndexPath = contactListForTableViewDictionary.keys.sorted()[indexPath.section]
         cell.avatarView.loadImage(url: contactListForTableViewDictionary[keyByIndexPath]![indexPath.row].avatarImage)
         cell.name.text = contactListForTableViewDictionary[keyByIndexPath]![indexPath.row].name
@@ -121,24 +111,22 @@ class FriendsTableViewController: UITableViewController {
         
         do {
             let realm = try Realm()
-            let test = realm.objects(User.self)
-            source = test.map({ user in
+            let UserList = realm.objects(User.self)
+            // List -> Array
+            source = UserList.map({ user in
                 return user
             })
             
         } catch {
             print(#function)
-            print("Can't get object from Realm")
+            print("❌ Can't get object from Realm")
+            print(error)
         }
         
-        self.contactListForTableViewDictionary = self.createDictionaryForContactList(contactList: self.source)
-        
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        reloadTableViewWithNewData()
     }
 
-    // Получаем данные друзей (id, имя, аватарку)
+    // Получаем данные друзей (id, имя, аватарку) из сети
     private func fetchUser() {
         service.loadFriendsProfile() { [weak self] result in
             switch result {
@@ -146,21 +134,30 @@ class FriendsTableViewController: UITableViewController {
                 // add User to Realm
                 do {
                     let realm = try Realm()
-                    print(realm.configuration.fileURL)
                     try realm.write {
-                        realm.deleteAll()
                         user.userData.forEach { user in
-                            realm.add(user)
+                            realm.add(user, update: .modified)
                         }
                     }
                 } catch {
                     print(#function)
-                    print("Realm write ERROR")
+                    print("❌ Realm write ERROR")
+                    print(error)
                 }
             case .failure(let error):
                 print(#function)
+                print("❌ Can't load friends profile")
                 print(error)
             }
+        }
+    }
+    
+    func reloadTableViewWithNewData() {
+        
+        self.contactListForTableViewDictionary = self.createDictionaryForContactList(contactList: self.source)
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
    

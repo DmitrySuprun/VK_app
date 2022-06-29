@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D5017884284DEBD800403228 /* PhotoGetAllModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017883284DEBD800403228 /* PhotoGetAllModel.swift */; };
+		D5017884284DEBD800403228 /* AllPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017883284DEBD800403228 /* AllPhotos.swift */; };
 		D5017889285014AB00403228 /* GetAllPhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017888285014AB00403228 /* GetAllPhotoService.swift */; };
 		D501788B2854CE0600403228 /* CommunitiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501788A2854CE0600403228 /* CommunitiesService.swift */; };
 		D501788D2854D8E900403228 /* Communities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501788C2854D8E900403228 /* Communities.swift */; };
@@ -56,7 +56,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D5017883284DEBD800403228 /* PhotoGetAllModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGetAllModel.swift; sourceTree = "<group>"; };
+		D5017883284DEBD800403228 /* AllPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPhotos.swift; sourceTree = "<group>"; };
 		D5017888285014AB00403228 /* GetAllPhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllPhotoService.swift; sourceTree = "<group>"; };
 		D501788A2854CE0600403228 /* CommunitiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesService.swift; sourceTree = "<group>"; };
 		D501788C2854D8E900403228 /* Communities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communities.swift; sourceTree = "<group>"; };
@@ -125,13 +125,6 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		D501789B2858D3A300403228 /* CoreDataService */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CoreDataService;
-			sourceTree = "<group>";
-		};
 		D50178A4285C5E9000403228 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +158,7 @@
 		D50C018A2803AA17006D8583 /* FriendProfile */ = {
 			isa = PBXGroup;
 			children = (
-				D5017883284DEBD800403228 /* PhotoGetAllModel.swift */,
+				D5017883284DEBD800403228 /* AllPhotos.swift */,
 				D50C018B2803AA73006D8583 /* FriendProfileCollectionViewController.swift */,
 				D5017888285014AB00403228 /* GetAllPhotoService.swift */,
 				D5C667F2280B02B000B9F04A /* LikeUIControl.swift */,
@@ -280,7 +273,6 @@
 		D5DD3591284128EE00CA2092 /* ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
-				D501789B2858D3A300403228 /* CoreDataService */,
 				D5DD358F2841173700CA2092 /* VKSession.swift */,
 				D50178992858D18000403228 /* UserDefaults.swift */,
 				D5DD35922841292000CA2092 /* LoginService.swift */,
@@ -379,7 +371,7 @@
 				D5C667F3280B02B000B9F04A /* LikeUIControl.swift in Sources */,
 				D5C66819280F462600B9F04A /* NewsTableViewController.swift in Sources */,
 				D51C42A52848DF45000CE622 /* UserModel.swift in Sources */,
-				D5017884284DEBD800403228 /* PhotoGetAllModel.swift in Sources */,
+				D5017884284DEBD800403228 /* AllPhotos.swift in Sources */,
 				D50C018C2803AA73006D8583 /* FriendProfileCollectionViewController.swift in Sources */,
 				D50C01962803CC80006D8583 /* CommunitySearchTableViewController.swift in Sources */,
 				D50C01982803CC92006D8583 /* CommunitySearchTableViewCell.swift in Sources */,

@@ -51,7 +51,7 @@
 //    }
 //    
 //    // Передача данных из FriendsTableView
-//    func updateData(user: UserModel) {
+//    func updateData(user: User) {
 //        userProfileInfo = user
 //    }
 //    

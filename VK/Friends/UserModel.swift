@@ -45,4 +45,8 @@ class User: Object, Decodable {
         case lastName = "last_name"
         case avatarImage = "photo_200"
     }
+    
+    override class func primaryKey() -> String? {
+        "id"
+    }
 }
