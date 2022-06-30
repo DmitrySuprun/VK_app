@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "realm-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-core",
+      "state" : {
+        "revision" : "fd48276f88f3d55dbdcdc9e8cbf32541811d5865",
+        "version" : "12.1.0"
+      }
+    },
+    {
+      "identity" : "realm-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-swift",
+      "state" : {
+        "branch" : "master",
+        "revision" : "f7ab017ac93178c3df274248ca37e224e624e619"
+      }
+    },
+    {
+      "identity" : "swiftkeychainwrapper",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jrendel/SwiftKeychainWrapper",
+      "state" : {
+        "revision" : "185a3165346a03767101c4f62e9a545a0fe0530f",
+        "version" : "4.0.1"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class LoginViewController: UIViewController {
     
@@ -18,6 +19,9 @@ class LoginViewController: UIViewController {
     let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialLight)
     let visualEffect = UIVisualEffectView()
     
+    // импортируем SwiftKeychainWrapper для работы с защищенным хранилищем keyChain как с userDefaults
+    let keyChain = KeychainWrapper.standard
+
     // MARK: - Override Methods
     
     override func viewDidLoad() {
@@ -32,8 +36,16 @@ class LoginViewController: UIViewController {
         // Присваиваем его UIScrollVIew
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
         
-        // Добавляем extention для отображения параля в поле ввода
+        // Добавляем extension для отображения пароля в поле ввода
         passwordTextField.enablePasswordToggle()
+        
+        // Заполняем логин и пароль из предыдущего ввода сохраненного в UserDefaults
+        loginTextField.text = (keyChain.string(forKey: "login") ?? "") as String
+        passwordTextField.text = (keyChain.string(forKey: "password") ?? "") as String
+        
+        
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,8 +72,20 @@ class LoginViewController: UIViewController {
         let login = loginTextField.text!
         let password = passwordTextField.text!
         
+        // Временно сохраняем введенные значения в UserDefaults для автоматического заполнения в следующий раз
+        keyChain.set(login, forKey: "login")
+        keyChain.set(password, forKey: "password")
+        
+//        методы удаления из keyChain т.к. эти данные остаются даже после удаления приложения
+//        keyChain.removeObject(forKey: "login")
+//        keyChain.removeObject(forKey: "password")
+        
+        
         if login == "admin" && password == "123456" {
-            print("успешная авторизация")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "tabBarControllerID")
+            vc.modalPresentationStyle = .fullScreen
+            show(vc, sender: nil)
         } else {
             let alert = UIAlertController(title: "Wrong password", message: "Check your password", preferredStyle: .alert)
             
@@ -122,7 +146,6 @@ class LoginViewController: UIViewController {
     private func removeBlurEffect(view: UIVisualEffectView) {
         view.removeFromSuperview()
     }
-    
 }
 
 // Отображение пароля в поле ввода

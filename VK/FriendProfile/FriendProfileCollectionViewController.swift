@@ -6,47 +6,99 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FriendProfileCollectionViewController: UICollectionViewController {
     
-    var userProfileInfo = User(name: "", avatarImage: "", likeCount: 0)
-
+    var currentUser = User()
+    
+    let service = FetchAllPhotoService()
+    
+    var userProfileInfo = UserAllPhotos()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fetchAllPhoto()
     }
-
+    
     // MARK: UICollectionViewDataSource
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return userProfileInfo.images.count
+        return userProfileInfo.photos.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendProfileCellID", for: indexPath) as! FriendProfileCollectionViewCell
-        cell.userImage.image = userProfileInfo.images[indexPath.row]
-        cell.likeControl.likeCount = userProfileInfo.likeCount
-        cell.likeControl.isLike = userProfileInfo.isLike
-
+        cell.userImage.loadImage(url: userProfileInfo.photos[indexPath.row].photoURL)
+        cell.contentView.layer.cornerRadius = 10
+        cell.contentView.layer.borderWidth = 3
+        cell.contentView.layer.borderColor = UIColor.systemBlue.cgColor
+        cell.likeControl.likeCount = userProfileInfo.photos[indexPath.row].likeCount
+        cell.likeControl.isLike = userProfileInfo.photos[indexPath.row].isLiked
+        
         return cell
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PhotoAnimationViewControllerID" {
-            let destination = segue.destination as! PhotoAnimationViewController
-            destination.userProfileInfo = self.userProfileInfo
+    
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        if segue.identifier == "PhotoAnimationViewControllerID" {
+    //            let destination = segue.destination as! PhotoAnimationViewController
+    //            destination.userProfileInfo = self.userProfileInfo
+    //        }
+    //    }
+    
+    // Передача данных из FriendsTableView
+    func updateData(user: User) {
+        self.currentUser = user
+    }
+    
+    func fetchAllPhoto() {
+        service.loadPhoto(id: String(currentUser.id)) { [weak self] result in
+            switch result {
+            case .success(let allPhoto):
+                do {
+                    //                    var config = Realm.Configuration()
+                    //                    config.deleteRealmIfMigrationNeeded = true
+                    //                    let realm = try Realm(configuration: config)
+                    let realm = try Realm()
+                    try realm.write {
+                        realm.add(allPhoto)
+                    }
+                } catch {
+                    print(#function)
+                    print("❌ Realm Error")
+                    print(error)
+                }
+                
+                DispatchQueue.main.async {
+                    self?.userProfileInfo = allPhoto
+                    self?.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
         }
     }
     
-    // Передача данных из FriendstableView
-    func updateData(user: User) {
-        userProfileInfo = user
+    func fetchRealmData() {
+        do {
+            let realm = try Realm()
+            let allPhoto = realm.objects(UserAllPhotos.self).last
+            DispatchQueue.main.async {
+                // Требует доработки
+                
+                self.userProfileInfo = allPhoto!
+                self.collectionView.reloadData()
+            }
+        } catch {
+            print(#function)
+            print("❌ Realm can't read data")
+            print(error)
+        }
     }
-
 }
