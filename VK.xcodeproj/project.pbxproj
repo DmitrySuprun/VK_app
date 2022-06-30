@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D5017884284DEBD800403228 /* AllPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017883284DEBD800403228 /* AllPhotos.swift */; };
-		D5017889285014AB00403228 /* GetAllPhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017888285014AB00403228 /* GetAllPhotoService.swift */; };
+		D5017884284DEBD800403228 /* UserAllPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017883284DEBD800403228 /* UserAllPhotos.swift */; };
+		D5017889285014AB00403228 /* FetchAllPhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017888285014AB00403228 /* FetchAllPhotoService.swift */; };
 		D501788B2854CE0600403228 /* CommunitiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501788A2854CE0600403228 /* CommunitiesService.swift */; };
 		D501788D2854D8E900403228 /* Communities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501788C2854D8E900403228 /* Communities.swift */; };
 		D5017895285876BD00403228 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5017894285876BD00403228 /* SettingsViewController.swift */; };
@@ -56,8 +56,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D5017883284DEBD800403228 /* AllPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPhotos.swift; sourceTree = "<group>"; };
-		D5017888285014AB00403228 /* GetAllPhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllPhotoService.swift; sourceTree = "<group>"; };
+		D5017883284DEBD800403228 /* UserAllPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAllPhotos.swift; sourceTree = "<group>"; };
+		D5017888285014AB00403228 /* FetchAllPhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllPhotoService.swift; sourceTree = "<group>"; };
 		D501788A2854CE0600403228 /* CommunitiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesService.swift; sourceTree = "<group>"; };
 		D501788C2854D8E900403228 /* Communities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communities.swift; sourceTree = "<group>"; };
 		D5017894285876BD00403228 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -158,9 +158,9 @@
 		D50C018A2803AA17006D8583 /* FriendProfile */ = {
 			isa = PBXGroup;
 			children = (
-				D5017883284DEBD800403228 /* AllPhotos.swift */,
+				D5017883284DEBD800403228 /* UserAllPhotos.swift */,
 				D50C018B2803AA73006D8583 /* FriendProfileCollectionViewController.swift */,
-				D5017888285014AB00403228 /* GetAllPhotoService.swift */,
+				D5017888285014AB00403228 /* FetchAllPhotoService.swift */,
 				D5C667F2280B02B000B9F04A /* LikeUIControl.swift */,
 				D5106B0F2822FE78006A02EE /* PhotoAnimationViewController.swift */,
 				D50C018D2803AA8D006D8583 /* FriendProfileCollectionViewCell.swift */,
@@ -371,7 +371,7 @@
 				D5C667F3280B02B000B9F04A /* LikeUIControl.swift in Sources */,
 				D5C66819280F462600B9F04A /* NewsTableViewController.swift in Sources */,
 				D51C42A52848DF45000CE622 /* UserModel.swift in Sources */,
-				D5017884284DEBD800403228 /* AllPhotos.swift in Sources */,
+				D5017884284DEBD800403228 /* UserAllPhotos.swift in Sources */,
 				D50C018C2803AA73006D8583 /* FriendProfileCollectionViewController.swift in Sources */,
 				D50C01962803CC80006D8583 /* CommunitySearchTableViewController.swift in Sources */,
 				D50C01982803CC92006D8583 /* CommunitySearchTableViewCell.swift in Sources */,
@@ -396,7 +396,7 @@
 				D50178CD285CBB7800403228 /* UserCoreData+CoreDataClass.swift in Sources */,
 				D5106B0E2821C56B006A02EE /* CloudAnimationViewController.swift in Sources */,
 				D501789A2858D18000403228 /* UserDefaults.swift in Sources */,
-				D5017889285014AB00403228 /* GetAllPhotoService.swift in Sources */,
+				D5017889285014AB00403228 /* FetchAllPhotoService.swift in Sources */,
 				D50C01872801E2BE006D8583 /* FriendsTableViewController.swift in Sources */,
 				D5B2B3FD27FE03CF00FA1E17 /* ExampleClass.swift in Sources */,
 				D50C01932803CC25006D8583 /* CommunitiesTableViewController.swift in Sources */,

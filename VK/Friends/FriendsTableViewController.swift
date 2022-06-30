@@ -92,16 +92,16 @@ class FriendsTableViewController: UITableViewController {
         } else if editingStyle == .insert {}
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        
-//        if segue.identifier == "FriendProfileSegueID" {
-//            let destination = segue.destination as! FriendProfileCollectionViewController
-//            let index = tableView.indexPathForSelectedRow
-//            // передаем на следующий VC выбранную ячейку
-//            let keyByIndexPath = contactListForTableViewDictionary.keys.sorted()[index!.section]
-//            destination.updateData(user: contactListForTableViewDictionary[keyByIndexPath]![index!.row])
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "FriendProfileSegueID" {
+            let destination = segue.destination as! FriendProfileCollectionViewController
+            let index = tableView.indexPathForSelectedRow
+            // передаем на следующий VC выбранную ячейку
+            let keyByIndexPath = contactListForTableViewDictionary.keys.sorted()[index!.section]
+            destination.updateData(user: contactListForTableViewDictionary[keyByIndexPath]![index!.row])
+        }
+    }
     
     // MARK: - IBActions
     // MARK: - Public Methods
