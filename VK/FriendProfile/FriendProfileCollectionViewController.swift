@@ -90,6 +90,8 @@ class FriendProfileCollectionViewController: UICollectionViewController {
             let realm = try Realm()
             let allPhoto = realm.objects(UserAllPhotos.self).last
             DispatchQueue.main.async {
+                // Требует доработки
+                
                 self.userProfileInfo = allPhoto!
                 self.collectionView.reloadData()
             }
