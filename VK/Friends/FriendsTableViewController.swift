@@ -110,7 +110,10 @@ class FriendsTableViewController: UITableViewController {
     private func fetchReamData() {
         
         do {
-            let realm = try Realm()
+            var config = Realm.Configuration()
+//            config.deleteRealmIfMigrationNeeded = true
+            let realm = try Realm(configuration: config)
+            
             let UserList = realm.objects(User.self)
             // List -> Array
             source = UserList.map({ user in
@@ -133,12 +136,17 @@ class FriendsTableViewController: UITableViewController {
             case .success(let user):
                 // add User to Realm
                 do {
-                    let realm = try Realm()
+                    var config = Realm.Configuration.defaultConfiguration
+                    config.deleteRealmIfMigrationNeeded = true
+                    let realm = try Realm(configuration: config)
+                    
+                    print("Realm DB ::", realm.configuration.fileURL)
                     try realm.write {
                         user.userData.forEach { user in
                             realm.add(user, update: .modified)
                         }
                     }
+                    // !!! Добавить обновление таблицы
                 } catch {
                     print(#function)
                     print("❌ Realm write ERROR")

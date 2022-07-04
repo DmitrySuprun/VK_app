@@ -10,7 +10,11 @@ import RealmSwift
 
 class FetchAllPhotoService {
     
-    func loadPhoto(id: String, completion: @escaping (Result<UserAllPhotos, Error>) -> () ) {
+    private lazy var session: URLSession = {
+        return URLSession(configuration: .default)
+    }()
+    
+    func loadPhoto(id: String) async {
         
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
@@ -24,19 +28,16 @@ class FetchAllPhotoService {
         
         guard let url = urlComponents.url else { return }
         
-        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            
-            guard let data = data else { return }
-            
-            do {
-                let allPhoto = try JSONDecoder().decode(UserAllPhotos.self, from: data)
-                completion(.success(allPhoto))
-                
-            } catch {
-                print(#function)
-                completion(.failure(error))
-            }
-        }.resume()
+        let request = URLRequest(url: url)
+        do {
+            let (data, _) = try await session.data(for: request)
+            let result = try JSONDecoder().decode(UserAllPhotos.self, from: data)
+            await saveRealm(photos: result)
+
+        } catch {
+            print(error)
+        }
+        
     }
     
     func load (url: [String]) -> [UIImageView] {
@@ -50,20 +51,20 @@ class FetchAllPhotoService {
     }
 }
 
-//extension FetchAllPhotoService {
-//    func saveRealmData(photos: UserAllPhotos) async {
-//
-//        if let realm = try? await Realm() {
-//            print(realm.configuration.fileURL ?? "❌ No Realm file")
-//            do {
-//                try realm.write {
-//                    realm.add(photos)
-//                }
-//            } catch {
-//                print(#function)
-//                print("❌ Can't save Realm data")
-//                print(error)
-//            }
-//        }
-//    }
-//}
+extension FetchAllPhotoService {
+    
+    func saveRealm(photos: UserAllPhotos) async {
+        
+        do {
+            let realm = try await Realm()
+            print(realm.configuration.fileURL ?? "❌ No Realm file")
+            try realm.write {
+                realm.add(photos, update: .modified)
+            }
+        } catch {
+            print(#function)
+            print("❌ Can't save Realm data")
+            print(error)
+        }
+    }
+}
