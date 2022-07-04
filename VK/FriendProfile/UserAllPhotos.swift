@@ -20,12 +20,27 @@ class UserAllPhotos: Object, Decodable {
     enum ResponseCodingKeys: String, CodingKey {
         case items
     }
+    enum Items: String, CodingKey {
+        case id = "owner_id"
+    }
 
     convenience required init(from decoder: Decoder) throws {
         self.init()
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let responseContainer = try container.nestedContainer(keyedBy: ResponseCodingKeys.self, forKey: .response)
         self.photos = try responseContainer.decode(List<Photos>.self, forKey: .items)
+        var items = try responseContainer.nestedUnkeyedContainer(forKey: .items)
+        
+        // Доработать без цикла
+        while !items.isAtEnd {
+            let idContainer = try items.nestedContainer(keyedBy: Items.self)
+            self.ownerID = try idContainer.decode(Int.self, forKey: .id)
+        }
+        
+    }
+    
+    override class func primaryKey() -> String? {
+        "ownerID"
     }
 }
 

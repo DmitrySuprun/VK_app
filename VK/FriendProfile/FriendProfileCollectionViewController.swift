@@ -18,6 +18,7 @@ class FriendProfileCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         fetchAllPhoto()
     }
     
@@ -53,43 +54,26 @@ class FriendProfileCollectionViewController: UICollectionViewController {
     //    }
     
     // Передача данных из FriendsTableView
+    
     func updateData(user: User) {
         self.currentUser = user
     }
     
     func fetchAllPhoto() {
-        service.loadPhoto(id: String(currentUser.id)) { [weak self] result in
-            switch result {
-            case .success(let allPhoto):
-                do {
-                    //                    var config = Realm.Configuration()
-                    //                    config.deleteRealmIfMigrationNeeded = true
-                    //                    let realm = try Realm(configuration: config)
-                    let realm = try Realm()
-                    try realm.write {
-                        realm.add(allPhoto)
-                    }
-                } catch {
-                    print(#function)
-                    print("❌ Realm Error")
-                    print(error)
-                }
-                
-                DispatchQueue.main.async {
-                    self?.userProfileInfo = allPhoto
-                    self?.collectionView.reloadData()
-                }
-            case .failure(let error):
-                print(error)
-            }
+        Task {
+            try await service.loadPhoto(id: String(currentUser.id))
+            await fetchRealmData()
+            collectionView.reloadData()
+
         }
     }
     
-    func fetchRealmData() {
+    func fetchRealmData() async {
         do {
-            let realm = try Realm()
-            let allPhoto = realm.objects(UserAllPhotos.self).last
+            let realm = try await Realm()
+            let allPhoto = realm.object(ofType: UserAllPhotos.self, forPrimaryKey: currentUser.id)
             DispatchQueue.main.async {
+                // Force-unwrap
                 self.userProfileInfo = allPhoto!
                 self.collectionView.reloadData()
             }

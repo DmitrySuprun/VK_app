@@ -13,6 +13,9 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - IBOutlets
     // MARK: - Public Properties
     
+    // Realm Notification
+    var notificationToken: NotificationToken?
+    
     // сервисный класс загрузки данных из API idFriends и данные друзей
     let service = UserService()
     
@@ -32,6 +35,41 @@ class FriendsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        do {
+            let realm = try Realm()
+            let object = realm.objects(UserAllPhotos.self)
+            notificationToken = object.observe({ [weak self] changes in
+                
+                guard let tableView = self?.tableView else { return }
+                
+                switch changes {
+                case .initial(let _):
+                    print("Init notification Realm ")
+                
+                case .update(let _,
+                             deletions: let deletions,
+                             insertions: let insertions,
+                             modifications: let modifications):
+                    
+                    let deletionsIndexPath = deletions.map({ IndexPath(row: $0, section: 0)})
+                    let insertionsIndexPath = insertions.map({ IndexPath(row: $0, section: 0)})
+                    let modificationsIndexPath = modifications.map({ IndexPath(row: $0, section: 0)})
+                    
+                    tableView.deleteRows(at: deletionsIndexPath, with: .automatic)
+                    tableView.insertRows(at: insertionsIndexPath, with: .automatic)
+                    tableView.reloadRows(at: modifications, with: .automatic)
+
+                case .error(let error):
+                    print(error)
+                }
+            })
+        } catch {
+            print(#function)
+            print("❌ Realm notification error")
+            print(error)
+            
+        }
         
         // Загружаем данные из Realm
         fetchReamData()
@@ -110,7 +148,10 @@ class FriendsTableViewController: UITableViewController {
     private func fetchReamData() {
         
         do {
-            let realm = try Realm()
+            var config = Realm.Configuration()
+//            config.deleteRealmIfMigrationNeeded = true
+            let realm = try Realm(configuration: config)
+            
             let UserList = realm.objects(User.self)
             // List -> Array
             source = UserList.map({ user in
@@ -133,12 +174,17 @@ class FriendsTableViewController: UITableViewController {
             case .success(let user):
                 // add User to Realm
                 do {
-                    let realm = try Realm()
+                    var config = Realm.Configuration.defaultConfiguration
+                    config.deleteRealmIfMigrationNeeded = true
+                    let realm = try Realm(configuration: config)
+                    
+                    print("Realm DB ::", realm.configuration.fileURL)
                     try realm.write {
                         user.userData.forEach { user in
                             realm.add(user, update: .modified)
                         }
                     }
+                    // !!! Добавить обновление таблицы
                 } catch {
                     print(#function)
                     print("❌ Realm write ERROR")
@@ -151,7 +197,7 @@ class FriendsTableViewController: UITableViewController {
             }
         }
     }
-    
+
     func reloadTableViewWithNewData() {
         
         self.contactListForTableViewDictionary = self.createDictionaryForContactList(contactList: self.source)
@@ -178,3 +224,4 @@ class FriendsTableViewController: UITableViewController {
         return result
     }
 }
+
