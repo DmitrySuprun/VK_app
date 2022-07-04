@@ -18,6 +18,7 @@ class FriendProfileCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         fetchAllPhoto()
     }
     
