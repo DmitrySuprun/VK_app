@@ -46,7 +46,7 @@ class FriendsTableViewController: UITableViewController {
                 
                 switch changes {
                 case .initial(let _):
-                    print("Init notification Realm ")
+                    print("Init notification Realm ::")
                 
                 case .update(let _,
                              deletions: let deletions,
@@ -116,6 +116,23 @@ class FriendsTableViewController: UITableViewController {
             let buttonOk = UIAlertAction(title: "Ok", style: .default) { _ in
                 
                 let keyByIndexPath = self.contactListForTableViewDictionary.keys.sorted()[indexPath.section]
+                let deleteObject = self.contactListForTableViewDictionary[keyByIndexPath]
+                
+                // Delete from Realm
+                do {
+                    let realm = try Realm()
+                    try realm.write {
+                        realm.delete(deleteObject!)
+                    }
+                    
+                } catch {
+                    print(#function)
+                    print("❌ Realm delete error")
+                    print(error)
+                }
+                
+                
+                
                 // если удаляется последний друг в секции, то удаляется и секция
                 if self.contactListForTableViewDictionary[keyByIndexPath]?.count == 1 {
                     self.contactListForTableViewDictionary[keyByIndexPath] = nil
@@ -149,6 +166,16 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - Public Methods
     // MARK: - Private Methods
     
+    // Получаем данные друзей (id, имя, аватарку) из сети
+    private func fetchUser() {
+        Task {
+            await service.loadFriendsProfile()
+            await fetchRealmData()
+            tableView.reloadData()
+        }
+        
+    }
+    
     private func fetchRealmData() async {
         
         do {
@@ -168,28 +195,9 @@ class FriendsTableViewController: UITableViewController {
             print(error)
         }
         
-        reloadTableViewWithNewData()
-    }
-
-    // Получаем данные друзей (id, имя, аватарку) из сети
-    private func fetchUser() {
-        Task {
-            await service.loadFriendsProfile()
-            await fetchRealmData()
-            tableView.reloadData()
-        }
-        
-    }
-
-    func reloadTableViewWithNewData() {
-        
         self.contactListForTableViewDictionary = self.createDictionaryForContactList(contactList: self.source)
-        
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
     }
-   
+
     // Создаем словарь для удобной работы с TableView
     private func createDictionaryForContactList (contactList: [User]) -> [String : [User]] {
         // Модель словаря
