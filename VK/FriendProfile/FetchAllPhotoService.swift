@@ -57,6 +57,8 @@ extension FetchAllPhotoService {
         
         do {
             let realm = try await Realm()
+            // Выводит в консоль схему данных в Realm
+//            print(realm.schema.description)
             print(realm.configuration.fileURL ?? "❌ No Realm file")
             try realm.write {
                 realm.add(photos, update: .modified)

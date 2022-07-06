@@ -61,20 +61,18 @@ class FriendProfileCollectionViewController: UICollectionViewController {
     
     func fetchAllPhoto() {
         Task {
-            try await service.loadPhoto(id: String(currentUser.id))
+            await service.loadPhoto(id: String(currentUser.id))
             await fetchRealmData()
             collectionView.reloadData()
-
         }
     }
     
     func fetchRealmData() async {
         do {
             let realm = try await Realm()
-            let allPhoto = realm.object(ofType: UserAllPhotos.self, forPrimaryKey: currentUser.id)
+            guard let allPhoto = realm.object(ofType: UserAllPhotos.self, forPrimaryKey: currentUser.id) else { return }
             DispatchQueue.main.async {
-                // Force-unwrap
-                self.userProfileInfo = allPhoto!
+                self.userProfileInfo = allPhoto
                 self.collectionView.reloadData()
             }
         } catch {

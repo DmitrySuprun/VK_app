@@ -52,14 +52,20 @@ class FriendsTableViewController: UITableViewController {
                              insertions: let insertions,
                              modifications: let modifications):
                     
-                    let deletionsIndexPath = deletions.map({ IndexPath(row: $0, section: 0)})
-                    let insertionsIndexPath = insertions.map({ IndexPath(row: $0, section: 0)})
-                    let modificationsIndexPath = modifications.map({ IndexPath(row: $0, section: 0)})
-                    
-                    tableView.deleteRows(at: deletionsIndexPath, with: .automatic)
-                    tableView.insertRows(at: insertionsIndexPath, with: .automatic)
-                    tableView.reloadRows(at: modifications, with: .automatic)
+                    tableView.performBatchUpdates {
+                        
+                        let deletionsIndexPath = deletions.map({ IndexPath(row: $0, section: 0)})
+                        let insertionsIndexPath = insertions.map({ IndexPath(row: $0, section: 0)})
+                        let modificationsIndexPath = modifications.map({ IndexPath(row: $0, section: 0)})
+                        
+                        tableView.deleteRows(at: deletionsIndexPath, with: .automatic)
+                        tableView.insertRows(at: insertionsIndexPath, with: .automatic)
+                        tableView.reloadRows(at: modificationsIndexPath, with: .automatic)
 
+                    } completion: { completed in
+                        print("completed update: \(completed)")
+                    }
+                    
                 case .error(let error):
                     print(error)
                 }
