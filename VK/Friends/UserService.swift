@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import RealmSwift
 
 final class UserService {
     
-    func loadFriendsProfile(completion: @escaping(Result<UserModel, Error>) -> ()) {
+    func loadFriendsProfile() async {
         
         let session = URLSession(configuration: .default)
         var urlComponents = URLComponents()
@@ -22,17 +23,37 @@ final class UserService {
         
         guard let url = urlComponents.url else { return }
         
-        session.dataTask(with: url) { data, response, error in
+        let request = URLRequest(url: url)
+        
+        do {
+            let (data, _) = try await session.data(for: request)
+            let result = try JSONDecoder().decode(UserModel.self, from: data)
+            await saveRealm(object: result)
+            
+        } catch {
+            print(#function)
+            print("❌ Loading error")
+            print(error)
+        }
+            
+    }
+}
+
+extension UserService {
     
-            guard let data = data, error == nil else { return }
-      
-            do {
-                let user = try JSONDecoder().decode(UserModel.self, from: data)
-                completion(.success(user))
-            } catch {
-                print(#function)
-                completion(.failure(error))
+    private func saveRealm(object: UserModel) async {
+        
+        do {
+            let realm = try await Realm()
+            try realm.write {
+                realm.add(object.userData, update: .modified)
             }
-        }.resume()
+            
+        } catch {
+            print(#function)
+            print("❌ Cant't save Realm data")
+            print(error)
+        }
+        
     }
 }

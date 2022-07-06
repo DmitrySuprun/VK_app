@@ -35,20 +35,23 @@ class FetchAllPhotoService {
             await saveRealm(photos: result)
 
         } catch {
+            print(#function)
+            print("❌ Loading error")
             print(error)
+            
         }
         
     }
     
-    func load (url: [String]) -> [UIImageView] {
-        var result = [UIImageView]()
-        for string in url {
-            let imageView = UIImageView()
-            imageView.loadImage(url: string)
-            result.append(imageView)
-        }
-        return result
-    }
+//    func load (url: [String]) -> [UIImageView] {
+//        var result = [UIImageView]()
+//        for string in url {
+//            let imageView = UIImageView()
+//            imageView.loadImage(url: string)
+//            result.append(imageView)
+//        }
+//        return result
+//    }
 }
 
 extension FetchAllPhotoService {

@@ -39,6 +39,7 @@ class FriendsTableViewController: UITableViewController {
         do {
             let realm = try Realm()
             let object = realm.objects(UserAllPhotos.self)
+            
             notificationToken = object.observe({ [weak self] changes in
                 
                 guard let tableView = self?.tableView else { return }
@@ -76,9 +77,6 @@ class FriendsTableViewController: UITableViewController {
             print(error)
             
         }
-        
-        // Загружаем данные из Realm
-        fetchReamData()
         
         // получаем данные из API VK
         fetchUser()
@@ -151,12 +149,12 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - Public Methods
     // MARK: - Private Methods
     
-    private func fetchReamData() {
+    private func fetchRealmData() async {
         
         do {
-            var config = Realm.Configuration()
+            let config = Realm.Configuration()
 //            config.deleteRealmIfMigrationNeeded = true
-            let realm = try Realm(configuration: config)
+            let realm = try await Realm(configuration: config)
             
             let UserList = realm.objects(User.self)
             // List -> Array
@@ -175,33 +173,12 @@ class FriendsTableViewController: UITableViewController {
 
     // Получаем данные друзей (id, имя, аватарку) из сети
     private func fetchUser() {
-        service.loadFriendsProfile() { [weak self] result in
-            switch result {
-            case .success(let user):
-                // add User to Realm
-                do {
-                    var config = Realm.Configuration.defaultConfiguration
-                    config.deleteRealmIfMigrationNeeded = true
-                    let realm = try Realm(configuration: config)
-                    
-                    print("Realm DB ::", realm.configuration.fileURL)
-                    try realm.write {
-                        user.userData.forEach { user in
-                            realm.add(user, update: .modified)
-                        }
-                    }
-                    // !!! Добавить обновление таблицы
-                } catch {
-                    print(#function)
-                    print("❌ Realm write ERROR")
-                    print(error)
-                }
-            case .failure(let error):
-                print(#function)
-                print("❌ Can't load friends profile")
-                print(error)
-            }
+        Task {
+            await service.loadFriendsProfile()
+            await fetchRealmData()
+            tableView.reloadData()
         }
+        
     }
 
     func reloadTableViewWithNewData() {
